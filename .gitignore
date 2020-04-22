@@ -126,7 +126,9 @@ logs
 **/*.back.*
 
 ../node_modules/
-node_modules/
+./node_modules/
+*/node_modules/*
+node_modules
 bower_components
 
 *.sublime*
