@@ -1,13 +1,14 @@
-import React, { Component } from "react";
+import React from "react";
+import { Link } from "react-router-dom";
 
-export class PracticePage extends Component {
-  render() {
-    return (
-      <div>
-        <h1>This is practice page</h1>
-      </div>
-    );
-  }
+function PracticePage() {
+  let id = "1";
+  return (
+    <div>
+      <h1>This is practice page</h1>
+      <Link to={`/bq/${id}`}>bq</Link>
+    </div>
+  );
 }
 
 export default PracticePage;

@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from "react";
-import ReactDOM from "react-dom";
 import Header from "./layout/Header";
 import Dashboard from "./dashboard/Dashboard";
 import { Provider } from "react-redux";
@@ -7,22 +6,24 @@ import AlertTemplate from "react-alert-template-basic";
 import { Provider as AlertProvider } from "react-alert";
 import Alerts from "./layout/Alerts";
 import store from "../store";
-
-import Login from "./accounts/Login";
-import Register from "./accounts/Register";
-import PrivateRoute from "./basic/PrivateRoute";
-import Home from "./home/Home";
-import PracticePage from "./practice/PracticePage";
-
-import { loadUser } from "../actions/auth_actions";
-
-import VideoUploader from "./videos/VideoUploader";
 import {
   HashRouter as Router,
   Route,
   Switch,
   Redirect,
 } from "react-router-dom";
+
+import Login from "./accounts/Login";
+import Register from "./accounts/Register";
+import PrivateRoute from "./basic/PrivateRoute";
+import Home from "./home/Home";
+import PracticePage from "./practice/PracticePage";
+import BehaviorQuestionMainPage from "./practice/behavior/BehaviorQuestionMainPage";
+
+import { loadUser } from "../actions/auth_actions";
+
+import VideoUploader from "./videos/VideoUploader";
+import VideoPlayer from "./dashboard/VideoPlayer";
 
 const alertOptions = {
   timeout: 3000,
@@ -50,6 +51,12 @@ class App extends Component {
                     path="/practice"
                     component={PracticePage}
                   />
+                  <PrivateRoute
+                    exact
+                    path="/bq/:id"
+                    component={BehaviorQuestionMainPage}
+                  />
+                  <PrivateRoute path="/video/:id" component={VideoPlayer} />
                   <Route exact path="/register" component={Register} />
                   <Route exact path="/login" component={Login} />
                   <Route exact path="/upload" component={VideoUploader} />
@@ -64,6 +71,4 @@ class App extends Component {
   }
 }
 
-ReactDOM.render(<App />, document.getElementById("app"));
-
-//This actual template, the html file is in frontend/static/frontend
+export default App;
