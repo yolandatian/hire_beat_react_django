@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Select from "react-select";
+import VideoRecorder from "./VideoRecorder";
 
 const numberOfQuestionOptions = [
   { value: 2, label: "2 Questions" },
@@ -16,6 +17,21 @@ const lengthOfResponseOptions = [
 
 let id = 1;
 
+var videoJsOptions = {
+  controls: true,
+  width: 640,
+  height: 480,
+  fluid: false,
+  plugins: {
+    record: {
+      audio: true,
+      video: true,
+      maxLength: 60,
+      debug: true,
+    },
+  },
+};
+
 export class PracticePage extends Component {
   state = {
     paramsAreSet: false,
@@ -25,6 +41,9 @@ export class PracticePage extends Component {
 
   setParams = () => {
     this.setState({ ...this.state, paramsAreSet: true });
+    videoJsOptions.plugins.record.maxLength =
+      this.state.lengthOfResponse.value * 60;
+    console.log(this.state.lengthOfResponse.value * 60);
   };
 
   handleChangeNumber = (numberOfQuestions) => {
@@ -61,6 +80,7 @@ export class PracticePage extends Component {
         {this.state.paramsAreSet ? null : this.getQuestionsParams()}
         <h2>{this.state.numberOfQuestions.value}</h2>
         <h2>{this.state.lengthOfResponse.value}</h2>
+        {this.state.paramsAreSet ? <VideoRecorder {...videoJsOptions} /> : null}
         <Link to={`/bq/${id}`}>bq</Link>
       </div>
     );
