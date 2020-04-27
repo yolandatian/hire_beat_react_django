@@ -26,12 +26,6 @@ export class VideoPlayer extends Component {
       id: v_id,
       url: v_url,
     });
-    // console.log(id);
-    // console.log(url);
-    // this.setState({
-    //   id: id,
-    //   url: url,
-    // });
   }
 
   render() {

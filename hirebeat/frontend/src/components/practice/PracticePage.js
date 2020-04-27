@@ -78,10 +78,7 @@ export class PracticePage extends Component {
       <div>
         <h1>This is practice page</h1>
         {this.state.paramsAreSet ? null : this.getQuestionsParams()}
-        <h2>{this.state.numberOfQuestions.value}</h2>
-        <h2>{this.state.lengthOfResponse.value}</h2>
         {this.state.paramsAreSet ? <VideoRecorder {...videoJsOptions} /> : null}
-        <Link to={`/bq/${id}`}>bq</Link>
       </div>
     );
   }
