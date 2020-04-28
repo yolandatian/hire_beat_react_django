@@ -2,7 +2,7 @@ export let videoList = [];
 export let questionList = [];
 
 const sources = {
-  sintelTrailer: "http://media.w3.org/2010/05/sintel/trailer.mp4",
+  sintelTrailer: "https://test-hb-videos.s3.amazonaws.com/1588036218976.webm",
   bunnyTrailer: "http://media.w3.org/2010/05/bunny/trailer.mp4",
   bunnyMovie: "http://media.w3.org/2010/05/bunny/movie.mp4",
   test: "http://media.w3.org/2010/05/video/movie_300.webm",

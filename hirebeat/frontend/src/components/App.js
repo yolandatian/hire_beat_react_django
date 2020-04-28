@@ -24,6 +24,7 @@ import { loadUser } from "../actions/auth_actions";
 
 import VideoUploader from "./videos/VideoUploader";
 import VideoPlayer from "./dashboard/VideoPlayer";
+import MyVideoUploader from "./videos/MyVideoUploader";
 
 const alertOptions = {
   timeout: 3000,
@@ -59,7 +60,7 @@ class App extends Component {
                   <PrivateRoute path="/video/:id" component={VideoPlayer} />
                   <Route exact path="/register" component={Register} />
                   <Route exact path="/login" component={Login} />
-                  <Route exact path="/upload" component={VideoUploader} />
+                  <Route exact path="/upload" component={MyVideoUploader} />
                   <Route exact path="/" component={Home} />
                 </Switch>
               </div>

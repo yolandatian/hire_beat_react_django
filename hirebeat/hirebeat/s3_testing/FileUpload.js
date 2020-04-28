@@ -46,6 +46,7 @@ class FileUpload extends Component {
       })
       .then((res) => {
         const options = {
+          Origin: {},
           headers: {
             "Content-Type": file.type,
           },

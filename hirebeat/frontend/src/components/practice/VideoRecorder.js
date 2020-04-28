@@ -8,6 +8,8 @@ import RecordRTC from "recordrtc";
 import "videojs-record/dist/css/videojs.record.css";
 import Record from "videojs-record/dist/videojs.record.js";
 
+import MyVideoUploader from "../videos/MyVideoUploader";
+
 export class VideoRecorder extends Component {
   componentDidMount() {
     // instantiate Video.js
@@ -38,7 +40,12 @@ export class VideoRecorder extends Component {
       // recordedData is a blob object containing the recorded data that
       // can be downloaded by the user, stored on server etc.
       console.log("finished recording: ", this.player.recordedData);
-      this.player.record().saveAs({ video: "my-video-file-name.webm" });
+      //this.player.record().saveAs({ video: "my-video-file-name.webm" });
+      this.setState({
+        video: this.player.recordedData,
+        videoHandled: false,
+        videoRecorded: true,
+      });
     });
 
     // error handling
@@ -57,15 +64,39 @@ export class VideoRecorder extends Component {
     }
   }
 
+  state = {
+    videoRecorded: false,
+    videoHandled: false,
+    video: null,
+  };
+
+  videoHandled = () => {
+    this.setState({
+      video: null,
+      videoRecorded: false,
+      videoHandled: true,
+    });
+  };
+
   render() {
     return (
-      <div data-vjs-player>
-        <video
-          id="myVideo"
-          ref={(node) => (this.videoNode = node)}
-          className="video-js vjs-default-skin"
-          playsInline
-        ></video>
+      <div className="container">
+        <div data-vjs-player>
+          <video
+            id="myVideo"
+            ref={(node) => (this.videoNode = node)}
+            className="video-js vjs-default-skin"
+            playsInline
+          ></video>
+        </div>
+        <div>
+          {this.state.videoRecorded && !this.state.videoHandled ? (
+            <MyVideoUploader
+              videoHandled={this.videoHandled}
+              video={this.state.video}
+            />
+          ) : null}
+        </div>
       </div>
     );
   }
