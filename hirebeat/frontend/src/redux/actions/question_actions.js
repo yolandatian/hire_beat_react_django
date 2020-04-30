@@ -1,0 +1,19 @@
+import { GET_QUESTIONS } from "./action_types";
+import axios from "axios";
+import { tokenConfig } from "./auth_actions";
+import { returnErrors } from "./message_actions";
+
+export const getQuestions = (number) => (dispatch, getState) => {
+  axios
+    .get(`questions?number=${number}`, tokenConfig(getState))
+    .then((res) => {
+      dispatch({
+        type: GET_QUESTIONS,
+        payload: res.data,
+      });
+      console.log("question loaded");
+    })
+    .catch((err) =>
+      dispatch(returnErrors(err.response.data, err.response.status))
+    );
+};

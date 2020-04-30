@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { register } from "../../actions/auth_actions";
-import { createMessage } from "../../actions/message_actions";
+import { register } from "../../redux/actions/auth_actions";
+import { createMessage } from "../../redux/actions/message_actions";
 
 export class Register extends Component {
   state = {

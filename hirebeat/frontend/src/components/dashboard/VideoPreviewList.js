@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import VideoPreview from "./VideoPreview";
 import { connect } from "react-redux";
-import { getVideos, deleteVideo } from "../../actions/video_actions";
+import { getVideos, deleteVideo } from "../../redux/actions/video_actions";
 
 export class VideoPreviewList extends Component {
   static propTypes = {

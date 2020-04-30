@@ -7,5 +7,5 @@ class Video(models.Model):
     url = models.URLField(max_length=200)
     created_at = models.DateTimeField(auto_now_add=True)
     owner = models.ForeignKey(User, related_name="videos", on_delete = models.CASCADE, null = True)
-    title = models.TextField(default="My video")
+    title = models.CharField(default="My video", max_length=200)
     # More fields to add

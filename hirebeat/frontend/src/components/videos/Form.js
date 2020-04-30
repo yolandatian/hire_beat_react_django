@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { addVideo } from "../../actions/video_actions";
+import { addVideo } from "../../redux/actions/video_actions";
 
 export class Form extends Component {
   state = {

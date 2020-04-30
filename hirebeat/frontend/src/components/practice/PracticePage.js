@@ -1,49 +1,20 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import Select from "react-select";
-import VideoRecorder from "./VideoRecorder";
-
-const numberOfQuestionOptions = [
-  { value: 2, label: "2 Questions" },
-  { value: 3, label: "3 Questions" },
-  { value: 5, label: "5 Questions" },
-];
-
-const lengthOfResponseOptions = [
-  { value: 1, label: "1 minute" },
-  { value: 2, label: "2 minutes" },
-  { value: 3, label: "3 minute3" },
-];
-
-let id = 1;
-
-var videoJsOptions = {
-  controls: true,
-  width: 640,
-  height: 480,
-  fluid: false,
-  plugins: {
-    record: {
-      audio: true,
-      video: true,
-      maxLength: 60,
-      debug: true,
-    },
-  },
-};
+import {
+  numberOfQuestionOptions,
+  lengthOfResponseOptions,
+} from "../../constants/constants";
+import ResponseWindow from "./ResponseWindow";
 
 export class PracticePage extends Component {
   state = {
     paramsAreSet: false,
-    numberOfQuestions: 2,
-    lengthOfResponse: 1,
+    numberOfQuestions: { value: 2 },
+    lengthOfResponse: { value: 1 },
   };
 
   setParams = () => {
     this.setState({ ...this.state, paramsAreSet: true });
-    videoJsOptions.plugins.record.maxLength =
-      this.state.lengthOfResponse.value * 60;
-    console.log(this.state.lengthOfResponse.value * 60);
   };
 
   handleChangeNumber = (numberOfQuestions) => {
@@ -59,12 +30,12 @@ export class PracticePage extends Component {
     return (
       <div>
         <Select
-          value={numberOfQuestions}
+          value={numberOfQuestions.value}
           onChange={this.handleChangeNumber}
           options={numberOfQuestionOptions}
         />
         <Select
-          value={lengthOfResponse}
+          value={lengthOfResponse.value}
           onChange={this.handleChangeLength}
           options={lengthOfResponseOptions}
         />
@@ -77,8 +48,14 @@ export class PracticePage extends Component {
     return (
       <div>
         <h1>This is practice page</h1>
-        {this.state.paramsAreSet ? null : this.getQuestionsParams()}
-        {this.state.paramsAreSet ? <VideoRecorder {...videoJsOptions} /> : null}
+        {this.state.paramsAreSet ? (
+          <ResponseWindow
+            number={this.state.numberOfQuestions.value}
+            length={this.state.lengthOfResponse.value}
+          />
+        ) : (
+          this.getQuestionsParams()
+        )}
       </div>
     );
   }

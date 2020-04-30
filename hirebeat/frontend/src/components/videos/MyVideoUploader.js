@@ -1,6 +1,6 @@
 var ReactS3Uploader = require("react-s3-uploader");
 import React, { Component } from "react";
-import { addVideo } from "../../actions/video_actions";
+import { addVideo } from "../../redux/actions/video_actions";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
@@ -13,6 +13,8 @@ export class MyVideoUploader extends Component {
 
   static propTypes = {
     addVideo: PropTypes.func.isRequired,
+    questions: PropTypes.array.isRequired,
+    q_index: PropTypes.number.isRequired,
   };
 
   handleUpload() {
@@ -23,6 +25,7 @@ export class MyVideoUploader extends Component {
   onUploadFinish = () => {
     const videoMetaData = {
       url: `https://test-hb-videos.s3.amazonaws.com/${this.props.video.name}`,
+      title: `${this.props.questions[this.props.q_index].title}`,
     };
     this.props.addVideo(videoMetaData);
     console.log(this.props.video.name + "is saved");
@@ -70,4 +73,9 @@ export class MyVideoUploader extends Component {
   }
 }
 
-export default connect(null, { addVideo })(MyVideoUploader);
+const mapStateToProps = (state) => ({
+  questions: state.question_reducer.questions,
+  q_index: state.question_reducer.q_index,
+});
+
+export default connect(mapStateToProps, { addVideo })(MyVideoUploader);

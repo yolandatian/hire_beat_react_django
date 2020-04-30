@@ -9,6 +9,7 @@ import "videojs-record/dist/css/videojs.record.css";
 import Record from "videojs-record/dist/videojs.record.js";
 
 import MyVideoUploader from "../videos/MyVideoUploader";
+import CountdownBar from "./CountdownBar";
 
 export class VideoRecorder extends Component {
   componentDidMount() {
@@ -81,6 +82,7 @@ export class VideoRecorder extends Component {
   render() {
     return (
       <div className="container">
+        <CountdownBar />
         <div data-vjs-player>
           <video
             id="myVideo"

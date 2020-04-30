@@ -18,9 +18,8 @@ import Register from "./accounts/Register";
 import PrivateRoute from "./basic/PrivateRoute";
 import Home from "./home/Home";
 import PracticePage from "./practice/PracticePage";
-import BehaviorQuestionMainPage from "./practice/behavior/BehaviorQuestionMainPage";
 
-import { loadUser } from "../actions/auth_actions";
+import { loadUser } from "../redux/actions/auth_actions";
 
 import VideoReplayPage from "./dashboard/VideoReplayPage";
 import MyVideoUploader from "./videos/MyVideoUploader";
@@ -50,11 +49,6 @@ class App extends Component {
                     exact
                     path="/practice"
                     component={PracticePage}
-                  />
-                  <PrivateRoute
-                    exact
-                    path="/bq/:id"
-                    component={BehaviorQuestionMainPage}
                   />
                   <PrivateRoute path="/video/:id" component={VideoReplayPage} />
                   <Route exact path="/register" component={Register} />
