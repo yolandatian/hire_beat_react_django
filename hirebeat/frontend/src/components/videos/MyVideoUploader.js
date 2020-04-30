@@ -1,5 +1,8 @@
 var ReactS3Uploader = require("react-s3-uploader");
 import React, { Component } from "react";
+import { addVideo } from "../../actions/video_actions";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
 export class MyVideoUploader extends Component {
   constructor(props) {
@@ -8,9 +11,22 @@ export class MyVideoUploader extends Component {
     this.handleUpload = this.handleUpload.bind(this);
   }
 
+  static propTypes = {
+    addVideo: PropTypes.func.isRequired,
+  };
+
   handleUpload() {
     this.uploader.uploadFile(this.props.video);
+    this.props.videoHandled();
   }
+
+  onUploadFinish = () => {
+    const videoMetaData = {
+      url: `https://test-hb-videos.s3.amazonaws.com/${this.props.video.name}`,
+    };
+    this.props.addVideo(videoMetaData);
+    console.log(this.props.video.name + "is saved");
+  };
 
   handleDiscard = () => {
     this.props.videoHandled();
@@ -32,6 +48,7 @@ export class MyVideoUploader extends Component {
             signingUrl="/sign_auth"
             signingUrlMethod="GET"
             onError={this.onUploadError}
+            onFinish={this.onUploadFinish}
             uploadRequestHeaders={{ "x-amz-acl": "public-read" }} // this is the default
             contentDisposition="auto"
             scrubFilename={(filename) => filename.replace(/[^\w\d_\-.]+/gi, "")}
@@ -53,4 +70,4 @@ export class MyVideoUploader extends Component {
   }
 }
 
-export default MyVideoUploader;
+export default connect(null, { addVideo })(MyVideoUploader);

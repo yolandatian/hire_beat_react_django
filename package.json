@@ -26,7 +26,6 @@
     "axios": "^0.19.2",
     "bluebird": "^3.7.2",
     "css-loader": "^3.5.2",
-    "dotenv": "^8.2.0",
     "evaporate": "^2.1.4",
     "express": "^4.17.1",
     "file-loader": "^6.0.0",

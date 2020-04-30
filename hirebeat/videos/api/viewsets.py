@@ -2,7 +2,6 @@ from rest_framework import viewsets, permissions
 from .serializers import VideoSerializer
 from videos.models import Video
 
-
 class VideoViewSet(viewsets.ModelViewSet):
     # permission_classes = [permissions.AllowAny] allow all access
     permission_classes = [permissions.IsAuthenticated]

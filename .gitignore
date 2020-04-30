@@ -68,8 +68,13 @@ coverage.xml
 .hypothesis/
 .pytest_cache/
 
+# env aws keys
+.env
+
 # Translations
 *.mo
+
+*.migrations
 
 # Scrapy stuff:
 .scrapy

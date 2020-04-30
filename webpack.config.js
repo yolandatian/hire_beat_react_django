@@ -4,6 +4,9 @@ const basePath = path.resolve(__dirname);
 
 module.exports = {
   context: path.join(basePath, "src"),
+  node: {
+    fs: "empty",
+  },
   output: {
     path: path.join(basePath, "dist"),
     filename: "[name].bundle.js",

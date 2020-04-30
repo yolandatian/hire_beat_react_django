@@ -22,8 +22,7 @@ import BehaviorQuestionMainPage from "./practice/behavior/BehaviorQuestionMainPa
 
 import { loadUser } from "../actions/auth_actions";
 
-import VideoUploader from "./videos/VideoUploader";
-import VideoPlayer from "./dashboard/VideoPlayer";
+import VideoReplayPage from "./dashboard/VideoReplayPage";
 import MyVideoUploader from "./videos/MyVideoUploader";
 
 const alertOptions = {
@@ -57,7 +56,7 @@ class App extends Component {
                     path="/bq/:id"
                     component={BehaviorQuestionMainPage}
                   />
-                  <PrivateRoute path="/video/:id" component={VideoPlayer} />
+                  <PrivateRoute path="/video/:id" component={VideoReplayPage} />
                   <Route exact path="/register" component={Register} />
                   <Route exact path="/login" component={Login} />
                   <Route exact path="/upload" component={MyVideoUploader} />
