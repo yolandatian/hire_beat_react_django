@@ -18,3 +18,4 @@ class QuestionAPIView(generics.ListCreateAPIView):
             number = 3
         questions = random.sample(list(questions), int(number))
         return questions
+

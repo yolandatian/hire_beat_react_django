@@ -10,9 +10,9 @@ export class Header extends Component {
     logout: PropTypes.func.isRequired,
   };
 
-  render() {
-    const { isAuthenticated, user } = this.props.auth;
-    const authLinks = (
+  renderUserLinks = () => {
+    const { user } = this.props.auth;
+    return (
       <ul className="navbar-nav ml-auto mt-2 mt-lg-0">
         <span className="navbar-text mr-3">
           <strong>{user ? `Welcome ${user.username}` : ""}</strong>
@@ -37,8 +37,10 @@ export class Header extends Component {
         </li>
       </ul>
     );
+  };
 
-    const guestLinks = (
+  renderGuestLinks = () => {
+    return (
       <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
         <li className="nav-item">
           <Link to="/register" className="nav-link">
@@ -57,7 +59,25 @@ export class Header extends Component {
         </li>
       </ul>
     );
+  };
 
+  renderReviewerLinks = () => {
+    return (
+      <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li className="nav-item">
+          <button
+            onClick={this.props.logout}
+            className="nav-link btn btn-info btn-sm text-light"
+          >
+            Logout
+          </button>
+        </li>
+      </ul>
+    );
+  };
+
+  render() {
+    const { isAuthenticated, user } = this.props.auth;
     return (
       <nav className="navbar navbar-expand-sm navbar-light bg-light">
         <div className="container">
@@ -76,7 +96,11 @@ export class Header extends Component {
             <a className="navbar-brand" href="#">
               HireBeat
             </a>
-            {isAuthenticated ? authLinks : guestLinks}
+            {isAuthenticated
+              ? user.groups[0] == "reviewers"
+                ? this.renderReviewerLinks()
+                : this.renderUserLinks()
+              : this.renderGuestLinks()}
           </div>
         </div>
       </nav>

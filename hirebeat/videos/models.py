@@ -8,4 +8,5 @@ class Video(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     owner = models.ForeignKey(User, related_name="videos", on_delete = models.CASCADE, null = True)
     title = models.CharField(default="My video", max_length=200)
+    is_reviewed = models.BooleanField(default=False)
     # More fields to add

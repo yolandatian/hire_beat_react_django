@@ -1,12 +1,18 @@
 from rest_framework import serializers
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 from django.contrib.auth import authenticate
+from rest_framework.serializers import SerializerMethodField
 
 # User serializer
 class UserSerializer(serializers.ModelSerializer):
+    groups = SerializerMethodField()
     class Meta:
         model = User
-        fields = ('id','username','email')
+        fields = ('id','username','email','groups')
+
+    def get_groups(self, obj):
+        print("called")
+        return [group.name for group in obj.groups.all()]
 
 # Register serializer
 class RegisterSerializer(serializers.ModelSerializer):

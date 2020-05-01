@@ -13,6 +13,7 @@ export class Login extends Component {
   static propTypes = {
     login: PropTypes.func.isRequired,
     isAuthenticated: PropTypes.bool,
+    user: PropTypes.object,
   };
 
   onSubmit = (e) => {
@@ -28,7 +29,11 @@ export class Login extends Component {
 
   render() {
     if (this.props.isAuthenticated) {
-      return <Redirect to="/" />;
+      if (this.props.user.groups[0] == "reviewers") {
+        return <Redirect to="/review" />;
+      } else {
+        return <Redirect to="/" />;
+      }
     }
     const { username, password } = this.state;
     return (
@@ -74,6 +79,7 @@ export class Login extends Component {
 
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth_reducer.isAuthenticated,
+  user: state.auth_reducer.user,
 });
 
 export default connect(mapStateToProps, { login })(Login);

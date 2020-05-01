@@ -44,3 +44,17 @@ export const addVideo = (video) => (dispatch, getState) => {
       dispatch(returnErrors(err.response.data, err.response.status))
     );
 };
+
+export const getUnreviewedVideo = () => (dispatch, getState) => {
+  axios
+    .get("get_unreviewed_video", tokenConfig(getState))
+    .then((res) => {
+      dispatch({
+        type: GET_VIDEOS,
+        payload: res.data,
+      });
+    })
+    .catch((err) =>
+      dispatch(returnErrors(err.response.data, err.response.status))
+    );
+};
