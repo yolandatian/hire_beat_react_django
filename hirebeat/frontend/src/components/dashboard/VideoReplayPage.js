@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom"; // get params from url
-import VideoPlayer from "./VideoPlayer";
+import VideoPlayer from "../videos/VideoPlayer";
 
 export class VideoReplayPage extends Component {
   state = {

@@ -23,7 +23,7 @@ import { loadUser } from "../redux/actions/auth_actions";
 
 import VideoReplayPage from "./dashboard/VideoReplayPage";
 import MyVideoUploader from "./videos/MyVideoUploader";
-import Review from "./review/Review";
+import ReviewWindow from "./review/ReviewWindow";
 
 const alertOptions = {
   timeout: 3000,
@@ -46,7 +46,7 @@ class App extends Component {
               <div className="container">
                 <Switch>
                   <PrivateRoute exact path="/dashboard" component={Dashboard} />
-                  <PrivateRoute exact path="/review" component={Review} />
+                  <PrivateRoute exact path="/review" component={ReviewWindow} />
                   <PrivateRoute
                     exact
                     path="/practice"

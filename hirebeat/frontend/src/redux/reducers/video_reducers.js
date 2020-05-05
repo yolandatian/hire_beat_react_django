@@ -2,6 +2,7 @@ import { GET_VIDEOS, DELETE_VIDEO, ADD_VIDEO } from "../actions/action_types";
 
 const initialState = {
   videos: [],
+  loaded: false,
 };
 
 export default function (state = initialState, action) {
@@ -10,6 +11,7 @@ export default function (state = initialState, action) {
       return {
         ...state,
         videos: action.payload,
+        loaded: true,
       };
     case DELETE_VIDEO:
       return {

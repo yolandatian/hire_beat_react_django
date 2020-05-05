@@ -7,6 +7,7 @@ import { getVideos, deleteVideo } from "../../redux/actions/video_actions";
 export class VideoPreviewList extends Component {
   static propTypes = {
     videos: PropTypes.array.isRequired,
+    loaded: PropTypes.bool.isRequired,
     getVideos: PropTypes.func.isRequired,
     deleteVideo: PropTypes.func.isRequired,
   };
@@ -18,11 +19,18 @@ export class VideoPreviewList extends Component {
   render() {
     return (
       <div className="container">
-        {this.props.videos.map((v) => {
-          return (
-            <VideoPreview id={v.id} key={v.id} url={v.url} title={v.title} />
-          );
-        })}
+        {this.props.loaded
+          ? this.props.videos.map((v) => {
+              return (
+                <VideoPreview
+                  id={v.id}
+                  key={v.id}
+                  url={v.url}
+                  title={v.title}
+                />
+              );
+            })
+          : null}
       </div>
     );
   }
@@ -31,6 +39,7 @@ export class VideoPreviewList extends Component {
 const mapStateToProps = (state) => ({
   // map initial state to props of this video component
   videos: state.video_reducer.videos,
+  loaded: state.video_reducer.loaded,
 });
 
 export default connect(mapStateToProps, { getVideos, deleteVideo })(

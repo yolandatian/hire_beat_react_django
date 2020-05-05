@@ -30,6 +30,7 @@ export class Login extends Component {
   render() {
     if (this.props.isAuthenticated) {
       if (this.props.user.groups[0] == "reviewers") {
+        console.log("reviewer confirmed");
         return <Redirect to="/review" />;
       } else {
         return <Redirect to="/" />;

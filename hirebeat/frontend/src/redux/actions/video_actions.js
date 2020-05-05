@@ -7,6 +7,8 @@ export const getVideos = () => (dispatch, getState) => {
   axios
     .get("/api/videos/", tokenConfig(getState))
     .then((res) => {
+      console.log("get videos");
+      console.log(res.data);
       dispatch({
         type: GET_VIDEOS,
         payload: res.data,
