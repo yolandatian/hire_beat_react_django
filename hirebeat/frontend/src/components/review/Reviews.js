@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
 import { reviewTagOptions } from "../../constants/constants";
+import { addVideoReviews } from "../../redux/actions/video_actions";
+import { connect } from "react-redux";
 
 const animatedComponents = makeAnimated();
 
@@ -27,8 +29,24 @@ export class Reviews extends Component {
     this.setState({ ...this.state, score: value });
   };
 
+  arrayToString = (myArray) => {
+    console.log(myArray);
+    var s = "";
+    myArray.forEach((t) => {
+      s += t.value + ",";
+    });
+    s = s.slice(0, -1);
+    return s;
+  };
+
   submitReview = () => {
-    console.log(this.state);
+    var tagString = this.arrayToString(this.state.selectedTags);
+    this.props.addVideoReviews(
+      this.state.score,
+      this.state.comments,
+      tagString,
+      this.props.videoID
+    );
   };
 
   render() {
@@ -59,4 +77,4 @@ export class Reviews extends Component {
   }
 }
 
-export default Reviews;
+export default connect(null, { addVideoReviews })(Reviews);

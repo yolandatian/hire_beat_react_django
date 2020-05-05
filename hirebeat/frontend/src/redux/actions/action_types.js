@@ -17,3 +17,5 @@ export const REGISTER_FAIL = "REGISTER_FAIL";
 
 export const GET_QUESTIONS = "GET_QUESTIONS";
 export const NEXT_QUESTION = "NEXT_QUESTION";
+
+export const ADD_REVIEWS = "ADD_REVIEWS";

@@ -1,4 +1,9 @@
-import { GET_VIDEOS, DELETE_VIDEO, ADD_VIDEO } from "../actions/action_types";
+import {
+  GET_VIDEOS,
+  DELETE_VIDEO,
+  ADD_VIDEO,
+  ADD_REVIEWS,
+} from "../actions/action_types";
 
 const initialState = {
   videos: [],
@@ -23,6 +28,7 @@ export default function (state = initialState, action) {
         ...state,
         videos: [...state.videos, action.payload],
       };
+    case ADD_REVIEWS:
     default:
       return state;
   }

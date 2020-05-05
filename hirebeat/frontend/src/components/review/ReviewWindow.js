@@ -23,7 +23,7 @@ export class ReviewWindow extends Component {
         {this.props.loaded ? (
           <div>
             <VideoPlayer url={this.props.video.url} />
-            <Reviews videoId={this.props.video.id} />
+            <Reviews videoID={this.props.video.id} />
           </div>
         ) : null}
       </div>

@@ -1,5 +1,10 @@
 import axios from "axios";
-import { GET_VIDEOS, DELETE_VIDEO, ADD_VIDEO } from "./action_types";
+import {
+  GET_VIDEOS,
+  DELETE_VIDEO,
+  ADD_VIDEO,
+  ADD_REVIEWS,
+} from "./action_types";
 import { createMessage, returnErrors } from "./message_actions";
 import { tokenConfig } from "./auth_actions";
 
@@ -53,6 +58,30 @@ export const getUnreviewedVideo = () => (dispatch, getState) => {
     .then((res) => {
       dispatch({
         type: GET_VIDEOS,
+        payload: res.data,
+      });
+    })
+    .catch((err) =>
+      dispatch(returnErrors(err.response.data, err.response.status))
+    );
+};
+
+export const addVideoReviews = (score, comments, tags, video_id) => (
+  dispatch,
+  getState
+) => {
+  const body = JSON.stringify({
+    score,
+    comments,
+    tags,
+  });
+
+  axios
+    .patch(`api/videos/${video_id}/`, body, tokenConfig(getState))
+    .then((res) => {
+      console.log(res.data);
+      dispatch({
+        type: ADD_REVIEWS,
         payload: res.data,
       });
     })
