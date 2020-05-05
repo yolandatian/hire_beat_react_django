@@ -7,7 +7,9 @@ router = routers.DefaultRouter()
 router.register(
     "api/videos", VideoViewSet, "videos"
 )  # Tell django this path is mapped to Videos in the database
-
+router.register(
+    "api/videos/:pk", VideoViewSet, "videos update"
+)  
 urlpatterns=router.urls
 urlpatterns.append(path('get_unreviewed_video',get_unreviewed_video))
 

@@ -10,6 +10,15 @@ export const lengthOfResponseOptions = [
   { value: 3, label: "3 minute3" },
 ];
 
+export const reviewTagOptions = [
+  { value: "Tag1", label: "Tag1" },
+  { value: "Tag2", label: "Tag2" },
+  { value: "Tag3", label: "Tag3" },
+  { value: "Tag4", label: "Tag4" },
+  { value: "Tag5", label: "Tag5" },
+  { value: "Tag6", label: "Tag6" },
+];
+
 // The length changes
 export var videoRecorderOptions = {
   controls: true,
