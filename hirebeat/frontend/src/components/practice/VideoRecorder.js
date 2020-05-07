@@ -12,10 +12,17 @@ import MyVideoUploader from "../videos/MyVideoUploader";
 import CountdownBar from "./CountdownBar";
 
 export class VideoRecorder extends Component {
+  state = {
+    videoRecorded: false,
+    videoHandled: false,
+    video: null,
+    time_total: this.props.plugins.record.maxLength,
+    time_remain: this.props.plugins.record.maxLength,
+    intervalID: null,
+  };
+
   componentDidMount() {
-    // instantiate Video.js
     this.player = videojs(this.videoNode, this.props, () => {
-      // print version information at startup
       var version_info =
         "Using video.js " +
         videojs.VERSION +
@@ -26,30 +33,20 @@ export class VideoRecorder extends Component {
       videojs.log(version_info);
     });
 
-    // device is ready
     this.player.on("deviceReady", () => {
       console.log("device is ready!");
+      this.startCountDown();
     });
 
-    // user clicked the record button and started recording
     this.player.on("startRecord", () => {
       console.log("started recording!");
     });
 
-    // user completed recording and stream is available
     this.player.on("finishRecord", () => {
-      // recordedData is a blob object containing the recorded data that
-      // can be downloaded by the user, stored on server etc.
       console.log("finished recording: ", this.player.recordedData);
-      //this.player.record().saveAs({ video: "my-video-file-name.webm" });
-      this.setState({
-        video: this.player.recordedData,
-        videoHandled: false,
-        videoRecorded: true,
-      });
+      this.recordFinished();
     });
 
-    // error handling
     this.player.on("error", (element, error) => {
       console.warn(error);
     });
@@ -63,12 +60,28 @@ export class VideoRecorder extends Component {
     if (this.player) {
       this.player.dispose();
     }
+    clearInterval(this.state.intervalId);
   }
 
-  state = {
-    videoRecorded: false,
-    videoHandled: false,
-    video: null,
+  recordFinished = () => {
+    clearInterval(this.state.intervalID);
+    this.setState({
+      intervalID: 0,
+      video: this.player.recordedData,
+      videoHandled: false,
+      videoRecorded: true,
+    });
+  };
+
+  startCountDown = () => {
+    if (this.state.time_remain > 0) {
+      var intervalID = setInterval(this.countDown, 1000);
+      this.setState({ ...this.state, intervalID: intervalID });
+    }
+  };
+
+  countDown = () => {
+    this.setState({ ...this.state, time_remain: this.state.time_remain - 1 });
   };
 
   videoHandled = () => {
@@ -82,7 +95,11 @@ export class VideoRecorder extends Component {
   render() {
     return (
       <div className="container">
-        <CountdownBar />
+        <CountdownBar
+          time_total={this.state.time_total}
+          time_remain={this.state.time_remain}
+        />
+        <button onClick={this.recordFinished}>stop count</button>
         <div data-vjs-player>
           <video
             id="myVideo"

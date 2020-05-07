@@ -2,6 +2,7 @@ import boto
 import mimetypes
 import json
 from django.http import HttpResponse
+from django.contrib.auth.models import User
 
 import os
 from dotenv import load_dotenv

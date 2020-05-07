@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 export class NotePad extends Component {
   render() {
-    return <div>Notepad</div>;
+    return <input type="text" />;
   }
 }
 

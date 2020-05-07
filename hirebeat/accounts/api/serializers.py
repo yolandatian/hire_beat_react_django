@@ -11,7 +11,6 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ('id','username','email','groups')
 
     def get_groups(self, obj):
-        print("called")
         return [group.name for group in obj.groups.all()]
 
 # Register serializer
