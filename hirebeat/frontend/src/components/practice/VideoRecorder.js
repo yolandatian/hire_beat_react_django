@@ -99,7 +99,6 @@ export class VideoRecorder extends Component {
           time_total={this.state.time_total}
           time_remain={this.state.time_remain}
         />
-        <button onClick={this.recordFinished}>stop count</button>
         <div data-vjs-player>
           <video
             id="myVideo"
