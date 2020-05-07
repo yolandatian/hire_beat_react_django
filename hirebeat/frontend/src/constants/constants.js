@@ -31,6 +31,7 @@ export var videoRecorderOptions = {
       video: true,
       maxLength: 60,
       debug: true,
+      videoMimeType: "video/webm;codecs=vp8,opus",
     },
   },
 };

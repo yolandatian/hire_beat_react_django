@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import VideoPreview from "./VideoPreview";
+import VideoImagePreview from "./VideoImagePreview";
 import { connect } from "react-redux";
 import { getVideos, deleteVideo } from "../../redux/actions/video_actions";
 
@@ -22,11 +22,12 @@ export class VideoPreviewList extends Component {
         {this.props.loaded
           ? this.props.videos.map((v) => {
               return (
-                <VideoPreview
+                <VideoImagePreview
                   id={v.id}
                   key={v.id}
                   url={v.url}
-                  title={v.title}
+                  des={v.q_description}
+                  date={v.created_at}
                 />
               );
             })

@@ -18,6 +18,7 @@ export default function (state = initialState, action) {
         q_count: action.payload.length,
       };
     case NEXT_QUESTION:
+      console.log("next question");
       if (state.q_index == state.q_count - 1) {
         return {
           ...state,

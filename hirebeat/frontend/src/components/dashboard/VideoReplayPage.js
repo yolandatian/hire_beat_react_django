@@ -24,7 +24,7 @@ export class VideoReplayPage extends Component {
     return (
       <div>
         <h1>This is the replay page, add more details</h1>
-        <h2>{this.state.video.title}</h2>
+        <h2>{this.state.video.q_description}</h2>
         <h2>{this.state.video.created_at.substring(0, 10)}</h2>
         <VideoPlayer url={this.state.video.url} />
       </div>

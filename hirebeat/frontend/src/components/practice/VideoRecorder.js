@@ -10,6 +10,8 @@ import Record from "videojs-record/dist/videojs.record.js";
 
 import MyVideoUploader from "../videos/MyVideoUploader";
 import CountdownBar from "./CountdownBar";
+import { connect } from "react-redux";
+import { NEXT_QUESTION } from "../../redux/actions/action_types";
 
 export class VideoRecorder extends Component {
   state = {
@@ -35,11 +37,11 @@ export class VideoRecorder extends Component {
 
     this.player.on("deviceReady", () => {
       console.log("device is ready!");
-      this.startCountDown();
     });
 
     this.player.on("startRecord", () => {
       console.log("started recording!");
+      this.startCountDown();
     });
 
     this.player.on("finishRecord", () => {
@@ -66,7 +68,7 @@ export class VideoRecorder extends Component {
   recordFinished = () => {
     clearInterval(this.state.intervalID);
     this.setState({
-      intervalID: 0,
+      ...this.state,
       video: this.player.recordedData,
       videoHandled: false,
       videoRecorded: true,
@@ -87,22 +89,19 @@ export class VideoRecorder extends Component {
     });
   };
 
-  videoSaveHandle = () => {
-    // next question action
-    this.setState({
-      video: null,
-      videoRecorded: false,
-      videoHandled: true,
-    });
-    this.player.record().reset();
-    this.player.record().getDevice();
+  resetDeviceAndNextQuestion = () => {
+    console.log("next question");
+    this.resetDevice();
+    this.props.onNextQuestion();
   };
 
-  videoDiscardHandle = () => {
+  resetDevice = () => {
     this.setState({
-      video: null,
+      ...this.state,
       videoRecorded: false,
       videoHandled: true,
+      time_total: this.props.plugins.record.maxLength,
+      time_remain: this.props.plugins.record.maxLength,
     });
     this.player.record().reset();
     this.player.record().getDevice();
@@ -126,7 +125,8 @@ export class VideoRecorder extends Component {
         <div>
           {this.state.videoRecorded && !this.state.videoHandled ? (
             <MyVideoUploader
-              videoHandled={this.videoSaveHandle}
+              resetDeviceAndNextQuestion={this.resetDeviceAndNextQuestion}
+              resetDevice={this.resetDevice}
               video={this.state.video}
             />
           ) : null}
@@ -136,4 +136,12 @@ export class VideoRecorder extends Component {
   }
 }
 
-export default VideoRecorder;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onNextQuestion: () => {
+      dispatch({ type: NEXT_QUESTION });
+    },
+  };
+};
+
+export default connect(null, mapDispatchToProps)(VideoRecorder);

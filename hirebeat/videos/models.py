@@ -7,7 +7,7 @@ class Video(models.Model):
     url = models.URLField(max_length=200)
     created_at = models.DateTimeField(auto_now_add=True)
     owner = models.ForeignKey(User, related_name="videos", on_delete = models.CASCADE, null = True)
-    title = models.CharField(default="My video", max_length=200)
+    q_description = models.CharField(default="Sample question", max_length=500)
     # review related
     is_reviewed = models.BooleanField(default=False)
     tags = models.TextField(default="Good job")

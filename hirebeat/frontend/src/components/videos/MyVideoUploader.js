@@ -17,22 +17,14 @@ export class MyVideoUploader extends Component {
     q_index: PropTypes.number.isRequired,
   };
 
-  handleUpload() {
-    this.uploader.uploadFile(this.props.video);
-    this.props.videoHandled();
-  }
-
   onUploadFinish = () => {
     const videoMetaData = {
       url: `https://test-hb-videos.s3.amazonaws.com/${this.props.video.name}`,
-      title: `${this.props.questions[this.props.q_index].title}`,
+      q_description: `${this.props.questions[this.props.q_index].description}`,
     };
+    console.log(videoMetaData);
     this.props.addVideo(videoMetaData);
     console.log(this.props.video.name + "is saved");
-  };
-
-  handleDiscard = () => {
-    this.props.videoHandled();
   };
 
   onUploadError = (err) => {
@@ -43,10 +35,15 @@ export class MyVideoUploader extends Component {
     console.log("In progress");
   };
 
+  handleUpload() {
+    this.uploader.uploadFile(this.props.video);
+    this.props.resetDeviceAndNextQuestion();
+  }
+
   render() {
     return (
       <div>
-        <div style={{ display: "none" }}>
+        <div>
           <ReactS3Uploader
             signingUrl="/sign_auth"
             signingUrlMethod="GET"
@@ -59,13 +56,13 @@ export class MyVideoUploader extends Component {
             ref={(uploader) => {
               this.uploader = uploader;
             }}
-            autoUpload={false}
+            autoUpload={true}
           />
         </div>
         <button type="button" value="Upload" onClick={this.handleUpload}>
           Save
         </button>
-        <button type="button" value="Upload" onClick={this.props.videoHandled}>
+        <button type="button" value="Upload" onClick={this.props.resetDevice}>
           Discard
         </button>
       </div>
