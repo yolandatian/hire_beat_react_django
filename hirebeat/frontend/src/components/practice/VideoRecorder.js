@@ -90,7 +90,6 @@ export class VideoRecorder extends Component {
   };
 
   resetDeviceAndNextQuestion = () => {
-    console.log("next question");
     this.resetDevice();
     this.props.onNextQuestion();
   };

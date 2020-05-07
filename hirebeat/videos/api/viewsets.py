@@ -15,7 +15,6 @@ class VideoViewSet(viewsets.ModelViewSet):
         return self.request.user.videos.all()
 
     def perform_create(self, serializer):
-        print(self.request.data['q_description'])
         serializer.save(owner=self.request.user)
     
     def partial_update(self, request, pk=None):

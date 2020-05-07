@@ -43,7 +43,7 @@ export class MyVideoUploader extends Component {
   render() {
     return (
       <div>
-        <div>
+        <div style={{ display: "none" }}>
           <ReactS3Uploader
             signingUrl="/sign_auth"
             signingUrlMethod="GET"
