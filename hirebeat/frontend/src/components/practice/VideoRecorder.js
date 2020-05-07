@@ -81,15 +81,31 @@ export class VideoRecorder extends Component {
   };
 
   countDown = () => {
-    this.setState({ ...this.state, time_remain: this.state.time_remain - 1 });
+    this.setState({
+      ...this.state,
+      time_remain: this.state.time_remain - 1,
+    });
   };
 
-  videoHandled = () => {
+  videoSaveHandle = () => {
+    // next question action
     this.setState({
       video: null,
       videoRecorded: false,
       videoHandled: true,
     });
+    this.player.record().reset();
+    this.player.record().getDevice();
+  };
+
+  videoDiscardHandle = () => {
+    this.setState({
+      video: null,
+      videoRecorded: false,
+      videoHandled: true,
+    });
+    this.player.record().reset();
+    this.player.record().getDevice();
   };
 
   render() {
@@ -110,7 +126,7 @@ export class VideoRecorder extends Component {
         <div>
           {this.state.videoRecorded && !this.state.videoHandled ? (
             <MyVideoUploader
-              videoHandled={this.videoHandled}
+              videoHandled={this.videoSaveHandle}
               video={this.state.video}
             />
           ) : null}
