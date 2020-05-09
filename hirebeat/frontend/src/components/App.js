@@ -25,6 +25,8 @@ import VideoReplayPage from "./dashboard/VideoReplayPage";
 import MyVideoUploader from "./videos/MyVideoUploader";
 import ReviewWindow from "./review/ReviewWindow";
 
+import Sidebar from "react-sidebar";
+
 const alertOptions = {
   timeout: 3000,
   position: "top center",
