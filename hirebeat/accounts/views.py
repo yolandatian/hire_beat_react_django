@@ -24,3 +24,4 @@ def sign_s3_upload(request):
         headers = {'Content-Type': content_type, 'x-amz-acl':'public-read'})
     
     return HttpResponse(json.dumps({'signedUrl': signed_url}))
+

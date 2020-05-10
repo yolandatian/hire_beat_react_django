@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { login } from "../../redux/actions/auth_actions";
+import { login, exchangeToken } from "../../redux/actions/auth_actions";
+import SocialButtons from "./SocialButtons";
 
 export class Login extends Component {
   state = {
@@ -27,6 +28,11 @@ export class Login extends Component {
     });
   };
 
+  handleSocialLogin = (user) => {
+    console.log(user);
+    this.props.exchangeToken(user.token.accessToken, user.provider);
+  };
+
   render() {
     if (this.props.isAuthenticated) {
       if (this.props.user.groups[0] == "reviewers") {
@@ -39,6 +45,7 @@ export class Login extends Component {
     const { username, password } = this.state;
     return (
       <div className="col-md-6 m-auto">
+        <SocialButtons handleSocialLogin={this.handleSocialLogin} />
         <div className="card card-body mt-5">
           <h2 className="text-center">Login</h2>
           <form onSubmit={this.onSubmit}>
@@ -83,4 +90,4 @@ const mapStateToProps = (state) => ({
   user: state.auth_reducer.user,
 });
 
-export default connect(mapStateToProps, { login })(Login);
+export default connect(mapStateToProps, { login, exchangeToken })(Login);

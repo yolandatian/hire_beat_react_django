@@ -36,13 +36,11 @@ export const loadUser = () => (dispatch, getState) => {
 
 // ********  LOGIN  ********
 export const login = (username, password) => (dispatch) => {
-  // Headers
   const config = {
     headers: {
       "Content-Type": "application/json",
     },
   };
-  // Request body
   const body = JSON.stringify({ username: username, password: password });
 
   axios
@@ -94,6 +92,31 @@ export const register = (username, email, password) => (dispatch) => {
         payload: res.data,
       })
     )
+    .catch((err) => {
+      dispatch(returnErrors(err.response.data, err.response.status));
+      dispatch({
+        type: REGISTER_FAIL,
+      });
+    });
+};
+
+export const exchangeToken = (token, backend) => (dispatch) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+  const body = JSON.stringify({ access_token: token });
+  console.log("About to fire request");
+  axios
+    .post(`exchange_token/${backend}`, body, config)
+    .then((res) => {
+      console.log(res);
+      dispatch({
+        type: REGISTER_SUCCESS,
+        payload: res.data,
+      });
+    })
     .catch((err) => {
       dispatch(returnErrors(err.response.data, err.response.status));
       dispatch({

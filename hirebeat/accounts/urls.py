@@ -2,6 +2,7 @@ from django.urls import path,include
 from .api.api import ResgisterAPI, LoginAPI, UserAPI
 from knox import views as knox_views
 from .views import sign_s3_upload
+from .api.social_login import exchange_token
 
 urlpatterns = [
     path('api/auth', include('knox.urls')),
@@ -9,6 +10,7 @@ urlpatterns = [
     path('api/auth/login', LoginAPI.as_view()),
     path('api/auth/user', UserAPI.as_view()),
     path('api/auth/logout', knox_views.LogoutView.as_view(),name="knox_logout"), # invalidate the token
-    path('sign_auth',sign_s3_upload)
+    path('sign_auth',sign_s3_upload),
+    path('exchange_token/<backend>',exchange_token),
 ]
 
