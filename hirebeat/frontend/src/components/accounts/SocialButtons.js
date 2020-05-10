@@ -14,6 +14,7 @@ export class SocialButtons extends Component {
           appId="248485152931865"
           onLoginSuccess={this.props.handleSocialLogin}
           onLoginFailure={this.handleSocialLoginFailure}
+          type="facebook"
         >
           Login with Facebook
         </SocialButton>
@@ -22,14 +23,16 @@ export class SocialButtons extends Component {
           appId="248485152931865"
           onLoginSuccess={this.props.handleSocialLogin}
           onLoginFailure={this.handleSocialLoginFailure}
+          type="google"
         >
           Login with Google
         </SocialButton>
         <SocialButton
           provider="facebook"
           appId="248485152931865"
-          onLoginSuccess={this.props.handleSocialLogin}
+          onLoginSuccess={this.propshandleSocialLogin}
           onLoginFailure={this.handleSocialLoginFailure}
+          type="linkedin"
         >
           Login with Linkedin
         </SocialButton>
