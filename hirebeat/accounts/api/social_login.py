@@ -26,7 +26,6 @@ class SocialSerializer(serializers.Serializer):
 @permission_classes([AllowAny])
 @psa()
 def exchange_token(request, backend):
-    print("called")
     serializer = SocialSerializer(data=request.data)
     if serializer.is_valid(raise_exception=True):
         user = request.backend.do_auth(serializer.validated_data['access_token'])

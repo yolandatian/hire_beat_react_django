@@ -28,9 +28,23 @@ export class Login extends Component {
     });
   };
 
+  decideProvider = (provider) => {
+    switch (provider) {
+      case "facebook":
+        return provider;
+      case "google":
+        return "google-oauth2";
+      case "linkedin":
+        return provider;
+      default:
+      // Do nothing
+    }
+  };
+
   handleSocialLogin = (user) => {
     console.log(user);
-    this.props.exchangeToken(user.token.accessToken, user.provider);
+    var provider = this.decideProvider(user.provider);
+    this.props.exchangeToken(user.token.accessToken, provider);
   };
 
   render() {
