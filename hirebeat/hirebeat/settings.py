@@ -132,6 +132,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 AUTHENTICATION_BACKENDS = (
+    'social_core.backends.linkedin.LinkedinOAuth2',
     'social_core.backends.google.GoogleOAuth2',
     'social_core.backends.facebook.FacebookOAuth2',
     'django.contrib.auth.backends.ModelBackend',
@@ -145,6 +146,9 @@ SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY=os.getenv("SOCIAL_AUTH_GOOGLE_OAUTH2_KEY")
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET=os.getenv("SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET")
 SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = [...]
+
+SOCIAL_AUTH_LINKEDIN_OAUTH2_KEY=os.getenv("SOCIAL_AUTH_LINKEDIN_OAUTH2_KEY")
+SOCIAL_AUTH_LINKEDIN_OAUTH2_SECRET=os.getenv("SOCIAL_AUTH_LINKEDIN_OAUTH2_SECRET")
 
 SOCIAL_AUTH_PIPELINE = (
   'social_core.pipeline.social_auth.social_details',

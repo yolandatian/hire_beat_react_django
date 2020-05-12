@@ -33,9 +33,8 @@ export class Login extends Component {
       case "facebook":
         return provider;
       case "google":
-        return "google-oauth2";
       case "linkedin":
-        return provider;
+        return provider + "-oauth2";
       default:
       // Do nothing
     }
