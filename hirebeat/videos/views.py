@@ -22,7 +22,7 @@ def allowed_users(allowed_groups=[]):
 @allowed_users(allowed_groups=['admin','reviewers'])
 @api_view(['GET'])
 def get_unreviewed_video(request):
-    videos = Video.objects.filter(is_reviewed=False).order_by('created_at')
+    videos = Video.objects.filter(is_expert_reviewed=False).order_by('created_at')
     video= None
     for v in videos:
         video = v

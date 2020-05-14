@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom"; // get params from url
 import VideoPlayer from "../videos/VideoPlayer";
+import { ExpertReview } from "./ExpertReview";
 
 export class VideoReplayPage extends Component {
   state = {
@@ -23,10 +24,22 @@ export class VideoReplayPage extends Component {
   render() {
     return (
       <div>
-        <h1>This is the replay page, add more details</h1>
         <h2>{this.state.video.q_description}</h2>
         <h2>{this.state.video.created_at.substring(0, 10)}</h2>
         <VideoPlayer url={this.state.video.url} />
+        {this.state.video.is_expert_reviewed ? (
+          <ExpertReview
+            score={this.state.video.score}
+            comments={this.state.video.comments}
+          />
+        ) : (
+          <h2>Expert Reviews Coming Soon</h2>
+        )}
+        {this.state.video.is_ai_reviewed ? (
+          <AIReview />
+        ) : (
+          <h2>AI Reviews Coming Soon</h2>
+        )}
       </div>
     );
   }

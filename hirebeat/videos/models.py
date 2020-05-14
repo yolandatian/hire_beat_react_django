@@ -9,7 +9,8 @@ class Video(models.Model):
     owner = models.ForeignKey(User, related_name="videos", on_delete = models.CASCADE, null = True)
     q_description = models.CharField(default="Sample question", max_length=500)
     # review related
-    is_reviewed = models.BooleanField(default=False)
+    is_expert_reviewed = models.BooleanField(default=False)
+    is_ai_reviewed = models.BooleanField(default=False)
     tags = models.TextField(default="Good job")
     comments = models.TextField(default="No comments yet")
     score = models.FloatField(default=5.0)
