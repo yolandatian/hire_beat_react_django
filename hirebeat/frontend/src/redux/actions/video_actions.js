@@ -53,6 +53,7 @@ export const addVideo = (video) => (dispatch, getState) => {
 };
 
 export const getUnreviewedVideo = () => (dispatch, getState) => {
+  console.log("getting unreviewed video");
   axios
     .get("get_unreviewed_video", tokenConfig(getState))
     .then((res) => {

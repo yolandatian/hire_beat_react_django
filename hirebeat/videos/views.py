@@ -5,6 +5,8 @@ from rest_framework.decorators import api_view
 from .api.serializers import VideoSerializer
 from .models import Video
 
+from django.contrib.auth.decorators import user_passes_test
+
 #decorator
 def allowed_users(allowed_groups=[]):
     def decorator(view_func):
@@ -19,9 +21,27 @@ def allowed_users(allowed_groups=[]):
         return wrapper_func
     return decorator
 
-@allowed_users(allowed_groups=['admin','reviewers'])
+#in view func
+def group_check(allowed_groups,user):
+    group = None
+    if user.groups.exists():
+        group = user.groups.all()[0]
+    if str(group) in allowed_groups:
+        print(str(group))
+        return True
+    else:
+        return False
+
+
+#@allowed_users(allowed_groups=['admin','reviewers'])
+
 @api_view(['GET'])
 def get_unreviewed_video(request):
+
+    # Use in view func to check group instead of decorator due to the issue: can't pass request.user to decorator
+    if not group_check(allowed_groups=['reviewers'],user=request.user):
+        return HttpResponseBadRequest({"You are not authorized to view this page. Please don't use incognito browsers."})
+    
     videos = Video.objects.filter(is_expert_reviewed=False).order_by('created_at')
     video= None
     for v in videos:

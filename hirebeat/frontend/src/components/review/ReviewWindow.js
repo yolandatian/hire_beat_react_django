@@ -25,7 +25,9 @@ export class ReviewWindow extends Component {
             <VideoPlayer url={this.props.video.url} />
             <Reviews videoID={this.props.video.id} />
           </div>
-        ) : null}
+        ) : (
+          <h2>Loading</h2>
+        )}
       </div>
     );
   }
