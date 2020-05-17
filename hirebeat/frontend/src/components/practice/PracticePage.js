@@ -8,10 +8,18 @@ import ResponseWindow from "./ResponseWindow";
 
 export class PracticePage extends Component {
   state = {
+    type: "behavior",
     paramsAreSet: false,
     numberOfQuestions: { value: 2 },
     lengthOfResponse: { value: 1 },
   };
+
+  componentDidMount() {
+    this.setState({
+      ...this.state,
+      type: this.props.match.params.type, // get param from url
+    });
+  }
 
   setParams = () => {
     this.setState({ ...this.state, paramsAreSet: true });
@@ -30,12 +38,12 @@ export class PracticePage extends Component {
     return (
       <div>
         <Select
-          value={numberOfQuestions.value}
+          value={numberOfQuestions}
           onChange={this.handleChangeNumber}
           options={numberOfQuestionOptions}
         />
         <Select
-          value={lengthOfResponse.value}
+          value={lengthOfResponse}
           onChange={this.handleChangeLength}
           options={lengthOfResponseOptions}
         />
@@ -50,6 +58,7 @@ export class PracticePage extends Component {
         <h1>This is practice page</h1>
         {this.state.paramsAreSet ? (
           <ResponseWindow
+            type={this.state.type}
             number={this.state.numberOfQuestions.value}
             length={this.state.lengthOfResponse.value}
           />

@@ -25,6 +25,8 @@ import VideoReplayPage from "./dashboard/VideoReplayPage";
 import MyVideoUploader from "./videos/MyVideoUploader";
 import ReviewWindow from "./review/ReviewWindow";
 
+import QuestionTypeChoices from "./practice/QuestionTypeChoices";
+
 import Sidebar from "react-sidebar";
 
 const alertOptions = {
@@ -51,8 +53,13 @@ class App extends Component {
                   <PrivateRoute exact path="/review" component={ReviewWindow} />
                   <PrivateRoute
                     exact
-                    path="/practice"
+                    path="/practice/:type"
                     component={PracticePage}
+                  />
+                  <PrivateRoute
+                    exact
+                    path="/practice/"
+                    component={QuestionTypeChoices}
                   />
                   <PrivateRoute path="/video/:id" component={VideoReplayPage} />
                   <Route exact path="/register" component={Register} />

@@ -13,6 +13,7 @@ export class ResponseWindow extends Component {
     questions: PropTypes.array.isRequired,
     loaded: PropTypes.bool.isRequired,
     getQuestions: PropTypes.func.isRequired,
+    type: PropTypes.string.isRequired, // Used to determine the type of questions to get
   };
 
   componentDidMount() {

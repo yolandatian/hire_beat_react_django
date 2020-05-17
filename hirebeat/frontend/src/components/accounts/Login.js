@@ -91,6 +91,12 @@ export class Login extends Component {
             <p>
               Don't have an account? <Link to="/register">Register</Link>
             </p>
+            <p>
+              Forget password?{" "}
+              <Link to="/password_reset" target="_blank">
+                Reset password
+              </Link>
+            </p>
           </form>
         </div>
       </div>

@@ -7,7 +7,7 @@ export const numberOfQuestionOptions = [
 export const lengthOfResponseOptions = [
   { value: 1, label: "1 minute" },
   { value: 2, label: "2 minutes" },
-  { value: 3, label: "3 minute3" },
+  { value: 3, label: "3 minutes" },
 ];
 
 export const reviewTagOptions = [
