@@ -7,7 +7,7 @@ import { Provider as AlertProvider } from "react-alert";
 import Alerts from "./layout/Alerts";
 import store from "../store";
 import {
-  HashRouter as Router,
+  BrowserRouter as Router,
   Route,
   Switch,
   Redirect,

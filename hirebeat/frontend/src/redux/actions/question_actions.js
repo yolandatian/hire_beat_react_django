@@ -5,7 +5,7 @@ import { returnErrors } from "./message_actions";
 
 export const getQuestions = (number) => (dispatch, getState) => {
   axios
-    .get(`questions?number=${number}`, tokenConfig(getState))
+    .get(`/questions?number=${number}`, tokenConfig(getState))
     .then((res) => {
       dispatch({
         type: GET_QUESTIONS,

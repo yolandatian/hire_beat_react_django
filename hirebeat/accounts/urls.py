@@ -1,12 +1,10 @@
-from django.urls import path,include, re_path
+from django.urls import path,include
 from .api.api import ResgisterAPI, LoginAPI, UserAPI
 from knox import views as knox_views
 from .views import sign_s3_upload
 from .api.social_login import exchange_token
 
 from django.contrib.auth import views as auth_views
-
-from django.views.generic.base import TemplateView
 
 
 urlpatterns = [

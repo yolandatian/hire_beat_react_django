@@ -62,7 +62,7 @@ export const login = (username, password) => (dispatch) => {
 // ********  LOG OUT  ********
 export const logout = () => (dispatch, getState) => {
   axios
-    .post("api/auth/logout", null, tokenConfig(getState))
+    .post("/api/auth/logout", null, tokenConfig(getState))
     .then((res) =>
       dispatch({
         type: LOGOUT_SUCCESS,
