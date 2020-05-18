@@ -22,11 +22,11 @@ class VideoViewSet(viewsets.ModelViewSet):
         try:
             video.score = request.data['score']
             video.comments = request.data['comments']
-            video.reviewer_id = request.user
+            video.reviewer = request.user
+            video.is_expert_reviewed = True
+            video.save()
         except:
-            return Response("no param",status=status.HTTP_400_BAD_REQUEST)
-        video.is_expert_reviewed = True
-        video.save()
+            return Response("Can't update reviews",status=status.HTTP_400_BAD_REQUEST)
         return Response(status=status.HTTP_200_OK)
 
 
