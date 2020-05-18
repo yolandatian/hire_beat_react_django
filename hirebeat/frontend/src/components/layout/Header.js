@@ -52,11 +52,6 @@ export class Header extends Component {
             Login
           </Link>
         </li>
-        <li>
-          <Link to="/upload" className="nav-link">
-            upload
-          </Link>
-        </li>
       </ul>
     );
   };

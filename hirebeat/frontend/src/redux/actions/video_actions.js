@@ -67,17 +67,16 @@ export const getUnreviewedVideo = () => (dispatch, getState) => {
     );
 };
 
-export const addVideoReviews = (score, comments, tags, video_id) => (
+export const addVideoReviews = (score, comments, video_id) => (
   dispatch,
   getState
 ) => {
   const body = JSON.stringify({
     score,
     comments,
-    tags,
   });
 
-  axios
+  return axios
     .patch(`api/videos/${video_id}/`, body, tokenConfig(getState))
     .then((res) => {
       console.log(res.data);

@@ -11,7 +11,7 @@ class Video(models.Model):
     # review related
     is_expert_reviewed = models.BooleanField(default=False)
     is_ai_reviewed = models.BooleanField(default=False)
-    tags = models.TextField(default="Good job")
+    #tags = models.TextField(default="Good job")
     comments = models.TextField(default="No comments yet")
     score = models.FloatField(default=5.0)
     reviewer = models.ForeignKey(User, related_name="reviewed_videos", on_delete= models.DO_NOTHING, null=True)

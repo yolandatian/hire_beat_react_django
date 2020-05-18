@@ -21,12 +21,11 @@ class VideoViewSet(viewsets.ModelViewSet):
         video = Video.objects.filter(id=pk)[0]
         try:
             video.score = request.data['score']
-            video.tags = request.data['tags']
             video.comments = request.data['comments']
             video.reviewer_id = request.user
         except:
             return Response("no param",status=status.HTTP_400_BAD_REQUEST)
-        video.is_reviewed = True
+        video.is_expert_reviewed = True
         video.save()
         return Response(status=status.HTTP_200_OK)
 
