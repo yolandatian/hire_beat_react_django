@@ -9,6 +9,7 @@ export class ReviewWindow extends Component {
   static propTypes = {
     video: PropTypes.object,
     loaded: PropTypes.bool.isRequired,
+    review_count: PropTypes.number.isRequired,
   };
 
   componentDidMount() {
@@ -24,7 +25,8 @@ export class ReviewWindow extends Component {
     console.log(this.props.video);
     return (
       <div>
-        This is review page
+        This is review page. Number of videos reviewed by this reviewer:
+        {this.props.review_count}
         {this.props.loaded ? (
           this.props.video.url == "" ? (
             <h2>No video needs to be reviewed</h2>
@@ -48,6 +50,7 @@ export class ReviewWindow extends Component {
 const mapStateToProps = (state) => ({
   video: state.video_reducer.videos,
   loaded: state.video_reducer.loaded,
+  review_count: state.auth_reducer.review_count,
 });
 
 export default connect(mapStateToProps, { getUnreviewedVideo })(ReviewWindow);

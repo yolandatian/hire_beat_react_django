@@ -14,6 +14,7 @@ const initialState = {
   isAuthenticated: null,
   isLoading: false,
   user: null,
+  review_count: 0,
 };
 
 export default function (state = initialState, action) {

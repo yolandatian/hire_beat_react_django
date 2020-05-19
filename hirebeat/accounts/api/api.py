@@ -2,6 +2,7 @@ from rest_framework import generics,permissions
 from rest_framework.response import Response
 from knox.models import AuthToken
 from .serializers import UserSerializer, RegisterSerializer, LoginSerializer
+from accounts.models import ReviewerInfo
 
 #Register API
 
@@ -25,13 +26,21 @@ class LoginAPI(generics.GenericAPIView):
     serializer_class = LoginSerializer
 
     def post(self, request, *args, **kwargs):
+        ## user info
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         user = serializer.validated_data
+        ### token
         _, token = AuthToken.objects.create(user)
+        ### reviewer info
+        reviewer_info = ReviewerInfo.objects.filter(user=user)
+        count = 0
+        if reviewer_info:
+            count = reviewer_info[0].review_count
         return Response({
             "user":UserSerializer(user, context=self.get_serializer_context()).data,
-            "token": token
+            "token": token,
+            "review_count": count
         })
 
 # GET User API
