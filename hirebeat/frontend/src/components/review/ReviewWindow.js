@@ -50,7 +50,7 @@ export class ReviewWindow extends Component {
 const mapStateToProps = (state) => ({
   video: state.video_reducer.videos,
   loaded: state.video_reducer.loaded,
-  review_count: state.auth_reducer.review_count,
+  review_count: state.video_reducer.review_count,
 });
 
 export default connect(mapStateToProps, { getUnreviewedVideo })(ReviewWindow);

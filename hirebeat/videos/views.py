@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from .api.serializers import VideoSerializer
 from .models import Video
+from accounts.models import ReviewerInfo
 
 from django.contrib.auth.decorators import user_passes_test
 
@@ -48,4 +49,10 @@ def get_unreviewed_video(request):
         video = v
         break
     serializer = VideoSerializer(video)
-    return Response(serializer.data)
+
+    review_count = ReviewerInfo.objects.filter(user=request.user)[0].review_count
+
+    return Response({
+        "video":serializer.data,
+        "review_count":review_count,
+    })

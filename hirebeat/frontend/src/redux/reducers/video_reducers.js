@@ -3,11 +3,13 @@ import {
   DELETE_VIDEO,
   ADD_VIDEO,
   ADD_REVIEWS,
+  GET_UNREVIEWED_VIDEO,
 } from "../actions/action_types";
 
 const initialState = {
   videos: [],
   loaded: false,
+  review_count: 0,
 };
 
 export default function (state = initialState, action) {
@@ -17,6 +19,12 @@ export default function (state = initialState, action) {
         ...state,
         videos: action.payload,
         loaded: true,
+      };
+    case GET_UNREVIEWED_VIDEO:
+      return {
+        videos: action.payload.video,
+        loaded: true,
+        review_count: action.payload.review_count,
       };
     case DELETE_VIDEO:
       return {

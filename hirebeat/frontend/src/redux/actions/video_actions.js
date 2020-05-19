@@ -4,6 +4,7 @@ import {
   DELETE_VIDEO,
   ADD_VIDEO,
   ADD_REVIEWS,
+  GET_UNREVIEWED_VIDEO,
 } from "./action_types";
 import { createMessage, returnErrors } from "./message_actions";
 import { tokenConfig } from "./auth_actions";
@@ -58,7 +59,7 @@ export const getUnreviewedVideo = () => (dispatch, getState) => {
     .get("get_unreviewed_video", tokenConfig(getState))
     .then((res) => {
       dispatch({
-        type: GET_VIDEOS,
+        type: GET_UNREVIEWED_VIDEO,
         payload: res.data,
       });
     })
