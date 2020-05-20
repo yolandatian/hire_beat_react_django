@@ -38,7 +38,6 @@ export class VideoPreviewList extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  // map initial state to props of this video component
   videos: state.video_reducer.videos,
   loaded: state.video_reducer.loaded,
 });

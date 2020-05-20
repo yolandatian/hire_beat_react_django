@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link, Route } from "react-router-dom";
-import Profile from "./Profile";
-import Videos from "./Videos";
+import ProfileContainer from "./profile/ProfileContainer";
+import VideoContainer from "./VideoContainer";
 
 export class Dashboard extends Component {
   state = {
@@ -25,7 +25,11 @@ export class Dashboard extends Component {
       <div>
         <button onClick={this.renderVideos}>Videos</button>
         <button onClick={this.renderProfile}>Profile</button>
-        {this.state.subpage == "videos" ? <Videos /> : <Profile />}
+        {this.state.subpage == "videos" ? (
+          <VideoContainer />
+        ) : (
+          <ProfileContainer />
+        )}
       </div>
     );
   }

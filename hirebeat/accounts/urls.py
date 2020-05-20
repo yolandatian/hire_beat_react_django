@@ -6,7 +6,6 @@ from .api.social_login import exchange_token
 
 from django.contrib.auth import views as auth_views
 
-
 urlpatterns = [
     path('api/auth', include('knox.urls')),
     path('api/auth/register', ResgisterAPI.as_view()),
