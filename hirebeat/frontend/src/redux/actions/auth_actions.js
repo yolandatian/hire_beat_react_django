@@ -9,6 +9,7 @@ import {
   LOGOUT_SUCCESS,
   REGISTER_SUCCESS,
   REGISTER_FAIL,
+  PROFILE_LOADED,
 } from "./action_types";
 
 // ********  LOAD USER  ********
@@ -18,19 +19,37 @@ export const loadUser = () => (dispatch, getState) => {
     type: USER_LOADING,
   });
 
-  axios
+  return axios
     .get("api/auth/user", tokenConfig(getState))
-    .then((res) =>
+    .then((res) => {
+      console.log("user loaded");
       dispatch({
         type: USER_LOADED,
         payload: res.data,
-      })
-    )
+      });
+    })
     .catch((err) => {
       dispatch(returnErrors(err.response.data, err.response.status));
       dispatch({
         type: AUTH_ERROR,
       });
+    });
+};
+
+// ********  LOAD PROFILE  ********
+export const loadProfile = () => (dispatch, getState) => {
+  axios
+    .get("api/auth/profile", tokenConfig(getState))
+    .then((res) => {
+      console.log("profile loaded");
+      dispatch({
+        type: PROFILE_LOADED,
+        payload: res.data,
+      });
+    })
+    .catch((err) => {
+      console.log("profile error");
+      dispatch(returnErrors(err.response.data, err.response.status));
     });
 };
 

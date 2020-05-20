@@ -7,6 +7,7 @@ import {
   LOGOUT_SUCCESS,
   REGISTER_SUCCESS,
   REGISTER_FAIL,
+  PROFILE_LOADED,
 } from "../actions/action_types";
 
 const initialState = {
@@ -14,6 +15,7 @@ const initialState = {
   isAuthenticated: null,
   isLoading: false,
   user: null,
+  profile: {},
 };
 
 export default function (state = initialState, action) {
@@ -50,6 +52,11 @@ export default function (state = initialState, action) {
         ...action.payload,
         isAuthenticated: true,
         isLoading: false,
+      };
+    case PROFILE_LOADED:
+      return {
+        ...state,
+        profile: action.payload,
       };
     default:
       return state;

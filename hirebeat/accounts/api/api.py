@@ -60,3 +60,17 @@ class UserAPI(generics.RetrieveAPIView):
 
     def get_object(self):
         return self.request.user
+
+class ProfileAPI(generics.RetrieveAPIView):
+    permission_classes = [
+        permissions.IsAuthenticated,
+    ]
+
+    serializer_class = ProfileSerializer
+
+    def get_object(self):
+        profile = Profile.objects.filter(user=self.request.user)
+        profile_obj = {}
+        if profile:
+            profile_obj = profile[0]
+        return profile_obj

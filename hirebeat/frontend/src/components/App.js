@@ -19,7 +19,7 @@ import PrivateRoute from "./basic/PrivateRoute";
 import Home from "./home/Home";
 import PracticePage from "./practice/PracticePage";
 
-import { loadUser } from "../redux/actions/auth_actions";
+import { loadUser, loadProfile } from "../redux/actions/auth_actions";
 
 import VideoReplayPage from "./dashboard/VideoReplayPage";
 import MyVideoUploader from "./videos/MyVideoUploader";
@@ -36,7 +36,14 @@ const alertOptions = {
 
 class App extends Component {
   componentDidMount() {
-    store.dispatch(loadUser());
+    this.loadData();
+  }
+
+  async loadData() {
+    console.log("loading user");
+    await store.dispatch(loadUser());
+    console.log("loading profile");
+    store.dispatch(loadProfile());
   }
 
   render() {
