@@ -10,8 +10,8 @@ export class PracticePage extends Component {
   state = {
     type: "behavior",
     paramsAreSet: false,
-    numberOfQuestions: { value: 2 },
-    lengthOfResponse: { value: 1 },
+    numberOfQuestions: { value: 2, label: "2 Questions" },
+    lengthOfResponse: { value: 1, label: "1 minute" },
   };
 
   componentDidMount() {
