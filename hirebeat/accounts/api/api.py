@@ -1,8 +1,9 @@
 from rest_framework import generics,permissions
 from rest_framework.response import Response
 from knox.models import AuthToken
-from .serializers import UserSerializer, RegisterSerializer, LoginSerializer
-from accounts.models import ReviewerInfo
+from .serializers import UserSerializer, RegisterSerializer, LoginSerializer, ProfileSerializer
+from accounts.models import Profile
+
 
 #Register API
 
@@ -10,14 +11,19 @@ class ResgisterAPI(generics.GenericAPIView):
     serializer_class = RegisterSerializer
 
     def post(self, request, *args, **kwargs):
+        ## user info
         serializer = self.get_serializer(data=request.data)
         print(request.data)
         serializer.is_valid(raise_exception=True)
         user = serializer.save()
+        ### token
         _, token = AuthToken.objects.create(user)
+        ### profile
+        profile = Profile.objects.filter(user=request.user)[0]
         return Response({
             "user":UserSerializer(user, context=self.get_serializer_context()).data,
-            "token": token
+            "token": token,
+            "profile": ProfileSerializer(profile).data,
         })
 
 # Login API
@@ -32,15 +38,15 @@ class LoginAPI(generics.GenericAPIView):
         user = serializer.validated_data
         ### token
         _, token = AuthToken.objects.create(user)
-        ### reviewer info
-        reviewer_info = ReviewerInfo.objects.filter(user=user)
-        count = 0
-        if reviewer_info:
-            count = reviewer_info[0].review_count
+        ### profile
+        profile_data = {}
+        if Profile.objects.filter(user=user):
+            profile = Profile.objects.filter(user=user)[0]
+            profile_data = ProfileSerializer(profile).data
         return Response({
             "user":UserSerializer(user, context=self.get_serializer_context()).data,
             "token": token,
-            "review_count": count
+            "profile": profile_data,
         })
 
 # GET User API

@@ -2,6 +2,7 @@ from rest_framework import serializers
 from django.contrib.auth.models import User, Group
 from django.contrib.auth import authenticate
 from rest_framework.serializers import SerializerMethodField
+from accounts.models import Profile
 
 # User serializer
 class UserSerializer(serializers.ModelSerializer):
@@ -13,6 +14,14 @@ class UserSerializer(serializers.ModelSerializer):
     def get_groups(self, obj):
         return [group.name for group in obj.groups.all()]
 
+
+# Profile serializer
+class ProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Profile
+        fields = "__all__"
+
+
 # Register serializer
 class RegisterSerializer(serializers.ModelSerializer):
     class Meta:
@@ -23,6 +32,7 @@ class RegisterSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         user = User.objects.create_user(validated_data['username'],validated_data['email'],validated_data['password'])
         return user
+        
         
 # Login serializer
 class LoginSerializer(serializers.Serializer): #not creating a user, just validating so just Serializer
