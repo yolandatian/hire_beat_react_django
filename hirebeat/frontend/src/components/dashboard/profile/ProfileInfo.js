@@ -96,7 +96,20 @@ export class ProfileInfo extends Component {
 
   saveChanges = () => {
     console.log(this.state);
+    var profile = this.makeProfile();
+    this.props.updateProfile(profile);
     this.finishEditing();
+  };
+
+  makeProfile = () => {
+    return {
+      user: this.props.userID,
+      id: this.props.profile.id,
+      phone_number: this.state.phone_number,
+      summary: this.state.summary,
+      location: this.state.location,
+      education: this.state.education,
+    };
   };
 
   render() {

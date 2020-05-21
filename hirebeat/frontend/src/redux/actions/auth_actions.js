@@ -163,3 +163,22 @@ export const tokenConfig = (getState) => {
 
   return config;
 };
+
+export const updateProfile = (profile) => (dispatch) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+  const body = JSON.stringify(profile);
+  console.log(profile);
+  console.log(body);
+  axios
+    .put(`profile/${profile.id}/`, body, config)
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((err) => {
+      dispatch(returnErrors(err.response.data, err.response.status));
+    });
+};

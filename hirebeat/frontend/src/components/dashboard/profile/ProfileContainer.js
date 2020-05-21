@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import EssentialUserInfo from "./EssentialUserInfo";
 import ProfileInfo from "./ProfileInfo";
+import { updateProfile } from "../../../redux/actions/auth_actions";
 
 export class ProfileContainer extends Component {
   render() {
@@ -9,7 +10,11 @@ export class ProfileContainer extends Component {
       <div>
         <h1>This is profile page</h1>
         <EssentialUserInfo user={this.props.user} />
-        <ProfileInfo profile={this.props.profile} />
+        <ProfileInfo
+          profile={this.props.profile}
+          userID={this.props.user.id}
+          updateProfile={this.props.updateProfile}
+        />
       </div>
     );
   }
@@ -20,4 +25,4 @@ const mapStateToProps = (state) => ({
   user: state.auth_reducer.user,
 });
 
-export default connect(mapStateToProps, null)(ProfileContainer);
+export default connect(mapStateToProps, { updateProfile })(ProfileContainer);
