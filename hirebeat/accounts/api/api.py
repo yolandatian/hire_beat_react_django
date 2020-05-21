@@ -1,8 +1,10 @@
 from rest_framework import generics,permissions
+from rest_framework.views import APIView
 from rest_framework.response import Response
 from knox.models import AuthToken
 from .serializers import UserSerializer, RegisterSerializer, LoginSerializer, ProfileSerializer
 from accounts.models import Profile
+from rest_framework import status
 
 
 #Register API
@@ -61,7 +63,7 @@ class UserAPI(generics.RetrieveAPIView):
     def get_object(self):
         return self.request.user
 
-class ProfileAPI(generics.RetrieveAPIView):
+class RetrieveProfileAPI(generics.RetrieveAPIView):
     permission_classes = [
         permissions.IsAuthenticated,
     ]
@@ -74,3 +76,28 @@ class ProfileAPI(generics.RetrieveAPIView):
         if profile:
             profile_obj = profile[0]
         return profile_obj
+
+class UpdateProfileAPI(APIView):
+    def get_object(self, id):
+        try:
+            return Profile.objects.get(id=id)
+        except Profile.DoesNotExist:
+            return Response({"Profile doesn't exist"})
+
+    def get(self, request, id):
+        profile = self.get_object(id)
+        serializer = ProfileSerializer(profile)
+        return Response(serializer.data)
+
+    def put(self, request, id):
+        profile = self.get_object(id)
+        serializer = ProfileSerializer(profile, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+
+
+
+

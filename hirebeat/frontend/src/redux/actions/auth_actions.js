@@ -39,7 +39,7 @@ export const loadUser = () => (dispatch, getState) => {
 // ********  LOAD PROFILE  ********
 export const loadProfile = () => (dispatch, getState) => {
   axios
-    .get("api/auth/profile", tokenConfig(getState))
+    .get("/get_profile", tokenConfig(getState))
     .then((res) => {
       console.log("profile loaded");
       dispatch({
