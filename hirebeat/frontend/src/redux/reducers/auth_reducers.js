@@ -8,6 +8,7 @@ import {
   REGISTER_SUCCESS,
   REGISTER_FAIL,
   PROFILE_LOADED,
+  PROFILE_UPDATED,
 } from "../actions/action_types";
 
 const initialState = {
@@ -54,6 +55,7 @@ export default function (state = initialState, action) {
         isLoading: false,
       };
     case PROFILE_LOADED:
+    case PROFILE_UPDATED:
       return {
         ...state,
         profile: action.payload,

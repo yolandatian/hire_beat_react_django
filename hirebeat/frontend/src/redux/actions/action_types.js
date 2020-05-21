@@ -7,7 +7,6 @@ export const CREATE_MESSAGE = "CREATE_MESSAGES";
 
 export const USER_LOADING = "USER_LOADING";
 export const USER_LOADED = "USER_LOADED";
-export const PROFILE_LOADED = "PROFILE_LOADED";
 export const AUTH_ERROR = "AUTH_ERROR";
 export const LOGIN_FAIL = "LOGIN_FAIL";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
@@ -21,3 +20,6 @@ export const NEXT_QUESTION = "NEXT_QUESTION";
 
 export const ADD_REVIEWS = "ADD_REVIEWS";
 export const GET_UNREVIEWED_VIDEO = "GET_UNREVIEWED_VIDEO";
+
+export const PROFILE_LOADED = "PROFILE_LOADED";
+export const PROFILE_UPDATED = "PROFILE_UPDATED";

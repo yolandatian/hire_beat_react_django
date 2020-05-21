@@ -10,6 +10,7 @@ import {
   REGISTER_SUCCESS,
   REGISTER_FAIL,
   PROFILE_LOADED,
+  PROFILE_UPDATED,
 } from "./action_types";
 
 // ********  LOAD USER  ********
@@ -171,12 +172,13 @@ export const updateProfile = (profile) => (dispatch) => {
     },
   };
   const body = JSON.stringify(profile);
-  console.log(profile);
-  console.log(body);
   axios
     .put(`profile/${profile.id}/`, body, config)
     .then((res) => {
-      console.log(res);
+      dispatch({
+        type: PROFILE_UPDATED,
+        payload: res.data,
+      });
     })
     .catch((err) => {
       dispatch(returnErrors(err.response.data, err.response.status));
