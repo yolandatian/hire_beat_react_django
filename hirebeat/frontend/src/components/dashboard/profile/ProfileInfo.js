@@ -116,7 +116,6 @@ export class ProfileInfo extends Component {
     return (
       <div>
         <h2>Membership</h2>
-        <br />
         {this.props.profile.membership}
         <br />
         <button onClick={this.startEditing}>Edit</button>

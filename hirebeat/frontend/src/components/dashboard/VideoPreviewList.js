@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import VideoImagePreview from "./VideoImagePreview";
 import { connect } from "react-redux";
 import { getVideos, deleteVideo } from "../../redux/actions/video_actions";
+import ReviewStatusButton from "./ReviewStatusButton";
 
 export class VideoPreviewList extends Component {
   static propTypes = {
@@ -28,6 +29,8 @@ export class VideoPreviewList extends Component {
                   url={v.url}
                   des={v.q_description}
                   date={v.created_at}
+                  needed_expert_review={v.needed_expert_review}
+                  is_expert_reviewed={v.is_expert_reviewed}
                 />
               );
             })
