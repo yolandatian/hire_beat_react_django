@@ -2,9 +2,16 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import EssentialUserInfo from "./EssentialUserInfo";
 import ProfileInfo from "./ProfileInfo";
-import { updateProfile } from "../../../redux/actions/auth_actions";
+import {
+  updateProfile,
+  loadProfile,
+} from "../../../redux/actions/auth_actions";
 
 export class ProfileContainer extends Component {
+  componentDidMount() {
+    this.props.loadProfile();
+  }
+
   render() {
     return (
       <div>
@@ -25,4 +32,6 @@ const mapStateToProps = (state) => ({
   user: state.auth_reducer.user,
 });
 
-export default connect(mapStateToProps, { updateProfile })(ProfileContainer);
+export default connect(mapStateToProps, { updateProfile, loadProfile })(
+  ProfileContainer
+);
