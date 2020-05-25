@@ -4,6 +4,7 @@ import {
   ADD_VIDEO,
   ADD_REVIEWS,
   GET_UNREVIEWED_VIDEO,
+  VIDEO_UNDER_REVIEW,
 } from "../actions/action_types";
 
 const initialState = {
@@ -35,6 +36,19 @@ export default function (state = initialState, action) {
       return {
         ...state,
         videos: [...state.videos, action.payload],
+      };
+    case VIDEO_UNDER_REVIEW:
+      return {
+        ...state,
+        videos: state.videos.map((video) => {
+          if (video.id == action.payload.id) {
+            return {
+              ...video,
+              needed_expert_review: true,
+            };
+          }
+          return video;
+        }),
       };
     case ADD_REVIEWS:
     default:

@@ -16,5 +16,5 @@ class Video(models.Model):
     #tags = models.TextField(default="Good job")
     comments = models.TextField(default="No comments yet")
     score = models.FloatField(default=5.0)
-    reviewer = models.ForeignKey(User, related_name="reviewed_videos", on_delete= models.SET_NULL, null=True)
+    reviewer = models.ForeignKey(User, related_name="reviewed_videos", on_delete= models.SET_NULL, null=True, blank=True)
     # More fields to add

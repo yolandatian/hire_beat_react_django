@@ -14,7 +14,7 @@ function ReviewStatusButton(props) {
     style = null;
   } else {
     text = "Send for review";
-    onTap = () => console.log("mark as needed_expert_review");
+    onTap = () => props.sendVideoForReview();
     style = null;
   }
   return <button onClick={onTap}>{text}</button>;

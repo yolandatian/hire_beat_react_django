@@ -49,10 +49,18 @@ def get_unreviewed_video(request):
         video = v
         break
     serializer = VideoSerializer(video)
-
     review_count = ReviewerInfo.objects.filter(user=request.user)[0].review_count
-
     return Response({
         "video":serializer.data,
         "review_count":review_count,
     })
+
+@api_view(['POST'])
+def mark_video_as_needed_review(request):
+    id = request.data["id"]
+    video = Video.objects.filter(id=id)[0]
+    video.needed_expert_review = True
+    video.save()
+    serializer = VideoSerializer(video)
+    return Response(serializer.data)
+    

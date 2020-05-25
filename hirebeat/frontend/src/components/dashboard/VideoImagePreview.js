@@ -27,6 +27,7 @@ export class VideoImagePreview extends Component {
           redirectToVideoPlayer={this.redirectToVideoPlayer}
           needed_expert_review={this.props.needed_expert_review}
           is_expert_reviewed={this.props.is_expert_reviewed}
+          sendVideoForReview={this.props.sendVideoForReview}
         />
       </div>
     );

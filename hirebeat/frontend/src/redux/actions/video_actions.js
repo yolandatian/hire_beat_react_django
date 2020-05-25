@@ -5,6 +5,7 @@ import {
   ADD_VIDEO,
   ADD_REVIEWS,
   GET_UNREVIEWED_VIDEO,
+  VIDEO_UNDER_REVIEW,
 } from "./action_types";
 import { createMessage, returnErrors } from "./message_actions";
 import { tokenConfig } from "./auth_actions";
@@ -83,6 +84,24 @@ export const addVideoReviews = (score, comments, video_id) => (
       console.log(res.data);
       dispatch({
         type: ADD_REVIEWS,
+        payload: res.data,
+      });
+    })
+    .catch((err) =>
+      dispatch(returnErrors(err.response.data, err.response.status))
+    );
+};
+
+export const sendVideoForReview = (id) => (dispatch, getState) => {
+  const body = JSON.stringify({
+    id,
+  });
+  return axios
+    .post(`mark_video_as_needed_review`, body, tokenConfig(getState))
+    .then((res) => {
+      console.log(res.data);
+      dispatch({
+        type: VIDEO_UNDER_REVIEW,
         payload: res.data,
       });
     })

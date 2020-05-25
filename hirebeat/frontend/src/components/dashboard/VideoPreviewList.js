@@ -2,15 +2,14 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import VideoImagePreview from "./VideoImagePreview";
 import { connect } from "react-redux";
-import { getVideos, deleteVideo } from "../../redux/actions/video_actions";
-import ReviewStatusButton from "./ReviewStatusButton";
+import { getVideos } from "../../redux/actions/video_actions";
+import { sendVideoForReview } from "../../redux/actions/video_actions";
 
 export class VideoPreviewList extends Component {
   static propTypes = {
     videos: PropTypes.array.isRequired,
     loaded: PropTypes.bool.isRequired,
     getVideos: PropTypes.func.isRequired,
-    deleteVideo: PropTypes.func.isRequired,
   };
 
   componentDidMount() {
@@ -31,6 +30,7 @@ export class VideoPreviewList extends Component {
                   date={v.created_at}
                   needed_expert_review={v.needed_expert_review}
                   is_expert_reviewed={v.is_expert_reviewed}
+                  sendVideoForReview={() => this.props.sendVideoForReview(v.id)}
                 />
               );
             })
@@ -45,6 +45,7 @@ const mapStateToProps = (state) => ({
   loaded: state.video_reducer.loaded,
 });
 
-export default connect(mapStateToProps, { getVideos, deleteVideo })(
-  VideoPreviewList
-);
+export default connect(mapStateToProps, {
+  getVideos,
+  sendVideoForReview,
+})(VideoPreviewList);
