@@ -27,19 +27,23 @@ export class VideoImagePreview extends Component {
 
   render() {
     return (
-      <div className="row">
-        <div className="col-4">
-          <ImageButton src={videoImg} func={this.redirectToVideoPlayer} />
-        </div>
-        <div className="col">
-          <h3>Q:{this.renderQuestionDescription(this.props.des)}</h3>
-          <h4>{this.props.date.substring(0, 10)}</h4>
-          <ReviewStatusButton
-            redirectToVideoPlayer={this.redirectToVideoPlayer}
-            needed_expert_review={this.props.needed_expert_review}
-            is_expert_reviewed={this.props.is_expert_reviewed}
-            sendVideoForReview={this.props.sendVideoForReview}
-          />
+      <div className="card">
+        <div class="card-body">
+          <div className="row">
+            <div className="col-4">
+              <ImageButton src={videoImg} func={this.redirectToVideoPlayer} />
+            </div>
+            <div className="col">
+              <h3>Q:{this.renderQuestionDescription(this.props.des)}</h3>
+              <h4>{this.props.date.substring(0, 10)}</h4>
+              <ReviewStatusButton
+                redirectToVideoPlayer={this.redirectToVideoPlayer}
+                needed_expert_review={this.props.needed_expert_review}
+                is_expert_reviewed={this.props.is_expert_reviewed}
+                sendVideoForReview={this.props.sendVideoForReview}
+              />
+            </div>
+          </div>
         </div>
       </div>
     );
