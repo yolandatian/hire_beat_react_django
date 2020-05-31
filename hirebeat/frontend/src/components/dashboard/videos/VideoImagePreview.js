@@ -28,7 +28,7 @@ export class VideoImagePreview extends Component {
   render() {
     return (
       <div className="card">
-        <div class="card-body">
+        <div className="card-body">
           <div className="row">
             <div className="col-4">
               <ImageButton src={videoImg} func={this.redirectToVideoPlayer} />

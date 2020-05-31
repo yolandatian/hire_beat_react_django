@@ -1,9 +1,10 @@
-.test {
-  background-color: red;
+.my-header-container {
+  background-color: #425be7;
 }
 
 .my-header {
   height: 40px;
+  background-color: #425be7;
 }
 
 .panel-button {

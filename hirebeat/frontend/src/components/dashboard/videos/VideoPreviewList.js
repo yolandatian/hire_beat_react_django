@@ -24,7 +24,7 @@ export class VideoPreviewList extends Component {
         {this.props.loaded
           ? this.props.videos.map((v) => {
               return (
-                <div>
+                <div key={v.id}>
                   <br />
                   <VideoImagePreview
                     id={v.id}

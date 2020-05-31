@@ -8,6 +8,7 @@ import ImageButton from "../../basic/ImageButton";
 
 export class EssentialUserInfo extends Component {
   render() {
+    console.log(billGates);
     return (
       <Container>
         <br />

@@ -56,27 +56,25 @@ class App extends Component {
             <Fragment>
               <Header />
               <Alerts />
-              <div className="container">
-                <Switch>
-                  <PrivateRoute exact path="/dashboard" component={Dashboard} />
-                  <PrivateRoute exact path="/review" component={ReviewWindow} />
-                  <PrivateRoute
-                    exact
-                    path="/practice/:type"
-                    component={PracticePage}
-                  />
-                  <PrivateRoute
-                    exact
-                    path="/practice/"
-                    component={QuestionTypeChoices}
-                  />
-                  <PrivateRoute path="/video/:id" component={VideoReplayPage} />
-                  <Route exact path="/register" component={Register} />
-                  <Route exact path="/login" component={Login} />
-                  <Route exact path="/upload" component={MyVideoUploader} />
-                  <Route exact path="/" component={Home} />
-                </Switch>
-              </div>
+              <Switch>
+                <PrivateRoute exact path="/dashboard" component={Dashboard} />
+                <PrivateRoute exact path="/review" component={ReviewWindow} />
+                <PrivateRoute
+                  exact
+                  path="/practice/:type"
+                  component={PracticePage}
+                />
+                <PrivateRoute
+                  exact
+                  path="/practice/"
+                  component={QuestionTypeChoices}
+                />
+                <PrivateRoute path="/video/:id" component={VideoReplayPage} />
+                <Route exact path="/register" component={Register} />
+                <Route exact path="/login" component={Login} />
+                <Route exact path="/upload" component={MyVideoUploader} />
+                <Route exact path="/" component={Home} />
+              </Switch>
             </Fragment>
           </Router>
         </AlertProvider>
