@@ -27,6 +27,8 @@ import ReviewWindow from "./review/ReviewWindow";
 
 import QuestionTypeChoices from "./practice/QuestionTypeChoices";
 
+import "./app.css";
+
 import Sidebar from "react-sidebar";
 
 const alertOptions = {

@@ -14,7 +14,7 @@ export class Header extends Component {
     const { user } = this.props.auth;
     return (
       <ul className="navbar-nav ml-auto align-items-center">
-        <li className="nav-item active">
+        <li className="nav-item active align-items-center">
           <Link to="/practice" className="nav-link">
             <h3>Practice</h3>
           </Link>
@@ -102,10 +102,14 @@ export class Header extends Component {
     const { isAuthenticated, user } = this.props.auth;
     return (
       <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-        <div className="container align-items-center">
-          <a className="navbar-brand" href="/">
-            HireBeat
-          </a>
+        <div className="container align-items-center justify-content-between my-header">
+          <ul className="navbar-nav mr-auto align-items-center">
+            <li className="nav-item active">
+              <Link to="/" className="nav-link">
+                <h1>HireBeat</h1>
+              </Link>
+            </li>
+          </ul>
           <button
             className="navbar-toggler"
             type="button"
