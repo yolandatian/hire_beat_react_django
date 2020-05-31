@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { videoList, loadMockData } from "../../mockdata/video_data";
 import VideoPreviewList from "./VideoPreviewList";
 
 export class VideoContainer extends Component {

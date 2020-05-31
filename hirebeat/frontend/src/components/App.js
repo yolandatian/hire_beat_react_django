@@ -21,7 +21,7 @@ import PracticePage from "./practice/PracticePage";
 
 import { loadUser, loadProfile } from "../redux/actions/auth_actions";
 
-import VideoReplayPage from "./dashboard/VideoReplayPage";
+import VideoReplayPage from "./dashboard/videos/VideoReplayPage";
 import MyVideoUploader from "./videos/MyVideoUploader";
 import ReviewWindow from "./review/ReviewWindow";
 

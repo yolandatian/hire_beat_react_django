@@ -7,16 +7,32 @@ export class ImageButton extends Component {
     func: () => {},
   };
 
+  applyStyle = () => {
+    switch (this.props.type) {
+      case "avatar":
+        return {
+          width: "80px",
+          height: "80px",
+          borderRadius: "45px",
+          backgroundImage: `url(${this.props.src})`,
+          backgroundSize: "80px",
+          outline: "none",
+        };
+      default:
+        return {
+          width: "180px",
+          height: "110px",
+          backgroundImage: `url(${this.props.src})`,
+          backgroundSize: "180px",
+        };
+      // Do nothing
+    }
+  };
+
   render() {
     return (
       <div>
-        <button>
-          <img
-            src={this.props.src}
-            alt="Image Not Found"
-            onClick={this.props.func}
-          />
-        </button>
+        <button style={this.applyStyle()} onClick={this.props.func} />
       </div>
     );
   }

@@ -1,9 +1,19 @@
 import React, { Component } from "react";
-import { Link, Route } from "react-router-dom";
-import ProfileContainer from "./profile/ProfileContainer";
-import VideoContainer from "./VideoContainer";
+import ButtonPanel from "./panel/ButtonPanel";
+import EssentialUserInfo from "./essentials/EssentialUserInfo";
+import ProfileInfo from "./profile/ProfileInfo";
+import VideoContainer from "./videos/VideoContainer";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import { updateProfile, loadProfile } from "../../redux/actions/auth_actions";
+import { connect } from "react-redux";
 
 export class Dashboard extends Component {
+  componentDidMount() {
+    this.props.loadProfile();
+  }
+
   state = {
     subpage: "videos",
   };
@@ -20,19 +30,61 @@ export class Dashboard extends Component {
     });
   };
 
+  renderSubpage = () => {
+    switch (this.state.subpage) {
+      case "profile":
+        return (
+          <ProfileInfo
+            profile={this.props.profile}
+            userID={this.props.user.id}
+            updateProfile={this.props.updateProfile}
+          />
+        );
+      case "videos":
+        return <VideoContainer />;
+      default:
+      //Do nothing
+    }
+  };
+
   render() {
     return (
       <div>
-        <button onClick={this.renderVideos}>Videos</button>
-        <button onClick={this.renderProfile}>Profile</button>
-        {this.state.subpage == "videos" ? (
-          <VideoContainer />
-        ) : (
-          <ProfileContainer />
-        )}
+        <Container>
+          <Row>
+            <Col>
+              <EssentialUserInfo user={this.props.user} />
+            </Col>
+          </Row>
+          <br />
+          <br />
+          <Row>
+            <Col
+              md={2}
+              style={{
+                backgroundColor: "#ffa",
+                borderColor: "blue",
+                borderRightColor: "blue",
+              }}
+            >
+              <ButtonPanel
+                renderVideos={this.renderVideos}
+                renderProfile={this.renderProfile}
+              />
+            </Col>
+            <Col md={{ span: 4, offset: 1 }}>{this.renderSubpage()}</Col>
+          </Row>
+        </Container>
       </div>
     );
   }
 }
 
-export default Dashboard;
+const mapStateToProps = (state) => ({
+  profile: state.auth_reducer.profile,
+  user: state.auth_reducer.user,
+});
+
+export default connect(mapStateToProps, { loadProfile, updateProfile })(
+  Dashboard
+);

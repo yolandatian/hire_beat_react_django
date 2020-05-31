@@ -1,7 +1,7 @@
 import React, { Component, Image } from "react";
 import PropTypes from "prop-types";
-import videoImg from "../../assets/video.png";
-import ImageButton from "../basic/ImageButton";
+import videoImg from "../../../assets/video.png";
+import ImageButton from "../../basic/ImageButton";
 import ReviewStatusButton from "./ReviewStatusButton";
 import { withRouter } from "react-router-dom";
 

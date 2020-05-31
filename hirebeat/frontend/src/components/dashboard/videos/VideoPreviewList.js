@@ -2,8 +2,10 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import VideoImagePreview from "./VideoImagePreview";
 import { connect } from "react-redux";
-import { getVideos } from "../../redux/actions/video_actions";
-import { sendVideoForReview } from "../../redux/actions/video_actions";
+import {
+  getVideos,
+  sendVideoForReview,
+} from "../../../redux/actions/video_actions";
 
 export class VideoPreviewList extends Component {
   static propTypes = {
