@@ -51,28 +51,35 @@ export class Dashboard extends Component {
     return (
       <div>
         <Container>
+          <br />
+          <br />
           <Row>
             <Col>
-              <EssentialUserInfo user={this.props.user} />
+              <div className="card">
+                <div className="card-body">
+                  <EssentialUserInfo user={this.props.user} />
+                </div>
+              </div>
             </Col>
           </Row>
           <br />
           <br />
           <Row>
-            <Col
-              md={2}
-              style={{
-                backgroundColor: "#ffa",
-                borderColor: "blue",
-                borderRightColor: "blue",
-              }}
-            >
-              <ButtonPanel
-                renderVideos={this.renderVideos}
-                renderProfile={this.renderProfile}
-              />
+            <Col md={2} style={{ marginLeft: "5%" }}>
+              <div className="card">
+                <div className="card-body">
+                  <ButtonPanel
+                    renderVideos={this.renderVideos}
+                    renderProfile={this.renderProfile}
+                  />
+                </div>
+              </div>
             </Col>
-            <Col md={{ span: 4, offset: 1 }}>{this.renderSubpage()}</Col>
+            <Col md={8} style={{ marginLeft: "5%" }}>
+              <div className="card">
+                <div className="card-body">{this.renderSubpage()}</div>
+              </div>
+            </Col>
           </Row>
         </Container>
       </div>

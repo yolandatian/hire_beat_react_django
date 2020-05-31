@@ -24,16 +24,22 @@ export class VideoPreviewList extends Component {
         {this.props.loaded
           ? this.props.videos.map((v) => {
               return (
-                <VideoImagePreview
-                  id={v.id}
-                  key={v.id}
-                  url={v.url}
-                  des={v.q_description}
-                  date={v.created_at}
-                  needed_expert_review={v.needed_expert_review}
-                  is_expert_reviewed={v.is_expert_reviewed}
-                  sendVideoForReview={() => this.props.sendVideoForReview(v.id)}
-                />
+                <div>
+                  <br />
+                  <VideoImagePreview
+                    id={v.id}
+                    key={v.id}
+                    url={v.url}
+                    des={v.q_description}
+                    date={v.created_at}
+                    needed_expert_review={v.needed_expert_review}
+                    is_expert_reviewed={v.is_expert_reviewed}
+                    sendVideoForReview={() =>
+                      this.props.sendVideoForReview(v.id)
+                    }
+                  />
+                  <br />
+                </div>
               );
             })
           : null}

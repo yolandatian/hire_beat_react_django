@@ -5,7 +5,7 @@ export class VideoContainer extends Component {
   render() {
     return (
       <div>
-        <h1>This is videos page</h1>
+        <h2>Saved videos</h2>
         <VideoPreviewList />
       </div>
     );

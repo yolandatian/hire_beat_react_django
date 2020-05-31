@@ -5,3 +5,13 @@
 .my-header {
   height: 40px;
 }
+
+.panel-button {
+  display: block;
+  width: 100%;
+  border: none;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+}

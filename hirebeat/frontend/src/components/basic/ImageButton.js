@@ -21,7 +21,7 @@ export class ImageButton extends Component {
       default:
         return {
           width: "180px",
-          height: "110px",
+          height: "125px",
           backgroundImage: `url(${this.props.src})`,
           backgroundSize: "180px",
         };

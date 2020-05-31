@@ -18,17 +18,29 @@ export class VideoImagePreview extends Component {
     if (history) history.push(`/video/${this.props.id}`);
   };
 
+  renderQuestionDescription = (des) => {
+    if (des.length > 50) {
+      return des.substring(0, 50) + "...";
+    }
+    return des;
+  };
+
   render() {
     return (
-      <div className="container">
-        <h2>{this.props.date.substring(0, 10)}</h2>
-        <ImageButton src={videoImg} func={this.redirectToVideoPlayer} />
-        <ReviewStatusButton
-          redirectToVideoPlayer={this.redirectToVideoPlayer}
-          needed_expert_review={this.props.needed_expert_review}
-          is_expert_reviewed={this.props.is_expert_reviewed}
-          sendVideoForReview={this.props.sendVideoForReview}
-        />
+      <div className="row">
+        <div className="col-4">
+          <ImageButton src={videoImg} func={this.redirectToVideoPlayer} />
+        </div>
+        <div className="col">
+          <h3>Q:{this.renderQuestionDescription(this.props.des)}</h3>
+          <h4>{this.props.date.substring(0, 10)}</h4>
+          <ReviewStatusButton
+            redirectToVideoPlayer={this.redirectToVideoPlayer}
+            needed_expert_review={this.props.needed_expert_review}
+            is_expert_reviewed={this.props.is_expert_reviewed}
+            sendVideoForReview={this.props.sendVideoForReview}
+          />
+        </div>
       </div>
     );
   }
