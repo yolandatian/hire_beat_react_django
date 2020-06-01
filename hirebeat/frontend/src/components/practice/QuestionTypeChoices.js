@@ -23,7 +23,7 @@ export class QuestionTypeChoices extends Component {
         >
           <div
             className="card-header"
-            style={{ padding: 1, backgroundColor: "blue" }}
+            style={{ padding: 3, backgroundColor: "#538af2" }}
           />
           <div className="card-body practice-card-body">
             <div className="row practice-card-row">

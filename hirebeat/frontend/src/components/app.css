@@ -17,11 +17,6 @@
   text-align: center;
 }
 
-.practice-card-header {
-  height: 1px;
-  background-color: #538af2;
-}
-
 .practice-card {
   padding-top: 60px;
 }
@@ -34,6 +29,7 @@
   display: flex;
   justify-content: center;
   padding-bottom: 3%;
+  width: 100%;
 }
 
 .practice-card-row-bottom {
