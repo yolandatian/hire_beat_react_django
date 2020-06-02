@@ -5,6 +5,13 @@ import {
   lengthOfResponseOptions,
 } from "../../constants/constants";
 import ResponseWindow from "./ResponseWindow";
+import {
+  PracticeCard,
+  CardRow,
+  QuestionTypeChoiceButton,
+  QuestionCol,
+  SelectCol,
+} from "./CardComponents";
 
 export class PracticePage extends Component {
   state = {
@@ -37,80 +44,57 @@ export class PracticePage extends Component {
     return (
       <a style={{ color: "#f3a340", textDecorationLine: "underline" }}>
         {(3 * this.state.lengthOfResponse.value + 0.5) *
-          this.state.numberOfQuestions.value}{" "}
+          this.state.numberOfQuestions.value}
         mins
       </a>
     );
   };
 
-  getQuestionsParams = () => {
-    const { numberOfQuestions, lengthOfResponse } = this.state;
+  selectForParam = (question, value, onTap, options) => {
     return (
-      <div className="container practice-card">
-        <div
-          className="card mb-3"
-          style={{ width: "80%", marginLeft: "10%", marginLeft: "10%" }}
-        >
-          <div
-            className="card-header"
-            style={{ padding: 3, backgroundColor: "#538af2" }}
+      <CardRow>
+        <QuestionCol>
+          <p>{question}</p>
+        </QuestionCol>
+        <div className="col-1"></div>
+        <SelectCol>
+          <Select value={value} onChange={onTap} options={options} />
+        </SelectCol>
+      </CardRow>
+    );
+  };
+
+  getQuestionsParams = () => {
+    return (
+      <PracticeCard>
+        <CardRow>
+          <h5>Create A New Mock Interview</h5>
+        </CardRow>
+        <CardRow>
+          <h1>Set Your Practice Time</h1>
+        </CardRow>
+        {this.selectForParam(
+          "How long should the responses be?",
+          this.state.lengthOfResponse,
+          this.handleChangeLength,
+          lengthOfResponseOptions
+        )}
+        {this.selectForParam(
+          "How many questions do you want to practice?",
+          this.state.numberOfQuestions,
+          this.handleChangeNumber,
+          numberOfQuestionOptions
+        )}
+        <CardRow>
+          <h4>This will cost you {this.getEstimateTime()} on average</h4>
+        </CardRow>
+        <CardRow>
+          <QuestionTypeChoiceButton
+            onTap={this.setParams}
+            textDisplayed={"Start Practice"}
           />
-          <div className="card-body practice-card-body">
-            <div className="row practice-card-row">
-              <h5>Create A New Mock Interview</h5>
-            </div>
-            <div className="row practice-card-row">
-              <h1>Set Your Practice Time</h1>
-            </div>
-            <div className="row practice-card-row">
-              <div className="col-5">
-                <p>How many questions do you want to practice?</p>
-              </div>
-              <div className="col-1"></div>
-              <div className="col-3">
-                <div class="react-select-container">
-                  <Select
-                    value={numberOfQuestions}
-                    onChange={this.handleChangeNumber}
-                    options={numberOfQuestionOptions}
-                  />
-                </div>
-              </div>
-            </div>
-            <div className="row practice-card-row">
-              <div className="col-5">
-                <p>How long should the responses be?</p>
-              </div>
-              <div className="col-1"></div>
-              <div className="col-3">
-                <div class="react-select-container">
-                  <Select
-                    value={lengthOfResponse}
-                    onChange={this.handleChangeLength}
-                    options={lengthOfResponseOptions}
-                  />
-                </div>
-              </div>
-            </div>
-            <div className="row practice-card-row">
-              <h4>This will cost you {this.getEstimateTime()} on average</h4>
-            </div>
-            <div className="row practice-card-row">
-              <button
-                className="btn btn-warning"
-                style={{
-                  WebkitBorderRadius: "20px",
-                  width: "30%",
-                  boxShadow: "0px 0px 8px #dc6b2a",
-                }}
-                onClick={this.setParams}
-              >
-                <strong>Start Practice</strong>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
+        </CardRow>
+      </PracticeCard>
     );
   };
 

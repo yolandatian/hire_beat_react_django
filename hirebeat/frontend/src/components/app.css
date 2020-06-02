@@ -17,8 +17,14 @@
   text-align: center;
 }
 
-.practice-card {
+.practice-card-container {
   padding-top: 60px;
+}
+
+.practice-card {
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
 }
 
 .practice-card-body {
@@ -43,4 +49,8 @@
   padding: 1;
   height: 200px;
   width: 45%;
+}
+
+ins {
+  color: "#f3a340";
 }
