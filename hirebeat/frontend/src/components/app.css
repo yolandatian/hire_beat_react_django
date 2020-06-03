@@ -17,21 +17,21 @@
   text-align: center;
 }
 
-.practice-card-container {
+.card-container {
   padding-top: 60px;
 }
 
-.practice-card {
+.setup-card {
   width: 80%;
   margin-left: 10%;
   margin-right: 10%;
 }
 
-.practice-card-body {
+.setup-card-body {
   height: 400px;
 }
 
-.practice-card-row {
+.card-row {
   display: flex;
   justify-content: center;
   padding-bottom: 3%;
@@ -49,8 +49,4 @@
   padding: 1;
   height: 200px;
   width: 45%;
-}
-
-ins {
-  color: "#f3a340";
 }

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Line } from "rc-progress";
 
 const lineStyle = {
-  width: "400px",
+  width: "100%",
 };
 
 export class CountdownBar extends Component {

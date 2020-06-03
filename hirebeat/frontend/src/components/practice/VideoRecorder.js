@@ -12,11 +12,13 @@ import MyVideoUploader from "../videos/MyVideoUploader";
 import CountdownBar from "./CountdownBar";
 import { connect } from "react-redux";
 import { NEXT_QUESTION } from "../../redux/actions/action_types";
+import { CardRow } from "./CardComponents";
 
 export class VideoRecorder extends Component {
   state = {
     videoRecorded: false,
     videoHandled: false,
+    isTesting: false,
     video: null,
     time_total: this.props.plugins.record.maxLength,
     time_remain: this.props.plugins.record.maxLength,
@@ -24,6 +26,7 @@ export class VideoRecorder extends Component {
   };
 
   componentDidMount() {
+    this.setState({ ...this.state, isTesting: this.props.isTesting });
     this.player = videojs(this.videoNode, this.props, () => {
       var version_info =
         "Using video.js " +
@@ -41,6 +44,10 @@ export class VideoRecorder extends Component {
 
     this.player.on("startRecord", () => {
       console.log("started recording!");
+      this.setState({
+        ...this.state,
+        time_remain: this.props.plugins.record.maxLength,
+      });
       this.startCountDown();
     });
 
@@ -108,21 +115,27 @@ export class VideoRecorder extends Component {
 
   render() {
     return (
-      <div className="container">
-        <CountdownBar
-          time_total={this.state.time_total}
-          time_remain={this.state.time_remain}
-        />
-        <div data-vjs-player>
-          <video
-            id="myVideo"
-            ref={(node) => (this.videoNode = node)}
-            className="video-js vjs-default-skin"
-            playsInline
-          ></video>
-        </div>
+      <CardRow>
+        <CardRow>
+          <CountdownBar
+            time_total={this.state.time_total}
+            time_remain={this.state.time_remain}
+          />
+        </CardRow>
+        <CardRow>
+          <div data-vjs-player>
+            <video
+              id="myVideo"
+              ref={(node) => (this.videoNode = node)}
+              className="video-js vjs-default-skin"
+              playsInline
+            ></video>
+          </div>
+        </CardRow>
         <div>
-          {this.state.videoRecorded && !this.state.videoHandled ? (
+          {!this.state.isTesting &&
+          this.state.videoRecorded &&
+          !this.state.videoHandled ? (
             <MyVideoUploader
               resetDeviceAndNextQuestion={this.resetDeviceAndNextQuestion}
               resetDevice={this.resetDevice}
@@ -130,7 +143,7 @@ export class VideoRecorder extends Component {
             />
           ) : null}
         </div>
-      </div>
+      </CardRow>
     );
   }
 }

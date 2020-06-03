@@ -5,10 +5,11 @@ import {
   lengthOfResponseOptions,
 } from "../../constants/constants";
 import ResponseWindow from "./ResponseWindow";
+import TestDevice from "./TestDevice";
 import {
-  PracticeCard,
+  SetupCard,
   CardRow,
-  QuestionTypeChoiceButton,
+  CardButton,
   QuestionCol,
   SelectCol,
 } from "./CardComponents";
@@ -17,6 +18,7 @@ export class PracticePage extends Component {
   state = {
     type: "behavior",
     paramsAreSet: false,
+    deviceTested: false,
     numberOfQuestions: { value: 2, label: "2 Questions" },
     lengthOfResponse: { value: 1, label: "1 minute" },
   };
@@ -30,6 +32,10 @@ export class PracticePage extends Component {
 
   setParams = () => {
     this.setState({ ...this.state, paramsAreSet: true });
+  };
+
+  testDevice = () => {
+    this.setState({ ...this.state, deviceTested: true });
   };
 
   handleChangeNumber = (numberOfQuestions) => {
@@ -66,7 +72,7 @@ export class PracticePage extends Component {
 
   getQuestionsParams = () => {
     return (
-      <PracticeCard>
+      <SetupCard>
         <CardRow>
           <h5>Create A New Mock Interview</h5>
         </CardRow>
@@ -89,12 +95,13 @@ export class PracticePage extends Component {
           <h4>This will cost you {this.getEstimateTime()} on average</h4>
         </CardRow>
         <CardRow>
-          <QuestionTypeChoiceButton
+          <CardButton
             onTap={this.setParams}
             textDisplayed={"Start Practice"}
+            buttonWidth={"30%"}
           />
         </CardRow>
-      </PracticeCard>
+      </SetupCard>
     );
   };
 
@@ -102,11 +109,15 @@ export class PracticePage extends Component {
     return (
       <div className="container">
         {this.state.paramsAreSet ? (
-          <ResponseWindow
-            type={this.state.type}
-            number={this.state.numberOfQuestions.value}
-            length={this.state.lengthOfResponse.value}
-          />
+          this.state.deviceTested ? (
+            <ResponseWindow
+              type={this.state.type}
+              number={this.state.numberOfQuestions.value}
+              length={this.state.lengthOfResponse.value}
+            />
+          ) : (
+            <TestDevice testDevice={this.testDevice} />
+          )
         ) : (
           this.getQuestionsParams()
         )}

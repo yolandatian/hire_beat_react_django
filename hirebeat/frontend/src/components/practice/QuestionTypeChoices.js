@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import behaviorIcon from "../../assets/behavior_icon.png";
 import techIcon from "../../assets/tech_icon.png";
-import { PracticeCard, CardRow, ButtonContainer } from "./CardComponents";
+import { SetupCard, CardRow, ButtonContainer } from "./CardComponents";
 
 export class QuestionTypeChoices extends Component {
   redirectToBehaviorQuestions = () => {
@@ -17,7 +17,7 @@ export class QuestionTypeChoices extends Component {
 
   render() {
     return (
-      <PracticeCard>
+      <SetupCard>
         <CardRow>
           <h5>Create A New Mock Interview</h5>
         </CardRow>
@@ -36,7 +36,7 @@ export class QuestionTypeChoices extends Component {
             "Tech Question"
           )}
         </div>
-      </PracticeCard>
+      </SetupCard>
     );
   }
 }
