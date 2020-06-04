@@ -90,9 +90,9 @@ export class PracticePage extends Component {
         {this.state.paramsAreSet ? (
           this.state.deviceTested ? (
             <ResponseWindow
-              type={this.state.type}
-              number={this.state.numberOfQuestions.value}
-              length={this.state.lengthOfResponse.value}
+              questionType={this.state.type}
+              questionNumber={this.state.numberOfQuestions.value}
+              responseLength={this.state.lengthOfResponse.value}
             />
           ) : (
             <TestDevice testDevice={this.testDevice} />

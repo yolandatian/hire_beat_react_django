@@ -20,9 +20,6 @@ export class VideoRecorder extends Component {
     videoHandled: false,
     isTesting: false,
     video: null,
-    time_total: this.props.plugins.record.maxLength,
-    time_remain: this.props.plugins.record.maxLength,
-    intervalID: null,
   };
 
   componentDidMount() {
@@ -40,19 +37,19 @@ export class VideoRecorder extends Component {
 
     this.player.on("deviceReady", () => {
       console.log("device is ready!");
+      // if (this.state.isTesting == false) {
+      //   this.player.start();
+      // }
     });
 
     this.player.on("startRecord", () => {
       console.log("started recording!");
-      this.setState({
-        ...this.state,
-        time_remain: this.props.plugins.record.maxLength,
-      });
-      this.startCountDown();
+      this.props.startRecording();
     });
 
     this.player.on("finishRecord", () => {
       console.log("finished recording: ", this.player.recordedData);
+      this.props.recordingDone();
       this.recordFinished();
     });
 
@@ -69,30 +66,14 @@ export class VideoRecorder extends Component {
     if (this.player) {
       this.player.dispose();
     }
-    clearInterval(this.state.intervalId);
   }
 
   recordFinished = () => {
-    clearInterval(this.state.intervalID);
     this.setState({
       ...this.state,
       video: this.player.recordedData,
       videoHandled: false,
       videoRecorded: true,
-    });
-  };
-
-  startCountDown = () => {
-    if (this.state.time_remain > 0) {
-      var intervalID = setInterval(this.countDown, 1000);
-      this.setState({ ...this.state, intervalID: intervalID });
-    }
-  };
-
-  countDown = () => {
-    this.setState({
-      ...this.state,
-      time_remain: this.state.time_remain - 1,
     });
   };
 
@@ -106,8 +87,6 @@ export class VideoRecorder extends Component {
       ...this.state,
       videoRecorded: false,
       videoHandled: true,
-      time_total: this.props.plugins.record.maxLength,
-      time_remain: this.props.plugins.record.maxLength,
     });
     this.player.record().reset();
     this.player.record().getDevice();
@@ -116,12 +95,6 @@ export class VideoRecorder extends Component {
   render() {
     return (
       <div>
-        <CardRow>
-          <CountdownBar
-            time_total={this.state.time_total}
-            time_remain={this.state.time_remain}
-          />
-        </CardRow>
         <CardRow>
           <div data-vjs-player>
             <video
