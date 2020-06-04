@@ -1,4 +1,5 @@
 import React from "react";
+import Select from "react-select";
 import techIcon from "../../assets/tech_icon.png";
 
 // Some styles are kept b/c the element's className can't be overwritten
@@ -8,10 +9,23 @@ export const SetupCard = (props) => {
     <div className="container card-container">
       <div className="card mb-3 setup-card">
         <div
-          className="card-header"
-          style={{ padding: 3, backgroundColor: "#538af2" }}
+          style={{
+            padding: 3,
+            backgroundColor: "#538af2",
+          }}
         />
         <div className="card-body setup-card-body">{props.children}</div>
+      </div>
+    </div>
+  );
+};
+
+export const PracticeCard = (props) => {
+  return (
+    <div className="container practice-card-container">
+      <div className="card mb-3 practice-card">
+        <div style={{ padding: 3, backgroundColor: "#538af2" }} />
+        <div className="card-body practice-card-body">{props.children}</div>
       </div>
     </div>
   );
@@ -49,7 +63,7 @@ export const ButtonContainer = (src, onTap, textDisplayed) => {
         <CardButton
           onTap={onTap}
           textDisplayed={textDisplayed}
-          buttonWidth={"100%"}
+          buttonWidth={"85%"}
         />
       </CardRow>
       <CardRow>
@@ -68,13 +82,26 @@ export const ButtonContainer = (src, onTap, textDisplayed) => {
   );
 };
 
+export const selectParam = (question, value, onTap, options) => {
+  return (
+    <CardRow className="vertically-center">
+      <QuestionCol>
+        <p>{question}</p>
+      </QuestionCol>
+      <SelectCol>
+        <Select value={value} onChange={onTap} options={options} />
+      </SelectCol>
+    </CardRow>
+  );
+};
+
 export const QuestionCol = (props) => {
-  return <div className="col-5">{props.children}</div>;
+  return <div className="col-6">{props.children}</div>;
 };
 
 export const SelectCol = (props) => {
   return (
-    <div className="col-3">
+    <div className="col-4">
       <div className="react-select-container">{props.children}</div>
     </div>
   );

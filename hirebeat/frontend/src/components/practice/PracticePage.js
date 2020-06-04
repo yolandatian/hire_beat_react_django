@@ -1,18 +1,11 @@
 import React, { Component } from "react";
-import Select from "react-select";
 import {
   numberOfQuestionOptions,
   lengthOfResponseOptions,
 } from "../../constants/constants";
 import ResponseWindow from "./ResponseWindow";
 import TestDevice from "./TestDevice";
-import {
-  SetupCard,
-  CardRow,
-  CardButton,
-  QuestionCol,
-  SelectCol,
-} from "./CardComponents";
+import { SetupCard, CardRow, CardButton, selectParam } from "./CardComponents";
 
 export class PracticePage extends Component {
   state = {
@@ -56,20 +49,6 @@ export class PracticePage extends Component {
     );
   };
 
-  selectForParam = (question, value, onTap, options) => {
-    return (
-      <CardRow>
-        <QuestionCol>
-          <p>{question}</p>
-        </QuestionCol>
-        <div className="col-1"></div>
-        <SelectCol>
-          <Select value={value} onChange={onTap} options={options} />
-        </SelectCol>
-      </CardRow>
-    );
-  };
-
   getQuestionsParams = () => {
     return (
       <SetupCard>
@@ -79,13 +58,13 @@ export class PracticePage extends Component {
         <CardRow>
           <h1>Set Your Practice Time</h1>
         </CardRow>
-        {this.selectForParam(
+        {selectParam(
           "How long should the responses be?",
           this.state.lengthOfResponse,
           this.handleChangeLength,
           lengthOfResponseOptions
         )}
-        {this.selectForParam(
+        {selectParam(
           "How many questions do you want to practice?",
           this.state.numberOfQuestions,
           this.handleChangeNumber,
@@ -97,7 +76,7 @@ export class PracticePage extends Component {
         <CardRow>
           <CardButton
             onTap={this.setParams}
-            textDisplayed={"Start Practice"}
+            textDisplayed={"Test & Start"}
             buttonWidth={"30%"}
           />
         </CardRow>

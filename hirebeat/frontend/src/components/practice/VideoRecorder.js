@@ -115,7 +115,7 @@ export class VideoRecorder extends Component {
 
   render() {
     return (
-      <CardRow>
+      <div>
         <CardRow>
           <CountdownBar
             time_total={this.state.time_total}
@@ -143,7 +143,7 @@ export class VideoRecorder extends Component {
             />
           ) : null}
         </div>
-      </CardRow>
+      </div>
     );
   }
 }

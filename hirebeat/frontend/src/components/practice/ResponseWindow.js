@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import VideoRecorder from "./VideoRecorder";
 import { videoRecorderOptions } from "../../constants/constants";
 import QuestionInfo from "./QuestionInfo";
+import { PracticeCard, CardRow } from "./CardComponents";
 import NotePad from "./NotePad";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
@@ -22,18 +23,24 @@ export class ResponseWindow extends Component {
 
   render() {
     videoRecorderOptions.plugins.record.maxLength = this.props.length * 60;
+    videoRecorderOptions.width = window.innerWidth / 2.5;
+    videoRecorderOptions.height = (window.innerWidth * 4) / 15;
     return (
       <div>
         {this.props.loaded ? (
-          <div>
+          <PracticeCard>
             <QuestionInfo
               q_index={this.props.q_index}
               q_count={this.props.q_count}
               question={this.props.questions[this.props.q_index]}
             />
-            <NotePad />
-            <VideoRecorder {...videoRecorderOptions} />
-          </div>
+            <CardRow>
+              <VideoRecorder {...videoRecorderOptions} />
+            </CardRow>
+            <CardRow>
+              <NotePad />
+            </CardRow>
+          </PracticeCard>
         ) : null}
       </div>
     );

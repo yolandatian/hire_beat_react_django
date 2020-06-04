@@ -1,6 +1,6 @@
 import React from "react";
 import VideoRecorder from "./VideoRecorder";
-import { CardButton, CardCardRow, CardRow } from "./CardComponents";
+import { CardButton, SetupCard, CardRow } from "./CardComponents";
 import { videoRecorderOptions } from "../../constants/constants";
 
 function TestDevice(props) {
@@ -8,32 +8,31 @@ function TestDevice(props) {
   videoRecorderOptions.width = 330;
   videoRecorderOptions.height = 220;
   return (
-    <CardRow>
+    <SetupCard>
       <CardRow>
-        <div className="col-5">
+        <div className="col-4">
           <CardRow>
             <h4>To Test Your Device</h4>
           </CardRow>
           <CardRow>
-            <h6>A 10 second video clip will be recorded.</h6>
+            <h6>A 10-second video clip will be recorded.</h6>
+            <h6>Please replay the clip to ensure</h6>
             <h6>
-              Please replay the clip to ensure microphone and camera are working
+              <ins>microphone and camera</ins> are working
             </h6>
           </CardRow>
         </div>
-        <div className="col-7">
-          <CardRow>
-            <VideoRecorder {...videoRecorderOptions} isTesting={true} />
-          </CardRow>
+        <div className="col-8">
+          <VideoRecorder {...videoRecorderOptions} isTesting={true} />
         </div>
       </CardRow>
       <CardRow>
-        <div className="col-5">
+        <div className="col-4">
           <CardRow>
             <h4>To Start The First Question</h4>
           </CardRow>
         </div>
-        <div className="col-7">
+        <div className="col-8">
           <div
             style={{
               display: "flex",
@@ -50,7 +49,7 @@ function TestDevice(props) {
           </div>
         </div>
       </CardRow>
-    </CardRow>
+    </SetupCard>
   );
 }
 
