@@ -66,6 +66,18 @@
   justify-content: space-between;
 }
 
+.card-row-high {
+  display: flex;
+  justify-content: center;
+  padding-top: 45px;
+}
+
+.card-row-mid-high {
+  display: flex;
+  justify-content: center;
+  padding-top: 25px;
+}
+
 .card-row-margin {
   margin-left: 5%;
   margin-right: 5%;

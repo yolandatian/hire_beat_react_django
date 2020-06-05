@@ -3,7 +3,11 @@ import React, { Component } from "react";
 import { addVideo } from "../../redux/actions/video_actions";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { CardButton } from "../practice/CardComponents";
+import {
+  VideoNumberLinkRow,
+  RecordDoneButton,
+  BglessCardButton,
+} from "../practice/CardComponents";
 
 export class MyVideoUploader extends Component {
   constructor(props) {
@@ -60,14 +64,24 @@ export class MyVideoUploader extends Component {
             autoUpload={true}
           />
         </div>
-        <CardButton
+        <br />
+        <RecordDoneButton
           onTap={this.handleUpload}
           textDisplayed={"Save and Next"}
           buttonWidth={"100%"}
         />
-        <CardButton
+        <VideoNumberLinkRow
+          number_of_videos_to_save={10}
+          upgrade={() => console.log("upgrade")}
+        />
+        <RecordDoneButton
           onTap={this.props.resetDevice}
           textDisplayed={"Try Again"}
+          buttonWidth={"100%"}
+        />
+        <BglessCardButton
+          onTap={this.props.resetDeviceAndNextQuestion}
+          textDisplayed={"Discard and Skip"}
           buttonWidth={"100%"}
         />
       </div>

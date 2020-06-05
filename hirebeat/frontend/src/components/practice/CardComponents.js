@@ -34,6 +34,14 @@ export const CardRow = (props) => {
   return <div className="row card-row">{props.children}</div>;
 };
 
+export const CardRowHigh = (props) => {
+  return <div className="card-row-high">{props.children}</div>;
+};
+
+export const CardRowMidHigh = (props) => {
+  return <div className="card-row-mid-high">{props.children}</div>;
+};
+
 export const CardButton = (props) => {
   return (
     <button
@@ -49,6 +57,56 @@ export const CardButton = (props) => {
         {props.textDisplayed}
       </a>
     </button>
+  );
+};
+
+export const BglessCardButton = (props) => {
+  return (
+    <CardRowMidHigh>
+      <button
+        onClick={props.onTap}
+        style={{
+          border: "none",
+          backgroundColor: "transparent",
+          width: props.buttonWidth,
+        }}
+      >
+        <a style={{ fontSize: "1vw", fontWeight: "bold", color: "#f3a542" }}>
+          {props.textDisplayed}
+        </a>
+      </button>
+    </CardRowMidHigh>
+  );
+};
+
+export const RecordDoneButton = (props) => {
+  return (
+    <CardRowHigh>
+      <CardButton
+        onTap={props.onTap}
+        textDisplayed={props.textDisplayed}
+        buttonWidth={props.buttonWidth}
+      />
+    </CardRowHigh>
+  );
+};
+
+export const VideoNumberLinkRow = (props) => {
+  return (
+    <CardRowMidHigh>
+      <div className="d-flex justify-content-around" style={{ width: "100%" }}>
+        <h6>Free video save left: {props.number_of_videos_to_save} </h6>
+        <a
+          onClick={props.upgrade}
+          style={{
+            color: "#f3a340",
+            textDecoration: "underline",
+          }}
+        >
+          Upgrade >
+        </a>
+      </div>
+    </CardRowMidHigh>
   );
 };
 

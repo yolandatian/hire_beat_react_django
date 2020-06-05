@@ -4,7 +4,7 @@ export class NotePad extends Component {
   render() {
     return (
       <div className="video-recorder-row">
-        <div className="col-8 offset-lg-1">
+        <div className="col-8">
           <textarea
             style={{ width: this.props.padWidth, height: "80px" }}
             placeholder=" Your notepad ..."

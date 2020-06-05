@@ -63,6 +63,7 @@ export class ResponseWindow extends Component {
               {...videoRecorderOptions}
               startRecording={this.startRecording}
               recordingDone={this.recordingDone}
+              isTesting={false}
             />
             <NotePad padWidth={window.innerWidth / 2.4} />
           </PracticeCard>

@@ -9,18 +9,15 @@ import Record from "videojs-record/dist/videojs.record.js";
 import MyVideoUploader from "../videos/MyVideoUploader";
 import { connect } from "react-redux";
 import { NEXT_QUESTION } from "../../redux/actions/action_types";
-import { CardRow } from "./CardComponents";
 
 export class VideoRecorder extends Component {
   state = {
     videoRecorded: false,
     videoHandled: false,
-    isTesting: false,
     video: null,
   };
 
   componentDidMount() {
-    this.setState({ ...this.state, isTesting: this.props.isTesting });
     this.player = videojs(this.videoNode, this.props, () => {
       var version_info =
         "Using video.js " +
@@ -34,20 +31,22 @@ export class VideoRecorder extends Component {
 
     this.player.on("deviceReady", () => {
       console.log("device is ready!");
-      // if (this.state.isTesting == false) {
-      //   this.player.start();
-      // }
+      this.player.record().start();
     });
 
     this.player.on("startRecord", () => {
       console.log("started recording!");
-      this.props.startRecording();
+      if (!this.props.isTesting) {
+        this.props.startRecording();
+      }
     });
 
     this.player.on("finishRecord", () => {
       console.log("finished recording: ", this.player.recordedData);
-      this.props.recordingDone();
-      this.recordFinished();
+      if (!this.props.isTesting) {
+        this.props.recordingDone();
+        this.recordFinished();
+      }
     });
 
     this.player.on("error", (element, error) => {
@@ -57,6 +56,11 @@ export class VideoRecorder extends Component {
     this.player.on("deviceError", () => {
       console.error("device error:", this.player.deviceErrorCode);
     });
+
+    if (this.props.isTesting == false) {
+      console.log("starting the device automatically!!");
+      this.player.record().getDevice();
+    }
   }
 
   componentWillUnmount() {
@@ -92,7 +96,7 @@ export class VideoRecorder extends Component {
   render() {
     return (
       <div className="video-recorder-row">
-        <div className="col-8 offset-lg-1">
+        <div className="col-8">
           <div data-vjs-player>
             <video
               id="myVideo"
@@ -103,7 +107,7 @@ export class VideoRecorder extends Component {
           </div>
         </div>
         <div className="col-3">
-          {!this.state.isTesting &&
+          {!this.props.isTesting &&
           this.state.videoRecorded &&
           !this.state.videoHandled ? (
             <MyVideoUploader
