@@ -4,16 +4,15 @@ import techIcon from "../../assets/tech_icon.png";
 
 // Some styles are kept b/c the element's className can't be overwritten
 
+function CardHeader() {
+  return <div style={{ padding: 2, backgroundColor: "#538af2" }} />;
+}
+
 export const SetupCard = (props) => {
   return (
     <div className="container card-container">
       <div className="card mb-3 setup-card">
-        <div
-          style={{
-            padding: 3,
-            backgroundColor: "#538af2",
-          }}
-        />
+        {CardHeader()}
         <div className="card-body setup-card-body">{props.children}</div>
       </div>
     </div>
@@ -24,7 +23,7 @@ export const PracticeCard = (props) => {
   return (
     <div className="container practice-card-container">
       <div className="card mb-3 practice-card">
-        <div style={{ padding: 3, backgroundColor: "#538af2" }} />
+        {CardHeader()}
         <div className="card-body practice-card-body">{props.children}</div>
       </div>
     </div>
@@ -55,7 +54,7 @@ export const CardButton = (props) => {
 
 export const ButtonContainer = (src, onTap, textDisplayed) => {
   return (
-    <div className="practice-card-button-container">
+    <div className="setup-card-button-container">
       <CardRow>
         <img src={src} width={src == techIcon ? "39%" : "40%"} />
       </CardRow>

@@ -1,9 +1,4 @@
 import React, { Component } from "react";
-import { Line } from "rc-progress";
-
-const lineStyle = {
-  width: "100%",
-};
 
 export class CountdownBar extends Component {
   state = {
@@ -13,9 +8,6 @@ export class CountdownBar extends Component {
   };
 
   componentDidUpdate(prevProps) {
-    console.log("=====props in countdownbar");
-    console.log(this.state.intervalID);
-    console.log(this.props.status);
     if (
       prevProps.status != this.props.status &&
       this.props.status == "recording"
@@ -52,13 +44,16 @@ export class CountdownBar extends Component {
   render() {
     var percent = (this.state.timeRemain / this.state.timeTotal) * 100;
     return (
-      <div>
-        <Line
-          percent={percent}
-          strokeWidth="3"
-          strokeColor="#17808a"
-          style={lineStyle}
-        />
+      <div className="d-flex justify-content-center align-items-center">
+        <div className="progress" style={{ width: "120px" }}>
+          <div
+            className="progress-bar progress-bar-striped progress-bar-animated"
+            role="progressbar"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            style={{ width: percent.toString() + "%" }}
+          />
+        </div>
         {this.state.timeRemain} / {this.state.timeTotal}
       </div>
     );

@@ -24,7 +24,7 @@ export class QuestionTypeChoices extends Component {
         <CardRow>
           <h1>Choose Interview Category</h1>
         </CardRow>
-        <div className="row practice-card-row-bottom">
+        <div className="row setup-card-row-bottom">
           {ButtonContainer(
             behaviorIcon,
             this.redirectToBehaviorQuestions,

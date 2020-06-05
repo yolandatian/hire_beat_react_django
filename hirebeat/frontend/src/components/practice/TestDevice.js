@@ -22,7 +22,7 @@ function TestDevice(props) {
             </h6>
           </CardRow>
         </div>
-        <div className="col-8">
+        <div className="col-8 d-flex justify-content-center">
           <VideoRecorder {...videoRecorderOptions} isTesting={true} />
         </div>
       </CardRow>

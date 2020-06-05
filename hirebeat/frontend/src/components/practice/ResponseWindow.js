@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import VideoRecorder from "./VideoRecorder";
 import CountdownBar from "./CountdownBar";
 import { videoRecorderOptions } from "../../constants/constants";
-import QuestionInfo from "./QuestionInfo";
 import { PracticeCard, CardRow } from "./CardComponents";
 import NotePad from "./NotePad";
 import PropTypes from "prop-types";
@@ -21,16 +20,10 @@ export class ResponseWindow extends Component {
   };
 
   state = {
-    timeTotal: 1,
-    timeRemain: 1,
-    status: "waiting",
+    status: "waiting", // Used to control CountdownBar and 30's preparation
   };
 
   componentDidMount() {
-    this.setState({
-      timeRemain: this.props.responseLength * 60,
-      timeTotal: this.props.responseLength * 60,
-    });
     this.props.getQuestions(this.props.questionNumber);
   }
 
@@ -49,32 +42,29 @@ export class ResponseWindow extends Component {
   render() {
     videoRecorderOptions.plugins.record.maxLength =
       this.props.responseLength * 60;
-    videoRecorderOptions.width = window.innerWidth / 2.5;
-    videoRecorderOptions.height = (window.innerWidth * 4) / 15;
+    videoRecorderOptions.width = window.innerWidth / 2.4;
+    videoRecorderOptions.height = window.innerWidth / 3.6;
     return (
       <div>
         {this.props.loaded ? (
           <PracticeCard>
-            <QuestionInfo
-              q_index={this.props.q_index}
-              q_count={this.props.q_count}
-              question={this.props.questions[this.props.q_index]}
-            />
-            <CountdownBar
-              timeTotal={this.state.timeTotal}
-              timeRemain={this.state.timeRemain}
-              status={this.state.status}
-            />
-            <CardRow>
-              <VideoRecorder
-                {...videoRecorderOptions}
-                startRecording={this.startRecording}
-                recordingDone={this.recordingDone}
+            <div className="practice-card-top-row">
+              <h6>
+                Question {this.props.q_index + 1} / {this.props.q_count}
+              </h6>
+              <CountdownBar
+                timeTotal={this.props.responseLength * 60}
+                timeRemain={this.props.responseLength * 60}
+                status={this.state.status}
               />
-            </CardRow>
-            <CardRow>
-              <NotePad />
-            </CardRow>
+            </div>
+            <h4>{this.props.questions[this.props.q_index].description}</h4>
+            <VideoRecorder
+              {...videoRecorderOptions}
+              startRecording={this.startRecording}
+              recordingDone={this.recordingDone}
+            />
+            <NotePad padWidth={window.innerWidth / 2.4} />
           </PracticeCard>
         ) : null}
       </div>

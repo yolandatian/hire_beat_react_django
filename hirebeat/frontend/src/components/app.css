@@ -4,7 +4,7 @@
 }
 
 .my-header-container {
-  height: 60px;
+  height: 55px;
   background-color: #425be7;
 }
 
@@ -28,7 +28,7 @@
 }
 
 .practice-card-container {
-  padding-top: 30px;
+  padding-top: 10px;
 }
 
 .setup-card {
@@ -46,7 +46,7 @@
 }
 
 .practice-card-body {
-  height: 550px;
+  height: 600px;
 }
 
 .card-row {
@@ -55,19 +55,30 @@
   padding-bottom: 3%;
 }
 
+.video-recorder-row {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 1%;
+}
+
+.practice-card-top-row {
+  display: flex;
+  justify-content: space-between;
+}
+
 .card-row-margin {
   margin-left: 5%;
   margin-right: 5%;
 }
 
-.practice-card-row-bottom {
+.setup-card-row-bottom {
   padding-left: 15%;
   padding-right: 15%;
   display: flex;
   justify-content: space-between;
 }
 
-.practice-card-button-container {
+.setup-card-button-container {
   padding: 1;
   height: 200px;
   width: 45%;
@@ -79,3 +90,19 @@
   align-items: center;
   height: 20px;
 }
+
+textarea:focus::placeholder {
+  color: transparent;
+}
+textarea:focus::-webkit-input-placeholder {
+  color: transparent;
+}
+textarea:focus:-moz-placeholder {
+  color: transparent;
+} /* FF 4-18 */
+textarea:focus::-moz-placeholder {
+  color: transparent;
+} /* FF 19+ */
+textarea:focus:-ms-input-placeholder {
+  color: transparent;
+} /* IE 10+ */

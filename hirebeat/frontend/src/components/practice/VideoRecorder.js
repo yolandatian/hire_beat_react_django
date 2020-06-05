@@ -1,15 +1,12 @@
 import React, { Component } from "react";
 import "video.js/dist/video-js.css";
 import videojs from "video.js";
-
 import "webrtc-adapter";
 import RecordRTC from "recordrtc";
-
 import "videojs-record/dist/css/videojs.record.css";
 import Record from "videojs-record/dist/videojs.record.js";
 
 import MyVideoUploader from "../videos/MyVideoUploader";
-import CountdownBar from "./CountdownBar";
 import { connect } from "react-redux";
 import { NEXT_QUESTION } from "../../redux/actions/action_types";
 import { CardRow } from "./CardComponents";
@@ -94,8 +91,8 @@ export class VideoRecorder extends Component {
 
   render() {
     return (
-      <div>
-        <CardRow>
+      <div className="video-recorder-row">
+        <div className="col-8 offset-lg-1">
           <div data-vjs-player>
             <video
               id="myVideo"
@@ -104,8 +101,8 @@ export class VideoRecorder extends Component {
               playsInline
             ></video>
           </div>
-        </CardRow>
-        <div>
+        </div>
+        <div className="col-3">
           {!this.state.isTesting &&
           this.state.videoRecorded &&
           !this.state.videoHandled ? (

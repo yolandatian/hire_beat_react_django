@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { addVideo } from "../../redux/actions/video_actions";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import { CardButton } from "../practice/CardComponents";
 
 export class MyVideoUploader extends Component {
   constructor(props) {
@@ -59,12 +60,16 @@ export class MyVideoUploader extends Component {
             autoUpload={true}
           />
         </div>
-        <button type="button" value="Upload" onClick={this.handleUpload}>
-          Save
-        </button>
-        <button type="button" value="Upload" onClick={this.props.resetDevice}>
-          Discard
-        </button>
+        <CardButton
+          onTap={this.handleUpload}
+          textDisplayed={"Save and Next"}
+          buttonWidth={"100%"}
+        />
+        <CardButton
+          onTap={this.props.resetDevice}
+          textDisplayed={"Try Again"}
+          buttonWidth={"100%"}
+        />
       </div>
     );
   }
