@@ -43,7 +43,7 @@ export const addVideo = (video) => (dispatch, getState) => {
   axios
     .post("/api/videos/", video, tokenConfig(getState))
     .then((res) => {
-      dispatch(createMessage({ successMessage: "Video Saved" }));
+      //dispatch(createMessage({ successMessage: "Video Saved" }));
       dispatch({
         type: ADD_VIDEO,
         payload: res.data,
