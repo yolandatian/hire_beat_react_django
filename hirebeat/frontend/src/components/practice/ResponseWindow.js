@@ -64,6 +64,7 @@ export class ResponseWindow extends Component {
               startRecording={this.startRecording}
               recordingDone={this.recordingDone}
               isTesting={false}
+              last_q={this.props.last_q}
             />
             <NotePad padWidth={window.innerWidth / 2.4} />
           </PracticeCard>
@@ -76,7 +77,7 @@ export class ResponseWindow extends Component {
 const mapStateToProps = (state) => ({
   questions: state.question_reducer.questions,
   loaded: state.question_reducer.loaded,
-  done: state.question_reducer.done,
+  last_q: state.question_reducer.last_q,
   q_count: state.question_reducer.q_count,
   q_index: state.question_reducer.q_index,
 });

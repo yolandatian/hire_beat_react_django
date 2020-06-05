@@ -7,12 +7,12 @@ import ResponseWindow from "./ResponseWindow";
 import TestDevice from "./TestDevice";
 import { SetupCard, CardRow, CardButton, selectParam } from "./CardComponents";
 
-export class PracticePage extends Component {
+export class SelectParam extends Component {
   state = {
     type: "behavior",
     paramsAreSet: false,
     deviceTested: false,
-    numberOfQuestions: { value: 2, label: "2 Questions" },
+    numberOfQuestions: { value: 3, label: "3 Questions" },
     lengthOfResponse: { value: 1, label: "1 minute" },
   };
 
@@ -105,4 +105,4 @@ export class PracticePage extends Component {
   }
 }
 
-export default PracticePage;
+export default SelectParam;

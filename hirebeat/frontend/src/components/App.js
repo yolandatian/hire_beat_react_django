@@ -17,7 +17,7 @@ import Login from "./accounts/Login";
 import Register from "./accounts/Register";
 import PrivateRoute from "./basic/PrivateRoute";
 import Home from "./home/Home";
-import PracticePage from "./practice/PracticePage";
+import SelectParam from "./practice/SelectParam";
 
 import { loadUser, loadProfile } from "../redux/actions/auth_actions";
 
@@ -62,7 +62,7 @@ class App extends Component {
                 <PrivateRoute
                   exact
                   path="/practice/:type"
-                  component={PracticePage}
+                  component={SelectParam}
                 />
                 <PrivateRoute
                   exact

@@ -114,6 +114,7 @@ export class VideoRecorder extends Component {
               resetDeviceAndNextQuestion={this.resetDeviceAndNextQuestion}
               resetDevice={this.resetDevice}
               video={this.state.video}
+              last_q={this.props.last_q}
             />
           ) : null}
         </div>

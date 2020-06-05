@@ -8,6 +8,7 @@ import {
   RecordDoneButton,
   BglessCardButton,
 } from "../practice/CardComponents";
+import { withRouter } from "react-router-dom";
 
 export class MyVideoUploader extends Component {
   constructor(props) {
@@ -45,7 +46,28 @@ export class MyVideoUploader extends Component {
     this.props.resetDeviceAndNextQuestion();
   }
 
+  handleUploadAndFinish = () => {
+    this.uploader.uploadFile(this.props.video);
+    this.redirectToDashboard();
+  };
+
+  redirectToDashboard = () => {
+    // redirect to profile
+    const { history } = this.props;
+    if (history) history.push("/dashboard/");
+  };
+
   render() {
+    var saveOnTap = this.handleUpload;
+    var skipOnTap = this.props.resetDeviceAndNextQuestion;
+    var saveText = "Save and Next";
+    var skipText = "Discard and Skip";
+    if (this.props.last_q) {
+      saveOnTap = this.handleUploadAndFinish;
+      skipOnTap = this.redirectToDashboard;
+      saveText = "Save and Finish";
+      skipText = "Skip and Finish";
+    }
     return (
       <div>
         <div style={{ display: "none" }}>
@@ -66,8 +88,8 @@ export class MyVideoUploader extends Component {
         </div>
         <br />
         <RecordDoneButton
-          onTap={this.handleUpload}
-          textDisplayed={"Save and Next"}
+          onTap={saveOnTap}
+          textDisplayed={saveText}
           buttonWidth={"100%"}
         />
         <VideoNumberLinkRow
@@ -80,8 +102,8 @@ export class MyVideoUploader extends Component {
           buttonWidth={"100%"}
         />
         <BglessCardButton
-          onTap={this.props.resetDeviceAndNextQuestion}
-          textDisplayed={"Discard and Skip"}
+          onTap={skipOnTap}
+          textDisplayed={skipText}
           buttonWidth={"100%"}
         />
       </div>
@@ -94,4 +116,6 @@ const mapStateToProps = (state) => ({
   q_index: state.question_reducer.q_index,
 });
 
-export default connect(mapStateToProps, { addVideo })(MyVideoUploader);
+export default connect(mapStateToProps, { addVideo })(
+  withRouter(MyVideoUploader)
+);

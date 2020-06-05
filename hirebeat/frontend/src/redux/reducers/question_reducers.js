@@ -1,10 +1,11 @@
 import { GET_QUESTIONS, NEXT_QUESTION } from "../actions/action_types";
+import { stat } from "fs";
 
 const initialState = {
   questions: [],
   q_index: 0,
   q_count: 0,
-  done: false,
+  last_q: false,
   loaded: false,
 };
 
@@ -18,12 +19,15 @@ export default function (state = initialState, action) {
         q_count: action.payload.length,
       };
     case NEXT_QUESTION:
-      console.log("next question");
-      if (state.q_index == state.q_count - 1) {
+      if (state.q_index == state.q_count - 2) {
+        console.log("last q");
         return {
           ...state,
-          done: true,
+          last_q: true,
+          q_index: state.q_index + 1,
         };
+      } else if (state.q_index == state.q_count - 1) {
+        return state;
       }
       return {
         ...state,
