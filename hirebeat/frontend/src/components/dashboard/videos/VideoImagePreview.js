@@ -20,7 +20,7 @@ export class VideoImagePreview extends Component {
 
   renderQuestionDescription = (des) => {
     if (des.length > 50) {
-      return des.substring(0, 50) + "...";
+      return des.substring(0, 65) + "...";
     }
     return des;
   };

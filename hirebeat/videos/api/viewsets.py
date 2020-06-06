@@ -13,7 +13,7 @@ class VideoViewSet(viewsets.ModelViewSet):
 
     # queryset = Video.objects.all() get all videos
     def get_queryset(self):
-        return self.request.user.videos.all()
+        return self.request.user.videos.all().order_by('-created_at')
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
