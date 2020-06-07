@@ -15,7 +15,7 @@ export class Dashboard extends Component {
   }
 
   state = {
-    subpage: "videos",
+    subpage: "videos", // or profile
   };
 
   renderVideos = () => {

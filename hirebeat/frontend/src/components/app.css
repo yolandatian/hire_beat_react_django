@@ -58,7 +58,13 @@
 .video-recorder-row {
   display: flex;
   justify-content: center;
-  padding-bottom: 1%;
+  margin-bottom: 1%;
+}
+
+.prep-countdown-container {
+  border: 1px solid lightgray;
+  height: 400px;
+  padding-top: 100px;
 }
 
 .practice-card-top-row {
@@ -94,6 +100,10 @@
   padding: 1;
   height: 200px;
   width: 45%;
+}
+
+.ins {
+  color: "#f3a340";
 }
 
 .vertically-center {

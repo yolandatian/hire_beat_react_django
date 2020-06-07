@@ -8,6 +8,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { getQuestions } from "../../redux/actions/question_actions";
 import { createMessage } from "../../redux/actions/message_actions";
+import PrepCountdown from "./PrepCountdown";
 
 export class ResponseWindow extends Component {
   static propTypes = {
@@ -20,12 +21,18 @@ export class ResponseWindow extends Component {
   };
 
   state = {
-    status: "waiting", // Used to control CountdownBar and 30's preparation
+    status: "waiting", // or start or recording, or done. Used to control CountdownBar and 30's preparation
   };
 
   componentDidMount() {
     this.props.getQuestions(this.props.questionNumber);
   }
+
+  finishCountdown = () => {
+    this.setState({
+      status: "start",
+    });
+  };
 
   startRecording = () => {
     this.setState({
@@ -59,14 +66,18 @@ export class ResponseWindow extends Component {
               />
             </div>
             <h4>{this.props.questions[this.props.q_index].description}</h4>
-            <VideoRecorder
-              {...videoRecorderOptions}
-              startRecording={this.startRecording}
-              recordingDone={this.recordingDone}
-              isTesting={false}
-              last_q={this.props.last_q}
-            />
-            <NotePad padWidth={window.innerWidth / 2.4} />
+            {this.state.status == "waiting" ? (
+              <PrepCountdown finishCountdown={this.finishCountdown} />
+            ) : (
+              <VideoRecorder
+                {...videoRecorderOptions}
+                startRecording={this.startRecording}
+                recordingDone={this.recordingDone}
+                isTesting={false}
+                last_q={this.props.last_q}
+              />
+            )}
+            <NotePad />
           </PracticeCard>
         ) : null}
       </div>

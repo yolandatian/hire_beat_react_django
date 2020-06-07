@@ -6,7 +6,7 @@ export class NotePad extends Component {
       <div className="video-recorder-row">
         <div className="col-8">
           <textarea
-            style={{ width: this.props.padWidth, height: "80px" }}
+            style={{ width: window.innerWidth / 2.4, height: "80px" }}
             placeholder=" Your notepad ..."
           />
         </div>
