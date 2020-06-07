@@ -64,10 +64,14 @@ export class VideoRecorder extends Component {
   }
 
   componentWillUnmount() {
-    if (this.player) {
-      this.player.dispose();
-    }
+    this.disposePlayer();
   }
+
+  disposePlayer = () => {
+    if (this.player) {
+      this.player.record().destroy();
+    }
+  };
 
   recordFinished = () => {
     this.setState({
@@ -114,6 +118,7 @@ export class VideoRecorder extends Component {
             <MyVideoUploader
               resetDeviceAndNextQuestion={this.resetDeviceAndNextQuestion}
               resetDevice={this.resetDevice}
+              disposePlayer={this.disposePlayer}
               video={this.state.video}
               last_q={this.props.last_q}
             />
