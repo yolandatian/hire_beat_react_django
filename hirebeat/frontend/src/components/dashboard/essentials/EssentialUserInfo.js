@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import billGates from "../../../assets/billgates.jpg";
 import ImageButton from "../../basic/ImageButton";
-import { DbRow, DbCenterRow } from "../DashboardComponents";
+import { IconButton, DbCenterRow, IconText } from "../DashboardComponents";
 
 export class EssentialUserInfo extends Component {
   render() {
@@ -26,15 +26,43 @@ export class EssentialUserInfo extends Component {
                   <h1 style={{ fontSize: "18px", marginRight: "30px" }}>
                     {this.props.profile.membership}
                   </h1>
-                  <button>edit</button>
+                  <div
+                    className="d-flex justify-content-end"
+                    style={{ width: "100%" }}
+                  >
+                    <IconButton
+                      iconName={"edit"}
+                      iconSize={"23px"}
+                      iconColor={"#98b8f6"}
+                      onTap={() => {}}
+                    />
+                  </div>
                 </div>
               </div>
               <div className="row">
-                <div className="col-6">{this.props.profile.phone_number}</div>
-                <div className="col-6">{this.props.profile.location}</div>
+                <div className="col-6">
+                  <IconText
+                    iconName={"phone"}
+                    textDisplayed={this.props.profile.phone_number}
+                    textSize={"15px"}
+                  />
+                </div>
+                <div className="col-6">
+                  <IconText
+                    iconName={"location_on"}
+                    textDisplayed={this.props.profile.location}
+                    textSize={"15px"}
+                  />
+                </div>
               </div>
               <div className="row">
-                <div className="col">{this.props.user.email}</div>
+                <div className="col">
+                  <IconText
+                    iconName={"email"}
+                    textDisplayed={this.props.user.email}
+                    textSize={"15px"}
+                  />
+                </div>
               </div>
             </div>
           </DbCenterRow>
