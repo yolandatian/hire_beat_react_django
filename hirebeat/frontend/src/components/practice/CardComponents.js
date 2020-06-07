@@ -126,13 +126,7 @@ export const ButtonContainer = (src, onTap, textDisplayed) => {
       <CardRow>
         <p>
           {"What is a "}
-          <ins
-            style={{
-              color: "#f3a340",
-            }}
-          >
-            {textDisplayed}?
-          </ins>
+          <StyledLink>{textDisplayed}?</StyledLink>
         </p>
       </CardRow>
     </div>
@@ -161,5 +155,18 @@ export const SelectCol = (props) => {
     <div className="col-4">
       <div className="react-select-container">{props.children}</div>
     </div>
+  );
+};
+
+export const StyledLink = (props) => {
+  return (
+    <a
+      style={{
+        color: "#f3a340",
+        textDecoration: "underline",
+      }}
+    >
+      {props.children}
+    </a>
   );
 };

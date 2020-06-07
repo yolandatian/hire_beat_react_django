@@ -10,6 +10,13 @@ export class CountdownBar extends Component {
   componentDidUpdate(prevProps) {
     if (
       prevProps.status != this.props.status &&
+      this.props.status == "waiting"
+    ) {
+      this.setState({
+        timeRemain: this.state.timeTotal,
+      });
+    } else if (
+      prevProps.status != this.props.status &&
       this.props.status == "recording"
     ) {
       this.startCountDown();

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { CardButton, CardRow } from "./CardComponents";
+import { CardButton, CardRow, StyledLink } from "./CardComponents";
 
 export class PrepCountdown extends Component {
   state = {
@@ -42,8 +42,10 @@ export class PrepCountdown extends Component {
           >
             <CardRow>Prepare your response</CardRow>
             <CardRow>
-              <ins>{this.state.timeRemain}s </ins>left
+              <StyledLink>{this.state.timeRemain}s </StyledLink>left
             </CardRow>
+            <br />
+            <br />
             <CardRow>
               <CardButton
                 onTap={this.props.finishCountdown}

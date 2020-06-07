@@ -81,6 +81,7 @@ export class VideoRecorder extends Component {
   resetDeviceAndNextQuestion = () => {
     this.resetDevice();
     this.props.onNextQuestion();
+    this.props.resetCountdownBar();
   };
 
   resetDevice = () => {

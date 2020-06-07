@@ -46,6 +46,12 @@ export class ResponseWindow extends Component {
     });
   };
 
+  resetCountdownBar = () => {
+    this.setState({
+      status: "waiting",
+    });
+  };
+
   render() {
     videoRecorderOptions.plugins.record.maxLength =
       this.props.responseLength * 60;
@@ -73,6 +79,7 @@ export class ResponseWindow extends Component {
                 {...videoRecorderOptions}
                 startRecording={this.startRecording}
                 recordingDone={this.recordingDone}
+                resetCountdownBar={this.resetCountdownBar}
                 isTesting={false}
                 last_q={this.props.last_q}
               />
