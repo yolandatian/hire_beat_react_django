@@ -2,6 +2,7 @@ import React from "react";
 import Select from "react-select";
 import techIcon from "../../assets/tech_icon.png";
 
+// Styled components
 // Some styles are kept b/c the element's className can't be overwritten
 
 function CardHeader() {

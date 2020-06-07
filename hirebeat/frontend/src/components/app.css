@@ -109,6 +109,26 @@
   height: 20px;
 }
 
+.dashboard-container {
+  margin-top: 50px;
+  border: "none";
+}
+
+.dashboard-row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1%;
+}
+
+.dashboard-align-center-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1%;
+}
+
+/* override textarea*/
+
 textarea:focus::placeholder {
   color: transparent;
 }

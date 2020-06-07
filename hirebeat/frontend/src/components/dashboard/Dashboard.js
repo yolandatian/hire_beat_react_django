@@ -3,11 +3,9 @@ import ButtonPanel from "./panel/ButtonPanel";
 import EssentialUserInfo from "./essentials/EssentialUserInfo";
 import ProfileInfo from "./profile/ProfileInfo";
 import VideoContainer from "./videos/VideoContainer";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 import { updateProfile, loadProfile } from "../../redux/actions/auth_actions";
 import { connect } from "react-redux";
+import { DbRow } from "./DashboardComponents";
 
 export class Dashboard extends Component {
   componentDidMount() {
@@ -49,39 +47,27 @@ export class Dashboard extends Component {
 
   render() {
     return (
-      <div>
-        <Container>
-          <br />
-          <br />
-          <Row>
-            <Col>
-              <div className="card">
-                <div className="card-body">
-                  <EssentialUserInfo user={this.props.user} />
-                </div>
-              </div>
-            </Col>
-          </Row>
-          <br />
-          <br />
-          <Row>
-            <Col md={2} style={{ marginLeft: "5%" }}>
-              <div className="card">
-                <div className="card-body">
-                  <ButtonPanel
-                    renderVideos={this.renderVideos}
-                    renderProfile={this.renderProfile}
-                  />
-                </div>
-              </div>
-            </Col>
-            <Col md={8} style={{ marginLeft: "5%" }}>
-              <div className="card">
-                <div className="card-body">{this.renderSubpage()}</div>
-              </div>
-            </Col>
-          </Row>
-        </Container>
+      <div className="container dashboard-container">
+        <DbRow>
+          <div className="col-7">
+            <EssentialUserInfo
+              user={this.props.user}
+              profile={this.props.profile}
+            />
+          </div>
+          <div className="col-4"></div>
+        </DbRow>
+        <br />
+        <br />
+        <DbRow>
+          <div className="col-2">
+            <ButtonPanel
+              renderVideos={this.renderVideos}
+              renderProfile={this.renderProfile}
+            />
+          </div>
+          <div className="col-10">{this.renderSubpage()}</div>
+        </DbRow>
       </div>
     );
   }
