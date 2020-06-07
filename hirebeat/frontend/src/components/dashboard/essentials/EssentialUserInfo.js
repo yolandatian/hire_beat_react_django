@@ -9,21 +9,34 @@ export class EssentialUserInfo extends Component {
       <div className="card container">
         <div className="card-body">
           <DbCenterRow>
-            <div className="col-3">
+            <div className="col-4">
               <ImageButton src={billGates} func={() => {}} type={"avatar"} />
             </div>
-            <div className="col-7">
+            <div className="col-8">
               <div className="row">
-                <h1 style={{ fontWeight: "bold" }}>
-                  {this.props.user.username}
-                </h1>
+                <div className="col d-flex align-items-center">
+                  <h1
+                    style={{
+                      fontWeight: "bold",
+                      marginRight: "30px",
+                    }}
+                  >
+                    {this.props.user.username}
+                  </h1>
+                  <h1 style={{ fontSize: "18px", marginRight: "30px" }}>
+                    {this.props.profile.membership}
+                  </h1>
+                  <button>edit</button>
+                </div>
               </div>
-              <div className="row">{this.props.profile.membership}</div>
-              <div className="row">{this.props.user.email}</div>
-              <div className="row">{this.props.profile.phone_number}</div>
-              <div className="row">{this.props.profile.location}</div>
+              <div className="row">
+                <div className="col-6">{this.props.profile.phone_number}</div>
+                <div className="col-6">{this.props.profile.location}</div>
+              </div>
+              <div className="row">
+                <div className="col">{this.props.user.email}</div>
+              </div>
             </div>
-            <div className="col-2"></div>
           </DbCenterRow>
         </div>
       </div>

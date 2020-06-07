@@ -11,11 +11,11 @@ export class ImageButton extends Component {
     switch (this.props.type) {
       case "avatar":
         return {
-          width: "80px",
-          height: "80px",
-          borderRadius: "45px",
+          width: "100px",
+          height: "100px",
+          borderRadius: "50px",
           backgroundImage: `url(${this.props.src})`,
-          backgroundSize: "80px",
+          backgroundSize: "100px",
           outline: "none",
         };
       default:
