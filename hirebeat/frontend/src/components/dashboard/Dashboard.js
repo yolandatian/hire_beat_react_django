@@ -13,12 +13,18 @@ export class Dashboard extends Component {
   }
 
   state = {
-    subpage: "videos", // or profile
+    subpage: "videos", // or profile or analytics
   };
 
   renderVideos = () => {
     this.setState({
       subpage: "videos",
+    });
+  };
+
+  renderAnalytics = () => {
+    this.setState({
+      subpage: "analytics",
     });
   };
 
@@ -40,6 +46,8 @@ export class Dashboard extends Component {
         );
       case "videos":
         return <VideoContainer />;
+      case "analytics":
+        return <h1>Analytics list</h1>;
       default:
       //Do nothing
     }
@@ -64,6 +72,8 @@ export class Dashboard extends Component {
             <ButtonPanel
               renderVideos={this.renderVideos}
               renderProfile={this.renderProfile}
+              renderAnalytics={this.renderAnalytics}
+              subpage={this.state.subpage}
             />
           </div>
           <div className="col-10">{this.renderSubpage()}</div>

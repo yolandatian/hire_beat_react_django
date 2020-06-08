@@ -38,15 +38,19 @@ export const IconButton = (props) => {
 };
 
 export const IconText = (props) => {
-  //textSize, textDisplayed, iconName
+  //textSize, textDisplayed, iconName, textColor?
   return (
     <div className="d-flex align-items-center">
-      <Icon iconName={props.iconName} iconSize={props.textSize} />
+      <Icon
+        iconName={props.iconName}
+        iconSize={props.textSize}
+        iconColor={props.textColor}
+      />
       <p
         style={{
           fontSize: props.textSize,
           marginBottom: "1px",
-          color: "#7d7d7d",
+          color: props.textColor ?? "#7d7d7d",
         }}
       >
         {props.textDisplayed}

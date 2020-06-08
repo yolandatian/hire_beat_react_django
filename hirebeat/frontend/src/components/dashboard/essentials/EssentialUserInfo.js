@@ -23,9 +23,6 @@ export class EssentialUserInfo extends Component {
                   >
                     {this.props.user.username}
                   </h1>
-                  <h1 style={{ fontSize: "18px", marginRight: "30px" }}>
-                    {this.props.profile.membership}
-                  </h1>
                   <div
                     className="d-flex justify-content-end"
                     style={{ width: "100%" }}

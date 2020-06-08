@@ -1,9 +1,9 @@
 import React from "react";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+import { IconText } from "../DashboardComponents";
 
 function ButtonPanel(props) {
+  var selectColor = "#538af2";
+  var defaultColor = "#7d7d7d";
   return (
     <div>
       <button
@@ -11,7 +11,25 @@ function ButtonPanel(props) {
         className="panel-button"
         onClick={props.renderVideos}
       >
-        Videos
+        <IconText
+          textSize={"18px"}
+          textDisplayed={"Videos"}
+          iconName={"video_library"}
+          textColor={props.subpage == "videos" ? selectColor : defaultColor}
+        />
+      </button>
+      <br />
+      <button
+        type="button"
+        className="panel-button"
+        onClick={props.renderAnalytics}
+      >
+        <IconText
+          textSize={"18px"}
+          textDisplayed={"Analytics"}
+          iconName={"analytics"}
+          textColor={props.subpage == "analytics" ? selectColor : defaultColor}
+        />
       </button>
       <br />
       <button
@@ -19,7 +37,12 @@ function ButtonPanel(props) {
         className="panel-button"
         onClick={props.renderProfile}
       >
-        Profile
+        <IconText
+          textSize={"18px"}
+          textDisplayed={"Profile"}
+          iconName={"article"}
+          textColor={props.subpage == "profile" ? selectColor : defaultColor}
+        />
       </button>
     </div>
   );

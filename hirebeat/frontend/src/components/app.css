@@ -16,6 +16,7 @@
 .panel-button {
   display: block;
   width: 100%;
+  background-color: #fafafb;
   border: none;
   padding: 14px 28px;
   font-size: 16px;
