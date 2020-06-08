@@ -32,6 +32,7 @@ export class VideoPreviewList extends Component {
                     url={v.url}
                     des={v.q_description}
                     date={v.created_at}
+                    q_type={v.q_type}
                     needed_expert_review={v.needed_expert_review}
                     is_expert_reviewed={v.is_expert_reviewed}
                     sendVideoForReview={() =>

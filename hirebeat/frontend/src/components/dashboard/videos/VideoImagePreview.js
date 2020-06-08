@@ -36,6 +36,7 @@ export class VideoImagePreview extends Component {
             <div className="col">
               <h3>Q:{this.renderQuestionDescription(this.props.des)}</h3>
               <h4>{this.props.date.substring(0, 10)}</h4>
+              <h4>{this.props.q_type}</h4>
               <ReviewStatusButton
                 redirectToVideoPlayer={this.redirectToVideoPlayer}
                 needed_expert_review={this.props.needed_expert_review}
