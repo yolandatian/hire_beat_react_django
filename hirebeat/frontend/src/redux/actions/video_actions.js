@@ -92,8 +92,9 @@ export const addVideoReviews = (score, comments, video_id) => (
     );
 };
 
-export const sendVideoForReview = (id) => (dispatch, getState) => {
+export const sendVideoForReview = (type, id) => (dispatch, getState) => {
   const body = JSON.stringify({
+    type, // "ai" or "expert"
     id,
   });
   return axios

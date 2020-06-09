@@ -3,6 +3,7 @@ import Modal from "react-bootstrap/Modal";
 import aiIcon from "../../../assets/ai_icon.png";
 import expertIcon from "../../../assets/expert_icon.png";
 import { ButtonContainer } from "../../practice/CardComponents";
+import { renderQDes } from "../DashboardComponents";
 
 const renderSuccessTag = (text) => {
   return (
@@ -24,9 +25,10 @@ const renderSuccessTag = (text) => {
 };
 
 function MyVerticallyCenteredModal(props) {
+  const { sendVideoForReview, ...rest } = props;
   return (
     <Modal
-      {...props}
+      {...rest}
       dialogClassName="my-modal"
       aria-labelledby="contained-modal-title-vcenter"
       centered
@@ -37,12 +39,24 @@ function MyVerticallyCenteredModal(props) {
           <p className="text-secondary">Create Your Interview Result</p>
           <h3>Choose Analysis Method</h3>
           <p className="text-primary" style={{ fontSize: "25px" }}>
-            Q:xxxx
+            Q:{renderQDes(props.v.q_description)}
           </p>
         </div>
         <div className="row setup-card-row-bottom">
-          {ButtonContainer(expertIcon, () => {}, "Expert Analytics")}
-          {ButtonContainer(aiIcon, () => {}, "AI Analytics")}
+          {ButtonContainer(
+            expertIcon,
+            () => {
+              sendVideoForReview("expert", props.v.id);
+            },
+            "Expert Analytics"
+          )}
+          {ButtonContainer(
+            aiIcon,
+            () => {
+              sendVideoForReview("ai", props.v.id);
+            },
+            "AI Analytics"
+          )}
         </div>
       </div>
     </Modal>
@@ -57,7 +71,7 @@ function ReviewStatusButton(props) {
 
   if (props.v.is_expert_reviewed && props.v.is_ai_reviewed) {
     text = "Reviews Ready";
-    onTap = props.redirectToVideoPlayer;
+    onTap = null;
     className = "btn btn-success";
   } else if (!props.v.needed_expert_review || !props.v.needed_ai_review) {
     text = "Send for review";
@@ -76,7 +90,12 @@ function ReviewStatusButton(props) {
       <button onClick={onTap} className={className}>
         {text}
       </button>
-      <MyVerticallyCenteredModal show={show} onHide={() => setShow(false)} />
+      <MyVerticallyCenteredModal
+        show={show}
+        onHide={() => setShow(false)}
+        v={props.v}
+        sendVideoForReview={props.sendVideoForReview}
+      />
     </div>
   );
 }

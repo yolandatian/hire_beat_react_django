@@ -29,9 +29,7 @@ export class VideoPreviewList extends Component {
                   <VideoImagePreview
                     v={v}
                     key={v.id}
-                    sendVideoForReview={() =>
-                      this.props.sendVideoForReview(v.id)
-                    }
+                    sendVideoForReview={this.props.sendVideoForReview}
                   />
                   <br />
                 </div>

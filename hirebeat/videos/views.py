@@ -58,8 +58,12 @@ def get_unreviewed_video(request):
 @api_view(['POST'])
 def mark_video_as_needed_review(request):
     id = request.data["id"]
+    type = request.data["type"]
     video = Video.objects.filter(id=id)[0]
-    video.needed_expert_review = True
+    if type == "expert":
+        video.needed_expert_review = True
+    if type == "ai":
+        video.needed_ai_review = True
     video.save()
     serializer = VideoSerializer(video)
     return Response(serializer.data)

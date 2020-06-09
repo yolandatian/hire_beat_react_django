@@ -44,7 +44,8 @@ export default function (state = initialState, action) {
           if (video.id == action.payload.id) {
             return {
               ...video,
-              needed_expert_review: true,
+              needed_expert_review: action.payload.needed_expert_review,
+              needed_ai_review: action.payload.needed_ai_review,
             };
           }
           return video;

@@ -57,3 +57,18 @@ export const IconText = (props) => {
     </div>
   );
 };
+
+export const renderQDes = (des) => {
+  var length = 65;
+  var i = 0;
+  if (des.length > length) {
+    var ans = des.substring(0, length);
+    while (des[length + i] !== " ") {
+      // Make sure the des ends with a complete word
+      ans = ans + des[length + i];
+      i++;
+    }
+    return ans + "...";
+  }
+  return des;
+};
