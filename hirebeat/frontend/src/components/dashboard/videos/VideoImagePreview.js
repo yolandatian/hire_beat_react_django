@@ -7,25 +7,27 @@ import { withRouter } from "react-router-dom";
 
 export class VideoImagePreview extends Component {
   static propTypes = {
-    id: PropTypes.number.isRequired,
-    url: PropTypes.string.isRequired,
-    des: PropTypes.string.isRequired,
-    date: PropTypes.string.isRequired,
+    v: PropTypes.object.isRequired,
   };
 
   redirectToVideoPlayer = () => {
     const { history } = this.props;
-    if (history) history.push(`/video/${this.props.id}`);
+    if (history) history.push(`/video/${this.props.v.id}`);
   };
 
-  renderQuestionDescription = (des) => {
-    if (des.length > 50) {
-      return des.substring(0, 65) + "...";
+  renderQDes = (des) => {
+    var length = 65;
+    if (des.length > length) {
+      return des.substring(0, length) + "...";
     }
     return des;
   };
 
   render() {
+    var badgeClassName =
+      this.props.v.q_type == "Behavior Question"
+        ? "badge badge-info"
+        : "badge badge-dark";
     return (
       <div className="card">
         <div className="card-body">
@@ -34,13 +36,12 @@ export class VideoImagePreview extends Component {
               <ImageButton src={videoImg} func={this.redirectToVideoPlayer} />
             </div>
             <div className="col">
-              <h3>Q:{this.renderQuestionDescription(this.props.des)}</h3>
-              <h4>{this.props.date.substring(0, 10)}</h4>
-              <h4>{this.props.q_type}</h4>
+              <h3>Q:{this.renderQDes(this.props.v.q_description)}</h3>
+              <h4>{this.props.v.created_at.substring(0, 10)}</h4>
+              <span className={badgeClassName}>{this.props.v.q_type}</span>
               <ReviewStatusButton
+                v={this.props.v}
                 redirectToVideoPlayer={this.redirectToVideoPlayer}
-                needed_expert_review={this.props.needed_expert_review}
-                is_expert_reviewed={this.props.is_expert_reviewed}
                 sendVideoForReview={this.props.sendVideoForReview}
               />
             </div>

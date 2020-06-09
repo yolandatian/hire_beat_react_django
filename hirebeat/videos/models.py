@@ -23,3 +23,5 @@ class Video(models.Model):
     score = models.FloatField(default=5.0)
     reviewer = models.ForeignKey(User, related_name="reviewed_videos", on_delete= models.SET_NULL, null=True, blank=True)
     # More fields to add
+    def __str__(self):
+        return self.owner.username + '|' + self.created_at.strftime("%m/%d/%Y")

@@ -1,5 +1,4 @@
 import React from "react";
-import { positions } from "react-alert";
 
 export const DbRow = (props) => {
   return <div className="dashboard-row">{props.children}</div>;
