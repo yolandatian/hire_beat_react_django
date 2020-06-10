@@ -7,6 +7,7 @@ import { renderQDes } from "../DashboardComponents";
 import { withRouter } from "react-router-dom";
 
 export class VideoImagePreview extends Component {
+  // control status, render modal
   static propTypes = {
     v: PropTypes.object.isRequired,
   };

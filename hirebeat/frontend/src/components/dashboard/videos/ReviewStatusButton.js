@@ -47,8 +47,7 @@ function ReviewStatusButton(props) {
   );
 }
 
-function MyVerticallyCenteredModal(props) {
-  const { sendVideoForReview, ...rest } = props;
+function ReviewStatus(props) {
   const [btnClassNameExpert, onTapExpert] = decideClassNameAndOnTap(
     "expert",
     props.v,
@@ -64,6 +63,30 @@ function MyVerticallyCenteredModal(props) {
   var btnTextExpert = "Expert Analytics";
   var btnTextAI = "AI Analytics";
   return (
+    <div className="container height-400">
+      <div className="d-flex flex-column justify-content-center align-items-center">
+        <p className="text-secondary">Create Your Interview Result</p>
+        <h3>Choose Analysis Method</h3>
+        <p className="text-primary" style={{ fontSize: "25px" }}>
+          Q:{renderQDes(props.v.q_description)}
+        </p>
+      </div>
+      <div className="row setup-card-row-bottom">
+        {ButtonContainer(
+          expertIcon,
+          onTapExpert,
+          btnTextExpert,
+          btnClassNameExpert
+        )}
+        {ButtonContainer(aiIcon, onTapAI, btnTextAI, btnClassNameAI)}
+      </div>
+    </div>
+  );
+}
+
+function MyVerticallyCenteredModal(props) {
+  const { sendVideoForReview, v, ...rest } = props;
+  return (
     <Modal
       {...rest}
       dialogClassName="my-modal"
@@ -71,24 +94,7 @@ function MyVerticallyCenteredModal(props) {
       centered
     >
       <Modal.Header closeButton style={{ border: "none", height: "6px" }} />
-      <div className="container height-400">
-        <div className="d-flex flex-column justify-content-center align-items-center">
-          <p className="text-secondary">Create Your Interview Result</p>
-          <h3>Choose Analysis Method</h3>
-          <p className="text-primary" style={{ fontSize: "25px" }}>
-            Q:{renderQDes(props.v.q_description)}
-          </p>
-        </div>
-        <div className="row setup-card-row-bottom">
-          {ButtonContainer(
-            expertIcon,
-            onTapExpert,
-            btnTextExpert,
-            btnClassNameExpert
-          )}
-          {ButtonContainer(aiIcon, onTapAI, btnTextAI, btnClassNameAI)}
-        </div>
-      </div>
+      <ReviewStatus sendVideoForReview={sendVideoForReview} v={v} />
     </Modal>
   );
 }
