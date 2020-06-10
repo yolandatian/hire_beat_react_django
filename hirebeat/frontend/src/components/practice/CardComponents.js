@@ -46,13 +46,13 @@ export const CardRowMidHigh = (props) => {
 export const CardButton = (props) => {
   return (
     <button
-      className={
-        props.disabled ? "btn btn-warning disabled" : "btn btn-warning"
-      }
+      className={props.btnClassName ?? "btn btn-warning"}
       style={{
         WebkitBorderRadius: "20px",
         width: props.buttonWidth,
-        boxShadow: "0px 0px 8px #dc6b2a",
+        boxShadow:
+          "0px 0px 8px" +
+          (props.btnClassName == "btn btn-success" ? " #7cb873" : " #dc6b2a"),
       }}
       onClick={props.onTap}
     >
@@ -113,7 +113,7 @@ export const VideoNumberLinkRow = (props) => {
   );
 };
 
-export const ButtonContainer = (src, onTap, textDisplayed, disabled) => {
+export const ButtonContainer = (src, onTap, textDisplayed, btnClassName) => {
   return (
     <div className="setup-card-button-container">
       <CardRow>
@@ -124,7 +124,7 @@ export const ButtonContainer = (src, onTap, textDisplayed, disabled) => {
           onTap={onTap}
           textDisplayed={textDisplayed}
           buttonWidth={"85%"}
-          disabled={disabled}
+          btnClassName={btnClassName}
         />
       </CardRow>
       <CardRow>

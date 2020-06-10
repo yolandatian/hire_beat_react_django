@@ -41,7 +41,6 @@ export class VideoImagePreview extends Component {
             </div>
             <ReviewStatusButton
               v={this.props.v}
-              // see review func
               sendVideoForReview={this.props.sendVideoForReview}
             />
           </div>

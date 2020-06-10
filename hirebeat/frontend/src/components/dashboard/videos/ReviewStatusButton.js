@@ -5,8 +5,45 @@ import expertIcon from "../../../assets/expert_icon.png";
 import { ButtonContainer } from "../../practice/CardComponents";
 import { renderQDes, renderSuccessTag } from "../DashboardComponents";
 
+function decideClassNameAndOnTap(type, v, sendVideoForReview, seeReview) {
+  // returns a tuple [btnClassName, onTap]
+  if (type == "expert") {
+    if (v.is_expert_reviewed) {
+      return ["btn btn-success", () => seeReview(v)];
+    } else if (v.needed_expert_review) {
+      return ["btn btn-warning disabled", null];
+    } else {
+      return ["btn btn-warning", () => sendVideoForReview("expert", v.id)];
+    }
+  } else {
+    // ai
+    if (v.is_ai_reviewed) {
+      return ["btn btn-success", () => seeReview(v)];
+    } else if (v.needed_ai_review) {
+      return ["btn btn-warning disabled", null];
+    } else {
+      return ["btn btn-warning", () => sendVideoForReview("ai", v.id)];
+    }
+  }
+}
+
 function MyVerticallyCenteredModal(props) {
   const { sendVideoForReview, ...rest } = props;
+  const [btnClassNameExpert, onTapExpert] = decideClassNameAndOnTap(
+    "expert",
+    props.v,
+    props.sendVideoForReview,
+    () => {}
+  );
+  const [btnClassNameAI, onTapAI] = decideClassNameAndOnTap(
+    "ai",
+    props.v,
+    props.sendVideoForReview,
+    () => {}
+  );
+
+  var btnTextExpert = "Expert Analytics";
+  var btnTextAI = "AI Analytics";
   return (
     <Modal
       {...rest}
@@ -26,21 +63,16 @@ function MyVerticallyCenteredModal(props) {
         <div className="row setup-card-row-bottom">
           {ButtonContainer(
             expertIcon,
-            () => {
-              sendVideoForReview("expert", props.v.id);
-            },
-            "Expert Analytics",
-            props.v.needed_expert_review || props.v.is_expert_reviewed
-              ? true
-              : false
+            onTapExpert,
+            btnTextExpert,
+            btnClassNameExpert
           )}
           {ButtonContainer(
             aiIcon,
-            () => {
-              sendVideoForReview("ai", props.v.id);
-            },
-            "AI Analytics",
-            props.v.needed_ai_review || props.v.is_ai_reviewed ? true : false
+            onTapAI,
+            btnTextAI,
+            btnClassNameAI
+            //props.v.needed_ai_review || props.v.is_ai_reviewed ? true : false
           )}
         </div>
       </div>
@@ -52,20 +84,17 @@ function ReviewStatusButton(props) {
   const [show, setShow] = useState(false);
   var text = "";
   var className = "";
-  var onTap = null;
 
-  // decide text, className, onTap function based on review status
+  // decide text, className based on review status
   if (props.v.is_expert_reviewed && props.v.is_ai_reviewed) {
     text = "Reviews Ready";
-    onTap = null;
     className = "btn btn-success";
   } else if (!props.v.needed_expert_review || !props.v.needed_ai_review) {
     text = "Send for review";
-    onTap = () => setShow(true);
     className = "btn btn-primary";
   } else {
     text = "Under Review";
-    className = "btn btn-warning disabled";
+    className = "btn btn-warning";
   }
 
   return (
@@ -76,7 +105,7 @@ function ReviewStatusButton(props) {
       </div>
       <div className="height-30">
         <button
-          onClick={onTap}
+          onClick={() => setShow(true)}
           className={className}
           style={{ borderRadius: "20px", width: "200px" }}
         >
