@@ -77,7 +77,7 @@ function ReviewStatusButton(props) {
       <button
         onClick={onTap}
         className={className}
-        style={{ borderRadius: "20px" }}
+        style={{ borderRadius: "20px", width: "200px" }}
       >
         {text}
       </button>

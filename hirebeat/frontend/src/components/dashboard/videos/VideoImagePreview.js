@@ -17,10 +17,6 @@ export class VideoImagePreview extends Component {
   };
 
   render() {
-    var badgeClassName =
-      this.props.v.q_type == "Behavior Question"
-        ? "badge badge-info"
-        : "badge badge-dark";
     return (
       <div className="card">
         <div className="card-body">
@@ -30,8 +26,18 @@ export class VideoImagePreview extends Component {
             </div>
             <div className="col">
               <h3>Q:{renderQDes(this.props.v.q_description)}</h3>
-              <h4>{this.props.v.created_at.substring(0, 10)}</h4>
-              <span className={badgeClassName}>{this.props.v.q_type}</span>
+              <div className="d-flex justify-content-start">
+                <p className="text-secondary">{this.props.v.q_type}</p>
+                <p
+                  className="text-secondary"
+                  style={{ marginLeft: "5px", marginRight: "5px" }}
+                >
+                  {" | "}
+                </p>
+                <p className="text-secondary">
+                  {this.props.v.created_at.substring(0, 10)}
+                </p>
+              </div>
               <ReviewStatusButton
                 v={this.props.v}
                 // see review func
