@@ -28,12 +28,14 @@ export class QuestionTypeChoices extends Component {
           {ButtonContainer(
             behaviorIcon,
             this.redirectToBehaviorQuestions,
-            "Behavior Question"
+            "Behavior Question",
+            false
           )}
           {ButtonContainer(
             techIcon,
             this.redirectToTechQuestions,
-            "Tech Question"
+            "Tech Question",
+            false
           )}
         </div>
       </SetupCard>

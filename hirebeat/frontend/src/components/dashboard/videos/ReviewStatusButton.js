@@ -3,26 +3,7 @@ import Modal from "react-bootstrap/Modal";
 import aiIcon from "../../../assets/ai_icon.png";
 import expertIcon from "../../../assets/expert_icon.png";
 import { ButtonContainer } from "../../practice/CardComponents";
-import { renderQDes } from "../DashboardComponents";
-
-const renderSuccessTag = (text) => {
-  return (
-    <div className="d-flex justify-content-start">
-      <i
-        className="material-icons-outlined"
-        style={{
-          fontSize: "10px",
-          color: "#67ac5c",
-        }}
-      >
-        done
-      </i>
-      <p className="text-success" style={{ fontSize: "10px" }}>
-        {text}
-      </p>
-    </div>
-  );
-};
+import { renderQDes, renderSuccessTag } from "../DashboardComponents";
 
 function MyVerticallyCenteredModal(props) {
   const { sendVideoForReview, ...rest } = props;
@@ -34,7 +15,7 @@ function MyVerticallyCenteredModal(props) {
       centered
     >
       <Modal.Header closeButton style={{ border: "none", height: "6px" }} />
-      <div className="container" style={{ height: "400px" }}>
+      <div className="container height-400">
         <div className="d-flex flex-column justify-content-center align-items-center">
           <p className="text-secondary">Create Your Interview Result</p>
           <h3>Choose Analysis Method</h3>
@@ -48,14 +29,18 @@ function MyVerticallyCenteredModal(props) {
             () => {
               sendVideoForReview("expert", props.v.id);
             },
-            "Expert Analytics"
+            "Expert Analytics",
+            props.v.needed_expert_review || props.v.is_expert_reviewed
+              ? true
+              : false
           )}
           {ButtonContainer(
             aiIcon,
             () => {
               sendVideoForReview("ai", props.v.id);
             },
-            "AI Analytics"
+            "AI Analytics",
+            props.v.needed_ai_review || props.v.is_ai_reviewed ? true : false
           )}
         </div>
       </div>
@@ -69,6 +54,7 @@ function ReviewStatusButton(props) {
   var className = "";
   var onTap = null;
 
+  // decide text, className, onTap function based on review status
   if (props.v.is_expert_reviewed && props.v.is_ai_reviewed) {
     text = "Reviews Ready";
     onTap = null;
@@ -81,13 +67,18 @@ function ReviewStatusButton(props) {
     text = "Under Review";
     className = "btn btn-warning disabled";
   }
+
   return (
     <div>
       <div>
         {props.v.is_expert_reviewed ? renderSuccessTag("Expert") : null}
         {props.v.is_ai_reviewed ? renderSuccessTag("AI") : null}
       </div>
-      <button onClick={onTap} className={className}>
+      <button
+        onClick={onTap}
+        className={className}
+        style={{ borderRadius: "20px" }}
+      >
         {text}
       </button>
       <MyVerticallyCenteredModal

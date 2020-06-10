@@ -46,7 +46,9 @@ export const CardRowMidHigh = (props) => {
 export const CardButton = (props) => {
   return (
     <button
-      className="btn btn-warning"
+      className={
+        props.disabled ? "btn btn-warning disabled" : "btn btn-warning"
+      }
       style={{
         WebkitBorderRadius: "20px",
         width: props.buttonWidth,
@@ -111,7 +113,7 @@ export const VideoNumberLinkRow = (props) => {
   );
 };
 
-export const ButtonContainer = (src, onTap, textDisplayed) => {
+export const ButtonContainer = (src, onTap, textDisplayed, disabled) => {
   return (
     <div className="setup-card-button-container">
       <CardRow>
@@ -122,6 +124,7 @@ export const ButtonContainer = (src, onTap, textDisplayed) => {
           onTap={onTap}
           textDisplayed={textDisplayed}
           buttonWidth={"85%"}
+          disabled={disabled}
         />
       </CardRow>
       <CardRow>

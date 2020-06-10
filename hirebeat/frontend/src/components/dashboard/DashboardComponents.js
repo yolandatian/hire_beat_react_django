@@ -72,3 +72,22 @@ export const renderQDes = (des) => {
   }
   return des;
 };
+
+export const renderSuccessTag = (text) => {
+  return (
+    <div className="d-flex justify-content-start">
+      <i
+        className="material-icons-outlined"
+        style={{
+          fontSize: "10px",
+          color: "#67ac5c",
+        }}
+      >
+        done
+      </i>
+      <p className="text-success" style={{ fontSize: "10px" }}>
+        {text}
+      </p>
+    </div>
+  );
+};

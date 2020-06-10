@@ -34,7 +34,7 @@ export class VideoImagePreview extends Component {
               <span className={badgeClassName}>{this.props.v.q_type}</span>
               <ReviewStatusButton
                 v={this.props.v}
-                redirectToVideoPlayer={this.redirectToVideoPlayer}
+                // see review func
                 sendVideoForReview={this.props.sendVideoForReview}
               />
             </div>
