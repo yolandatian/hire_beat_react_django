@@ -124,7 +124,7 @@ export const ButtonContainer = (src, onTap, textDisplayed, btnClassName) => {
           onTap={onTap}
           textDisplayed={textDisplayed}
           buttonWidth={"85%"}
-          btnClassName={btnClassName}
+          btnClassName={btnClassName ?? "btn btn-warning"}
         />
       </CardRow>
       <CardRow>

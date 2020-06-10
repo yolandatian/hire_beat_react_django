@@ -5,81 +5,6 @@ import expertIcon from "../../../assets/expert_icon.png";
 import { ButtonContainer } from "../../practice/CardComponents";
 import { renderQDes, renderSuccessTag } from "../DashboardComponents";
 
-function decideClassNameAndOnTap(type, v, sendVideoForReview, seeReview) {
-  // returns a tuple [btnClassName, onTap]
-  if (type == "expert") {
-    if (v.is_expert_reviewed) {
-      return ["btn btn-success", () => seeReview(v)];
-    } else if (v.needed_expert_review) {
-      return ["btn btn-warning disabled", null];
-    } else {
-      return ["btn btn-warning", () => sendVideoForReview("expert", v.id)];
-    }
-  } else {
-    // ai
-    if (v.is_ai_reviewed) {
-      return ["btn btn-success", () => seeReview(v)];
-    } else if (v.needed_ai_review) {
-      return ["btn btn-warning disabled", null];
-    } else {
-      return ["btn btn-warning", () => sendVideoForReview("ai", v.id)];
-    }
-  }
-}
-
-function MyVerticallyCenteredModal(props) {
-  const { sendVideoForReview, ...rest } = props;
-  const [btnClassNameExpert, onTapExpert] = decideClassNameAndOnTap(
-    "expert",
-    props.v,
-    props.sendVideoForReview,
-    () => {}
-  );
-  const [btnClassNameAI, onTapAI] = decideClassNameAndOnTap(
-    "ai",
-    props.v,
-    props.sendVideoForReview,
-    () => {}
-  );
-
-  var btnTextExpert = "Expert Analytics";
-  var btnTextAI = "AI Analytics";
-  return (
-    <Modal
-      {...rest}
-      dialogClassName="my-modal"
-      aria-labelledby="contained-modal-title-vcenter"
-      centered
-    >
-      <Modal.Header closeButton style={{ border: "none", height: "6px" }} />
-      <div className="container height-400">
-        <div className="d-flex flex-column justify-content-center align-items-center">
-          <p className="text-secondary">Create Your Interview Result</p>
-          <h3>Choose Analysis Method</h3>
-          <p className="text-primary" style={{ fontSize: "25px" }}>
-            Q:{renderQDes(props.v.q_description)}
-          </p>
-        </div>
-        <div className="row setup-card-row-bottom">
-          {ButtonContainer(
-            expertIcon,
-            onTapExpert,
-            btnTextExpert,
-            btnClassNameExpert
-          )}
-          {ButtonContainer(
-            aiIcon,
-            onTapAI,
-            btnTextAI,
-            btnClassNameAI
-            //props.v.needed_ai_review || props.v.is_ai_reviewed ? true : false
-          )}
-        </div>
-      </div>
-    </Modal>
-  );
-}
-
 function ReviewStatusButton(props) {
   const [show, setShow] = useState(false);
   var text = "";
@@ -120,6 +45,74 @@ function ReviewStatusButton(props) {
       />
     </div>
   );
+}
+
+function MyVerticallyCenteredModal(props) {
+  const { sendVideoForReview, ...rest } = props;
+  const [btnClassNameExpert, onTapExpert] = decideClassNameAndOnTap(
+    "expert",
+    props.v,
+    props.sendVideoForReview,
+    () => {}
+  );
+  const [btnClassNameAI, onTapAI] = decideClassNameAndOnTap(
+    "ai",
+    props.v,
+    props.sendVideoForReview,
+    () => {}
+  );
+  var btnTextExpert = "Expert Analytics";
+  var btnTextAI = "AI Analytics";
+  return (
+    <Modal
+      {...rest}
+      dialogClassName="my-modal"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header closeButton style={{ border: "none", height: "6px" }} />
+      <div className="container height-400">
+        <div className="d-flex flex-column justify-content-center align-items-center">
+          <p className="text-secondary">Create Your Interview Result</p>
+          <h3>Choose Analysis Method</h3>
+          <p className="text-primary" style={{ fontSize: "25px" }}>
+            Q:{renderQDes(props.v.q_description)}
+          </p>
+        </div>
+        <div className="row setup-card-row-bottom">
+          {ButtonContainer(
+            expertIcon,
+            onTapExpert,
+            btnTextExpert,
+            btnClassNameExpert
+          )}
+          {ButtonContainer(aiIcon, onTapAI, btnTextAI, btnClassNameAI)}
+        </div>
+      </div>
+    </Modal>
+  );
+}
+
+function decideClassNameAndOnTap(type, v, sendVideoForReview, seeReview) {
+  // returns a tuple [btnClassName, onTap]
+  if (type == "expert") {
+    if (v.is_expert_reviewed) {
+      return ["btn btn-success", () => seeReview(v)];
+    } else if (v.needed_expert_review) {
+      return ["btn btn-warning disabled", null];
+    } else {
+      return ["btn btn-warning", () => sendVideoForReview("expert", v.id)];
+    }
+  } else {
+    // ai
+    if (v.is_ai_reviewed) {
+      return ["btn btn-success", () => seeReview(v)];
+    } else if (v.needed_ai_review) {
+      return ["btn btn-warning disabled", null];
+    } else {
+      return ["btn btn-warning", () => sendVideoForReview("ai", v.id)];
+    }
+  }
 }
 
 export default ReviewStatusButton;
