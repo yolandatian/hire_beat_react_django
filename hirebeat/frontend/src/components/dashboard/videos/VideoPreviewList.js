@@ -21,11 +21,11 @@ export class VideoPreviewList extends Component {
   render() {
     return (
       <div className="container">
+        <p className="light-grey">Saved videos</p>
         {this.props.loaded
           ? this.props.videos.map((v) => {
               return (
                 <div key={v.id}>
-                  <br />
                   <VideoImagePreview
                     v={v}
                     key={v.id}

@@ -81,11 +81,15 @@ export const renderSuccessTag = (text) => {
         style={{
           fontSize: "10px",
           color: "#67ac5c",
+          marginTop: "2px",
         }}
       >
         done
       </i>
-      <p className="text-success" style={{ fontSize: "10px" }}>
+      <p
+        className="text-success"
+        style={{ fontSize: "10px", marginRight: "10px" }}
+      >
         {text}
       </p>
     </div>

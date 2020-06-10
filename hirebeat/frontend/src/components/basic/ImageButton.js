@@ -20,10 +20,13 @@ export class ImageButton extends Component {
         };
       default:
         return {
-          width: "180px",
-          height: "130px",
+          width: "300px",
+          height: "180px",
+          borderRadius: "5px",
+          outline: "none",
           backgroundImage: `url(${this.props.src})`,
-          backgroundSize: "180px",
+          backgroundSize: "300px",
+          boxShadow: "1px 2px grey",
         };
       // Do nothing
     }

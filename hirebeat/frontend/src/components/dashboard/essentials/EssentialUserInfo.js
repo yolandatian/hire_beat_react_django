@@ -9,10 +9,10 @@ export class EssentialUserInfo extends Component {
       <div className="card container">
         <div className="card-body">
           <DbCenterRow>
-            <div className="col-4">
+            <div className="col-2">
               <ImageButton src={billGates} func={() => {}} type={"avatar"} />
             </div>
-            <div className="col-8">
+            <div className="col-10">
               <div className="row">
                 <div className="col d-flex align-items-center">
                   <h1
@@ -29,7 +29,7 @@ export class EssentialUserInfo extends Component {
                   >
                     <IconButton
                       iconName={"edit"}
-                      iconSize={"23px"}
+                      iconSize={"28px"}
                       iconColor={"#98b8f6"}
                       onTap={() => {}}
                     />
@@ -37,20 +37,21 @@ export class EssentialUserInfo extends Component {
                 </div>
               </div>
               <div className="row">
-                <div className="col-6">
+                <div className="col-3">
                   <IconText
                     iconName={"phone"}
                     textDisplayed={this.props.profile.phone_number}
                     textSize={"15px"}
                   />
                 </div>
-                <div className="col-6">
+                <div className="col-3">
                   <IconText
                     iconName={"location_on"}
                     textDisplayed={this.props.profile.location}
                     textSize={"15px"}
                   />
                 </div>
+                <div className="col-6" />
               </div>
               <div className="row">
                 <div className="col">

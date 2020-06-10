@@ -70,17 +70,19 @@ function ReviewStatusButton(props) {
 
   return (
     <div>
-      <div>
+      <div className="height-30 d-flex justify-content-start align-items-end">
         {props.v.is_expert_reviewed ? renderSuccessTag("Expert") : null}
         {props.v.is_ai_reviewed ? renderSuccessTag("AI") : null}
       </div>
-      <button
-        onClick={onTap}
-        className={className}
-        style={{ borderRadius: "20px", width: "200px" }}
-      >
-        {text}
-      </button>
+      <div className="height-30">
+        <button
+          onClick={onTap}
+          className={className}
+          style={{ borderRadius: "20px", width: "200px" }}
+        >
+          {text}
+        </button>
+      </div>
       <MyVerticallyCenteredModal
         show={show}
         onHide={() => setShow(false)}

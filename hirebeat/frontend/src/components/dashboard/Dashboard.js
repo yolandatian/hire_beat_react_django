@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import ButtonPanel from "./panel/ButtonPanel";
 import EssentialUserInfo from "./essentials/EssentialUserInfo";
 import ProfileInfo from "./profile/ProfileInfo";
-import VideoContainer from "./videos/VideoContainer";
+import VideoPreviewList from "./videos/VideoPreviewList";
 import { updateProfile, loadProfile } from "../../redux/actions/auth_actions";
 import { connect } from "react-redux";
 import { DbRow } from "./DashboardComponents";
@@ -45,7 +45,7 @@ export class Dashboard extends Component {
           />
         );
       case "videos":
-        return <VideoContainer />;
+        return <VideoPreviewList />;
       case "analytics":
         return <h1>Analytics list</h1>;
       default:
@@ -57,13 +57,12 @@ export class Dashboard extends Component {
     return (
       <div className="container dashboard-container">
         <DbRow>
-          <div className="col-7">
+          <div className="col-11">
             <EssentialUserInfo
               user={this.props.user}
               profile={this.props.profile}
             />
           </div>
-          <div className="col-4"></div>
         </DbRow>
         <br />
         <br />

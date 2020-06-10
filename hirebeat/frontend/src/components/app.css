@@ -4,7 +4,23 @@
 }
 
 .height-400 {
-  height: "400px";
+  height: 400px;
+}
+
+.height-200 {
+  height: 200px;
+}
+
+.height-50 {
+  height: 50px;
+}
+
+.height-30 {
+  height: 30px;
+}
+
+.light-grey {
+  color: #7d7d7d;
 }
 
 .my-header-container {
