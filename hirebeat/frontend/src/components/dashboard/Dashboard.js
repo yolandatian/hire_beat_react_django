@@ -3,6 +3,7 @@ import ButtonPanel from "./panel/ButtonPanel";
 import EssentialUserInfo from "./essentials/EssentialUserInfo";
 import ProfileInfo from "./profile/ProfileInfo";
 import VideoPreviewList from "./videos/VideoPreviewList";
+import { Analytics } from "./videos/Analytics";
 import { updateProfile, loadProfile } from "../../redux/actions/auth_actions";
 import { connect } from "react-redux";
 import { DbRow } from "./DashboardComponents";
@@ -47,7 +48,7 @@ export class Dashboard extends Component {
       case "videos":
         return <VideoPreviewList />;
       case "analytics":
-        return <h1>Analytics list</h1>;
+        return <Analytics />;
       default:
       //Do nothing
     }

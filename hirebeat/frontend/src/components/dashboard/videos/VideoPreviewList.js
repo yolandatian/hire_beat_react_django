@@ -12,6 +12,7 @@ export class VideoPreviewList extends Component {
     videos: PropTypes.array.isRequired,
     loaded: PropTypes.bool.isRequired,
     getVideos: PropTypes.func.isRequired,
+    filter: PropTypes.string,
   };
 
   componentDidMount() {
@@ -21,9 +22,33 @@ export class VideoPreviewList extends Component {
   render() {
     return (
       <div className="container">
-        <p className="light-grey">Saved videos</p>
+        <p className="light-grey">
+          {this.props.filter ? null : "Saved videos"}
+        </p>
         {this.props.loaded
           ? this.props.videos.map((v) => {
+              if (this.props.filter) {
+                // filter videos according to review status
+                switch (this.props.filter) {
+                  case "all":
+                    if (!v.is_expert_reviewed) {
+                      if (!v.is_ai_reviewed) return null;
+                    }
+                    break;
+                  case "expert":
+                    if (!v.is_expert_reviewed) {
+                      return null;
+                    }
+                    break;
+                  case "ai":
+                    if (!v.is_ai_reviewed) {
+                      return null;
+                    }
+                    break;
+                  default:
+                    return null;
+                }
+              }
               return (
                 <div key={v.id}>
                   <VideoImagePreview
