@@ -4,6 +4,8 @@ import aiIcon from "../../../assets/ai_icon.png";
 import expertIcon from "../../../assets/expert_icon.png";
 import { ButtonContainer } from "../../practice/CardComponents";
 import { renderQDes, renderSuccessTag } from "../DashboardComponents";
+import { ExpertReview } from "./ExpertReview";
+import { AIReview } from "./AIReview";
 
 function ReviewStatusButton(props) {
   const [show, setShow] = useState(false);
@@ -47,18 +49,44 @@ function ReviewStatusButton(props) {
   );
 }
 
+function MyVerticallyCenteredModal(props) {
+  const [subPage, setSubPage] = useState("status");
+  const { sendVideoForReview, v, ...rest } = props;
+  return (
+    <Modal
+      {...rest}
+      dialogClassName="my-modal"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header closeButton style={{ border: "none", height: "6px" }} />
+      {subPage == "status" ? (
+        <ReviewStatus
+          v={v}
+          sendVideoForReview={sendVideoForReview}
+          setSubPage={setSubPage}
+        />
+      ) : subPage == "expert" ? (
+        <ExpertReview v={v} setSubPage={setSubPage} />
+      ) : (
+        <AIReview v={v} setSubPage={setSubPage} />
+      )}
+    </Modal>
+  );
+}
+
 function ReviewStatus(props) {
   const [btnClassNameExpert, onTapExpert] = decideClassNameAndOnTap(
     "expert",
     props.v,
     props.sendVideoForReview,
-    () => {}
+    props.setSubPage
   );
   const [btnClassNameAI, onTapAI] = decideClassNameAndOnTap(
     "ai",
     props.v,
     props.sendVideoForReview,
-    () => {}
+    props.setSubPage
   );
   var btnTextExpert = "Expert Analytics";
   var btnTextAI = "AI Analytics";
@@ -84,26 +112,11 @@ function ReviewStatus(props) {
   );
 }
 
-function MyVerticallyCenteredModal(props) {
-  const { sendVideoForReview, v, ...rest } = props;
-  return (
-    <Modal
-      {...rest}
-      dialogClassName="my-modal"
-      aria-labelledby="contained-modal-title-vcenter"
-      centered
-    >
-      <Modal.Header closeButton style={{ border: "none", height: "6px" }} />
-      <ReviewStatus sendVideoForReview={sendVideoForReview} v={v} />
-    </Modal>
-  );
-}
-
-function decideClassNameAndOnTap(type, v, sendVideoForReview, seeReview) {
+function decideClassNameAndOnTap(type, v, sendVideoForReview, setSubPage) {
   // returns a tuple [btnClassName, onTap]
   if (type == "expert") {
     if (v.is_expert_reviewed) {
-      return ["btn btn-success", () => seeReview(v)];
+      return ["btn btn-success", () => setSubPage("expert")];
     } else if (v.needed_expert_review) {
       return ["btn btn-warning disabled", null];
     } else {
@@ -112,7 +125,7 @@ function decideClassNameAndOnTap(type, v, sendVideoForReview, seeReview) {
   } else {
     // ai
     if (v.is_ai_reviewed) {
-      return ["btn btn-success", () => seeReview(v)];
+      return ["btn btn-success", () => setSubPage("ai")];
     } else if (v.needed_ai_review) {
       return ["btn btn-warning disabled", null];
     } else {

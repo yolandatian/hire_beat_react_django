@@ -127,12 +127,6 @@ export const ButtonContainer = (src, onTap, textDisplayed, btnClassName) => {
           btnClassName={btnClassName ?? "btn btn-warning"}
         />
       </CardRow>
-      <CardRow>
-        <p>
-          {"What is a "}
-          <StyledLink>{textDisplayed}?</StyledLink>
-        </p>
-      </CardRow>
     </div>
   );
 };

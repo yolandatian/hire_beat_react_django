@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import {
   Player,
+  BigPlayButton,
   ControlBar,
   ReplayControl,
   ForwardControl,
@@ -21,13 +22,14 @@ export class VideoPlayer extends Component {
           playing={true}
         >
           <source src={this.props.url} />
-          <ControlBar>
-            <ReplayControl seconds={10} order={1.1} />
-            <ForwardControl seconds={30} order={1.2} />
+          <ControlBar autoHide={true}>
             <CurrentTimeDisplay order={4.1} />
             <TimeDivider order={4.2} />
             <VolumeMenuButton enabled />
-            <PlaybackRateMenuButton rates={[5, 2, 1, 0.5, 0.1]} order={7.1} />
+            <PlaybackRateMenuButton
+              rates={[2, 1.5, 1, 0.5, 0.25]}
+              order={7.1}
+            />
           </ControlBar>
         </Player>
       </div>
