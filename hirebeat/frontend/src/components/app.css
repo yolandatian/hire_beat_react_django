@@ -3,6 +3,17 @@
   padding: 0;
 }
 
+.test {
+  background: linear-gradient(#5e9af3, #8db1f5);
+  border-radius: 50px;
+  width: 100px;
+  height: 100px;
+  margin: 50px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .height-400 {
   height: 400px;
 }

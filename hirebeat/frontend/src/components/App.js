@@ -29,8 +29,6 @@ import QuestionTypeChoices from "./practice/QuestionTypeChoices";
 
 import "./app.css";
 
-import Sidebar from "react-sidebar";
-
 const alertOptions = {
   timeout: 3000,
   position: "top center",

@@ -35,3 +35,94 @@ export var videoRecorderOptions = {
     },
   },
 };
+
+export var radialChartOptions = {
+  // input : array of string for series.data;
+  //         array of string for options.xaxis.categories
+  series: [
+    {
+      name: "categories",
+      data: ["80", "70", "70", "30"],
+    },
+  ],
+  options: {
+    chart: {
+      height: 350,
+      type: "radar",
+    },
+    title: {
+      text: "Competency Map",
+    },
+    xaxis: {
+      categories: ["January", "February", "March", "April"],
+    },
+  },
+};
+
+export const infillChartData = (dataString, categorieyString) => {
+  var data = convertStringToArray(dataString);
+  var categories = convertStringToArray(categorieyString);
+  radialChartOptions.series[0].data = data;
+  radialChartOptions.options.xaxis.categories = categories;
+};
+
+function convertStringToArray(s) {
+  var a = [];
+  var w = "";
+  var i = 0;
+  while (i != s.length) {
+    if (s[i] != ",") {
+      w = w + s[i];
+    } else {
+      a.push(w);
+      w = "";
+    }
+    i++;
+    if (i == s.length) {
+      // append the last word
+      a.push(w);
+      break;
+    }
+  }
+  return a;
+}
+
+export var radialBarOptions = {
+  // input : int for series;
+  //         int for options.label
+  series: [80],
+  options: {
+    chart: {
+      height: "150px",
+      type: "line",
+    },
+    plotOptions: {
+      radialBar: {
+        hollow: {
+          size: "70%",
+          margin: 10,
+          background: "#cbdbfa",
+        },
+        dataLabels: {
+          show: true,
+          name: {
+            show: true,
+            fontSize: "40px",
+            fontWeight: 600,
+            color: "white",
+            offsetY: 13,
+          },
+          value: {
+            show: false,
+          },
+        },
+      },
+    },
+    labels: [8],
+  },
+};
+
+export const infillBarData = (scoreInt) => {
+  radialBarOptions.series[0] = scoreInt * 10;
+  radialBarOptions.options.labels[0] = scoreInt;
+};
