@@ -88,8 +88,8 @@ function convertStringToArray(s) {
 }
 
 export var radialBarOptions = {
-  // input : int for series;
-  //         int for options.label
+  // input : number for series;
+  //         number for options.label
   series: [80],
   options: {
     chart: {
@@ -122,7 +122,7 @@ export var radialBarOptions = {
   },
 };
 
-export const infillBarData = (scoreInt) => {
-  radialBarOptions.series[0] = scoreInt * 10;
-  radialBarOptions.options.labels[0] = scoreInt;
+export const infillBarData = (scoreNumber) => {
+  radialBarOptions.series[0] = scoreNumber * 10;
+  radialBarOptions.options.labels[0] = scoreNumber;
 };

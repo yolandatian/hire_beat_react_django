@@ -9,7 +9,7 @@ export function ExpertReview(props) {
     <div className="container height-400">
       <ReviewHeader setSubPage={() => props.setSubPage("status")} />
       <QuestionTitle title={props.v.q_description} />
-      <div className="test">
+      <div className="score-radial">
         <strong style={{ fontSize: "40px", color: "white" }}>8</strong>
       </div>
       <Chart

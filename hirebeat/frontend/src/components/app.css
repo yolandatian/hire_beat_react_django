@@ -3,7 +3,20 @@
   padding: 0;
 }
 
-.test {
+.gradient-progress-blue {
+  background: linear-gradient(45deg, #5e9af3, #8db1f5);
+}
+
+.gradient-progress-orange {
+  background: linear-gradient(45deg, #ee742f, #f2c05d);
+}
+
+.text-30 {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.score-radial {
   background: linear-gradient(#5e9af3, #8db1f5);
   border-radius: 50px;
   width: 100px;
