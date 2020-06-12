@@ -95,3 +95,49 @@ export const renderSuccessTag = (text) => {
     </div>
   );
 };
+
+export const ReviewHeader = (props) => {
+  return (
+    <DbRow>
+      <div className="col-2">
+        <button
+          onClick={props.setSubPage}
+          className="borderless d-flex justify-content-center align-items-center"
+        >
+          <Icon
+            iconSize={"8px"}
+            iconColor={"#98b8f6"}
+            iconName={"keyboard_backspace"}
+          />
+          <h6 style={{ color: "#98b8f6", marginBottom: 0 }}>Back</h6>
+        </button>
+      </div>
+      <div className="col-8 d-flex justify-content-center align-items-center">
+        <strong>Review Your Performance</strong>
+      </div>
+      <div className="col-2" />
+    </DbRow>
+  );
+};
+
+export const QuestionTitle = (props) => {
+  return (
+    <div
+      className="row d-flex justify-content-start"
+      style={{ marginLeft: "10px" }}
+    >
+      <h2 style={{ color: "#98b8f6" }}>Q:</h2>
+      <h2>{props.title}</h2>
+    </div>
+  );
+};
+
+export const Comments = (props) => {
+  return (
+    <div>
+      <textarea disabled rows="5" cols="50">
+        {props.comments}
+      </textarea>
+    </div>
+  );
+};

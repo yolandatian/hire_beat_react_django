@@ -7,6 +7,10 @@
   height: 400px;
 }
 
+.height-600 {
+  height: 900px;
+}
+
 .height-200 {
   height: 200px;
 }
@@ -17,6 +21,10 @@
 
 .height-30 {
   height: 30px;
+}
+
+.borderless {
+  border: none;
 }
 
 .margin-right-20 {
