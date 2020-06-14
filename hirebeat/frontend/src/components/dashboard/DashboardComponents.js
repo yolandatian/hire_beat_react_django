@@ -134,10 +134,23 @@ export const QuestionTitle = (props) => {
 
 export const Comments = (props) => {
   return (
-    <div>
-      <textarea disabled rows="5" cols="50">
-        {props.comments}
-      </textarea>
+    <div className="container border-grey">
+      <p className="comments">
+        {
+          "asdlkjfhaljdhfjadshfjajdhfjahdasdfjabsdjlbfklajdjfahljsdhfljakhsdflhasjhflajkhdflkjadhsjfshjlfjhajdfhjasdhfjahdsfkjahsdjfhajksdhfjalkhdfjlahdfjkhajfhajkhdfljadsh"
+        }
+      </p>
     </div>
   );
+};
+
+const sectionTitleStyle = {
+  fontSize: 20,
+  fontWeight: 200,
+  color: "#7d7d7d",
+  marginBottom: 0,
+};
+
+export const CategoryTitle = (props) => {
+  return <p style={sectionTitleStyle}>{props.title}</p>;
 };

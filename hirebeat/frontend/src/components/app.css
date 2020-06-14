@@ -23,13 +23,19 @@
 
 .score-radial {
   background: linear-gradient(#5e9af3, #8db1f5);
-  border-radius: 50px;
-  width: 100px;
-  height: 100px;
-  margin: 50px auto;
+  border-radius: 60px;
+  width: 120px;
+  height: 120px;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.score-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .height-400 {
@@ -54,6 +60,17 @@
 
 .borderless {
   border: none;
+}
+
+.border-grey {
+  border: lightgray;
+  border-width: 1;
+}
+
+.comments {
+  font-size: large;
+  word-wrap: break-word;
+  width: 100%;
 }
 
 .margin-right-20 {

@@ -107,7 +107,7 @@ export var radialBarOptions = {
       radialBar: {
         hollow: {
           size: "70%",
-          margin: 10,
+          margin: 5,
           background: "#cbdbfa",
         },
         dataLabels: {
@@ -129,7 +129,37 @@ export var radialBarOptions = {
   },
 };
 
+const deepCopyFunction = (inObject) => {
+  let outObject, value, key;
+  if (typeof inObject !== "object" || inObject === null) {
+    return inObject; // Return the value if inObject is not an object
+  }
+  // Create an array or object to hold the values
+  outObject = Array.isArray(inObject) ? [] : {};
+  for (key in inObject) {
+    value = inObject[key];
+    // Recursively (deep) copy for nested objects, including arrays
+    outObject[key] = deepCopyFunction(value);
+  }
+  return outObject;
+};
+
 export const infillBarData = (scoreNumber) => {
-  radialBarOptions.series[0] = scoreNumber * 10;
-  radialBarOptions.options.labels[0] = scoreNumber;
+  var options = deepCopyFunction(radialBarOptions);
+  options.series[0] = scoreNumber * 10;
+  options.options.labels[0] = scoreNumber;
+  return options;
+};
+
+export const infillOverallData = (scoreNumber) => {
+  var options = deepCopyFunction(radialBarOptions);
+  options.options.plotOptions.radialBar.hollow = {
+    size: "100%",
+    margin: 0,
+    background: "#5f92f3",
+  };
+  options.series[0] = scoreNumber * 10;
+  options.options.labels[0] = scoreNumber;
+  console.log(options);
+  return options;
 };

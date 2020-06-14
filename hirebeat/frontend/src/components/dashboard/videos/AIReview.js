@@ -5,14 +5,11 @@ import {
   infillChartData,
   convertStringToArray,
 } from "../../../constants/constants";
-import { ReviewHeader, QuestionTitle } from "../DashboardComponents";
-
-const sectionTitleStyle = {
-  fontSize: 20,
-  fontWeight: 200,
-  color: "#7d7d7d",
-  marginBottom: 0,
-};
+import {
+  ReviewHeader,
+  QuestionTitle,
+  CategoryTitle,
+} from "../DashboardComponents";
 
 const ProgressBar = (props) => {
   // color, percent, height
@@ -114,7 +111,7 @@ export function AIReview(props) {
     <div className="container height-600">
       <ReviewHeader setSubPage={() => props.setSubPage("status")} />
       <QuestionTitle title={props.v.q_description} />
-      <p style={sectionTitleStyle}>Overall Score</p>
+      <CategoryTitle title={"Overall Score"} />
       <ProgressBar color={"blue"} height={15} percent={percent} />
       <div className="row">
         <div className="col-5">
@@ -128,7 +125,7 @@ export function AIReview(props) {
           </div>
         </div>
         <div className="col-7">
-          <p style={sectionTitleStyle}>Details</p>
+          <CategoryTitle title={"Details"} />
           {categoryArray.map((c, index) => {
             return (
               <AICategoryReview
