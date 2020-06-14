@@ -16,6 +16,11 @@
   margin-bottom: 10px;
 }
 
+.text-15 {
+  font-size: 15px;
+  margin-bottom: 5px;
+}
+
 .score-radial {
   background: linear-gradient(#5e9af3, #8db1f5);
   border-radius: 50px;
@@ -32,7 +37,7 @@
 }
 
 .height-600 {
-  height: 900px;
+  height: 600px;
 }
 
 .height-200 {

@@ -52,21 +52,28 @@ export var radialChartOptions = {
     },
     title: {
       text: "Competency Map",
+      style: {
+        fontSize: 20,
+        fontWeight: 200,
+        color: "#7d7d7d",
+      },
     },
     xaxis: {
       categories: ["January", "February", "March", "April"],
     },
+    yaxis: {
+      max: 10,
+      min: 0,
+    },
   },
 };
 
-export const infillChartData = (dataString, categorieyString) => {
-  var data = convertStringToArray(dataString);
-  var categories = convertStringToArray(categorieyString);
-  radialChartOptions.series[0].data = data;
-  radialChartOptions.options.xaxis.categories = categories;
+export const infillChartData = (categoryArray, dataArray) => {
+  radialChartOptions.series[0].data = dataArray;
+  radialChartOptions.options.xaxis.categories = categoryArray;
 };
 
-function convertStringToArray(s) {
+export function convertStringToArray(s) {
   var a = [];
   var w = "";
   var i = 0;
