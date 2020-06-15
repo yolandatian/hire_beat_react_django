@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import ButtonPanel from "./panel/ButtonPanel";
 import EssentialUserInfo from "./essentials/EssentialUserInfo";
-import ProfileInfo from "./profile/ProfileInfo";
 import VideoPreviewList from "./videos/VideoPreviewList";
 import { Analytics } from "./videos/Analytics";
 import { updateProfile, loadProfile } from "../../redux/actions/auth_actions";
@@ -14,7 +13,7 @@ export class Dashboard extends Component {
   }
 
   state = {
-    subpage: "videos", // or profile or analytics
+    subpage: "videos", // or analytics
   };
 
   renderVideos = () => {
@@ -29,22 +28,8 @@ export class Dashboard extends Component {
     });
   };
 
-  renderProfile = () => {
-    this.setState({
-      subpage: "profile",
-    });
-  };
-
   renderSubpage = () => {
     switch (this.state.subpage) {
-      case "profile":
-        return (
-          <ProfileInfo
-            profile={this.props.profile}
-            userID={this.props.user.id}
-            updateProfile={this.props.updateProfile}
-          />
-        );
       case "videos":
         return <VideoPreviewList />;
       case "analytics":
@@ -62,6 +47,7 @@ export class Dashboard extends Component {
             <EssentialUserInfo
               user={this.props.user}
               profile={this.props.profile}
+              updateProfile={this.props.updateProfile}
             />
           </div>
         </DbRow>

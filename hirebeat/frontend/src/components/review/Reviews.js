@@ -73,7 +73,7 @@ export class Reviews extends Component {
         <button onClick={this.submitReview}>Submit</button>
         <form>
           <fieldset>
-            <div class="form-group">
+            <div className="form-group">
               {this.scoreField("Positive Attitude", "postitiveAttitude")}
               {this.scoreField("Communication", "communication")}
               {this.scoreField("Detail Oriented", "detailOriented")}

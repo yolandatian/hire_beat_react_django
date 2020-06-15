@@ -3,7 +3,7 @@ import Modal from "react-bootstrap/Modal";
 import aiIcon from "../../../assets/ai_icon.png";
 import expertIcon from "../../../assets/expert_icon.png";
 import { ButtonContainer } from "../../practice/CardComponents";
-import { renderQDes, renderSuccessTag } from "../DashboardComponents";
+import { renderQDes, renderSuccessTag, MyModal } from "../DashboardComponents";
 import { ExpertReview } from "./ExpertReview";
 import { AIReview } from "./AIReview";
 
@@ -53,13 +53,7 @@ function MyVerticallyCenteredModal(props) {
   const [subPage, setSubPage] = useState("status");
   const { sendVideoForReview, v, ...rest } = props;
   return (
-    <Modal
-      {...rest}
-      dialogClassName="my-modal"
-      aria-labelledby="contained-modal-title-vcenter"
-      centered
-    >
-      <Modal.Header closeButton style={{ border: "none", height: "6px" }} />
+    <MyModal {...rest}>
       {subPage == "status" ? (
         <ReviewStatus
           v={v}
@@ -71,7 +65,7 @@ function MyVerticallyCenteredModal(props) {
       ) : (
         <AIReview v={v} setSubPage={setSubPage} />
       )}
-    </Modal>
+    </MyModal>
   );
 }
 

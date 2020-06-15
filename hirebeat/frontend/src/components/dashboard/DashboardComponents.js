@@ -1,4 +1,5 @@
 import React from "react";
+import Modal from "react-bootstrap/Modal";
 
 export const DbRow = (props) => {
   return <div className="dashboard-row">{props.children}</div>;
@@ -146,4 +147,18 @@ const sectionTitleStyle = {
 
 export const CategoryTitle = (props) => {
   return <p style={sectionTitleStyle}>{props.title}</p>;
+};
+
+export const MyModal = (props) => {
+  return (
+    <Modal
+      {...props}
+      dialogClassName="my-modal"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header closeButton style={{ border: "none", height: "6px" }} />
+      {props.children}
+    </Modal>
+  );
 };

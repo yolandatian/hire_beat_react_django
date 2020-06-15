@@ -1,9 +1,52 @@
-import React, { Component } from "react";
+import React, { useState, Component } from "react";
 import billGates from "../../../assets/billgates.jpg";
 import ImageButton from "../../basic/ImageButton";
-import { IconButton, DbCenterRow, IconText } from "../DashboardComponents";
+import {
+  IconButton,
+  DbCenterRow,
+  IconText,
+  MyModal,
+} from "../DashboardComponents";
 
 export class EssentialUserInfo extends Component {
+  state = {
+    show: false,
+    phone_number: "",
+    location: "",
+  };
+
+  componentDidMount() {
+    this.setState({
+      phone_number: this.props.profile.phone_number,
+      location: this.props.profile.location,
+    });
+  }
+
+  handleInputChange = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  finishEditing = () => {
+    this.setState({ ...this.state, show: false });
+  };
+
+  saveChanges = () => {
+    var profile = this.makeProfile();
+    this.props.updateProfile(profile);
+    this.finishEditing();
+  };
+
+  makeProfile = () => {
+    return {
+      user: this.props.user.id,
+      id: this.props.profile.id,
+      phone_number: this.state.phone_number,
+      location: this.state.location,
+    };
+  };
+
   render() {
     return (
       <div className="card container">
@@ -31,7 +74,9 @@ export class EssentialUserInfo extends Component {
                       iconName={"edit"}
                       iconSize={"28px"}
                       iconColor={"#98b8f6"}
-                      onTap={() => {}}
+                      onTap={() => {
+                        this.setState({ ...this.state, show: true });
+                      }}
                     />
                   </div>
                 </div>
@@ -65,9 +110,60 @@ export class EssentialUserInfo extends Component {
             </div>
           </DbCenterRow>
         </div>
+        <EditModal
+          show={this.state.show}
+          location={this.state.location}
+          phone_number={this.state.phone_number}
+          saveChanges={this.saveChanges}
+          handleInputChange={this.handleInputChange}
+          hide={this.finishEditing}
+        />
       </div>
     );
   }
 }
+
+const EditModal = (props) => {
+  return (
+    <MyModal show={props.show} onHide={props.hide}>
+      <div className="container">
+        <form>
+          <fieldset>
+            <div className="form-group">
+              <label style={{ fontSize: "20px" }}>Phone Number</label>
+              <input
+                type="number"
+                className="form-control"
+                name={"phone_number"}
+                value={props.phone_number}
+                placeholder={"Phone Number"}
+                onChange={props.handleInputChange}
+                required="required"
+              />
+              <br />
+              <label style={{ fontSize: "20px" }}>Location</label>
+              <input
+                type="text"
+                className="form-control"
+                name={"location"}
+                value={props.location}
+                placeholder={"Location"}
+                onChange={props.handleInputChange}
+                required="required"
+              />
+            </div>
+            <button
+              type="button"
+              className="btn btn-primary"
+              onClick={props.saveChanges}
+            >
+              Submit
+            </button>
+          </fieldset>
+        </form>
+      </div>
+    </MyModal>
+  );
+};
 
 export default EssentialUserInfo;

@@ -32,18 +32,6 @@ function ButtonPanel(props) {
         />
       </button>
       <br />
-      <button
-        type="button"
-        className="panel-button"
-        onClick={props.renderProfile}
-      >
-        <IconText
-          textSize={"18px"}
-          textDisplayed={"Profile"}
-          iconName={"article"}
-          textColor={props.subpage == "profile" ? selectColor : defaultColor}
-        />
-      </button>
     </div>
   );
 }
