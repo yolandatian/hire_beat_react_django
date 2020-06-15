@@ -69,12 +69,15 @@ export const getUnreviewedVideo = () => (dispatch, getState) => {
     );
 };
 
-export const addVideoReviews = (score, comments, video_id) => (
-  dispatch,
-  getState
-) => {
+export const addVideoReviews = (
+  expert_score,
+  expert_category_score,
+  comments,
+  video_id
+) => (dispatch, getState) => {
   const body = JSON.stringify({
-    score,
+    expert_score,
+    expert_category_score,
     comments,
   });
 

@@ -18,13 +18,13 @@ export class ReviewWindow extends Component {
 
   nextVideo = () => {
     this.setState({ video: null, loaded: false });
-    window.location.reload();
+    //window.location.reload();
   };
 
   render() {
     console.log(this.props.video);
     return (
-      <div>
+      <div className="container">
         This is review page. Number of videos reviewed by this reviewer:
         {this.props.review_count}
         {this.props.loaded ? (

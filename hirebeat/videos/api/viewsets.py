@@ -22,8 +22,9 @@ class VideoViewSet(viewsets.ModelViewSet):
         video = Video.objects.filter(id=pk)[0]
         reviewer_info = ReviewerInfo.objects.filter(user=request.user)[0]
         try:
-            video.score = request.data['score']
+            video.expert_score = request.data['expert_score']
             video.comments = request.data['comments']
+            video.expert_category_score = request.data['expert_category_score']
             video.reviewer = request.user
             video.is_expert_reviewed = True
             video.save()

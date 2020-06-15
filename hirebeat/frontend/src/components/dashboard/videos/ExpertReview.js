@@ -26,18 +26,16 @@ const OverallScore = (props) => {
 };
 
 export function ExpertReview(props) {
-  var fakeCategory = "a,b,c,d,e";
-  var fakePercent = "10,7,2,8,5";
-  var categoryArray = convertStringToArray(fakeCategory);
-  var percentArray = convertStringToArray(fakePercent);
+  var categoryArray = convertStringToArray(props.v.expert_review_categories);
+  var percentArray = convertStringToArray(props.v.expert_category_score);
   return (
-    <div className="container height-600">
+    <div className="container height-550">
       <ReviewHeader setSubPage={() => props.setSubPage("status")} />
       <QuestionTitle title={props.v.q_description} />
       <div className="row">
         <div className="col score-col">
           <CategoryTitle title={"Overall Score"} />
-          <OverallScore percent={9} />
+          <OverallScore percent={props.v.expert_score} />
         </div>
         {categoryArray.map((c, index) => {
           var options = infillBarData(percentArray[index]);

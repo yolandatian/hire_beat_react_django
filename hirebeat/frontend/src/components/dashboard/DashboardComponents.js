@@ -122,10 +122,7 @@ export const ReviewHeader = (props) => {
 
 export const QuestionTitle = (props) => {
   return (
-    <div
-      className="row d-flex justify-content-start"
-      style={{ marginLeft: "10px" }}
-    >
+    <div className="row" style={{ marginLeft: "10px", marginBottom: "10px" }}>
       <h2 style={{ color: "#98b8f6" }}>Q:</h2>
       <h2>{props.title}</h2>
     </div>
@@ -134,18 +131,14 @@ export const QuestionTitle = (props) => {
 
 export const Comments = (props) => {
   return (
-    <div className="container border-grey">
-      <p className="comments">
-        {
-          "asdlkjfhaljdhfjadshfjajdhfjahdasdfjabsdjlbfklajdjfahljsdhfljakhsdflhasjhflajkhdflkjadhsjfshjlfjhajdfhjasdhfjahdsfkjahsdjfhajksdhfjalkhdfjlahdfjkhajfhajkhdfljadsh"
-        }
-      </p>
+    <div className="container">
+      <p className="comments">{props.comments}</p>
     </div>
   );
 };
 
 const sectionTitleStyle = {
-  fontSize: 20,
+  fontSize: 17,
   fontWeight: 200,
   color: "#7d7d7d",
   marginBottom: 0,

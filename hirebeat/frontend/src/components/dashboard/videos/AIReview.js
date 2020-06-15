@@ -11,6 +11,44 @@ import {
   CategoryTitle,
 } from "../DashboardComponents";
 
+export function AIReview(props) {
+  var categoryArray = convertStringToArray(props.v.ai_review_categories);
+  var percentArray = convertStringToArray(props.v.ai_category_score);
+  infillChartData(categoryArray, percentArray);
+  return (
+    <div className="container height-700">
+      <ReviewHeader setSubPage={() => props.setSubPage("status")} />
+      <QuestionTitle title={props.v.q_description} />
+      <CategoryTitle title={"Overall Score"} />
+      <ProgressBar color={"blue"} height={15} percent={props.v.ai_score} />
+      <div className="row">
+        <div className="col-5">
+          <div id="chart">
+            <Chart
+              options={radialChartOptions.options}
+              series={radialChartOptions.series}
+              type="radar"
+              height={350}
+            />
+          </div>
+        </div>
+        <div className="col-7">
+          <CategoryTitle title={"Details"} />
+          {categoryArray.map((c, index) => {
+            return (
+              <AICategoryReview
+                category={c}
+                percent={percentArray[index]}
+                key={index}
+              />
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 const ProgressBar = (props) => {
   // color, percent, height
   var barClassName =
@@ -81,8 +119,8 @@ const AICategoryReview = (props) => {
     <div>
       <br />
       <div className="row">
-        <div className="col-2 d-flex align-items-center">
-          <h3>{props.category}</h3>
+        <div className="col-3 d-flex align-items-center">
+          <p>{props.category}</p>
         </div>
         <div className="col-7">
           <ProgressBar
@@ -91,7 +129,7 @@ const AICategoryReview = (props) => {
             percent={props.percent}
           />
         </div>
-        <div className="col-3">
+        <div className="col-2">
           <PercentTag percent={props.percent} />
         </div>
       </div>
@@ -99,44 +137,3 @@ const AICategoryReview = (props) => {
     </div>
   );
 };
-
-export function AIReview(props) {
-  var fakeCategory = "a,b,c,d";
-  var fakePercent = "10,7,2,5";
-  var categoryArray = convertStringToArray(fakeCategory);
-  var percentArray = convertStringToArray(fakePercent);
-  infillChartData(categoryArray, percentArray);
-  var percent = 7;
-  return (
-    <div className="container height-600">
-      <ReviewHeader setSubPage={() => props.setSubPage("status")} />
-      <QuestionTitle title={props.v.q_description} />
-      <CategoryTitle title={"Overall Score"} />
-      <ProgressBar color={"blue"} height={15} percent={percent} />
-      <div className="row">
-        <div className="col-5">
-          <div id="chart">
-            <Chart
-              options={radialChartOptions.options}
-              series={radialChartOptions.series}
-              type="radar"
-              height={350}
-            />
-          </div>
-        </div>
-        <div className="col-7">
-          <CategoryTitle title={"Details"} />
-          {categoryArray.map((c, index) => {
-            return (
-              <AICategoryReview
-                category={c}
-                percent={percentArray[index]}
-                key={index}
-              />
-            );
-          })}
-        </div>
-      </div>
-    </div>
-  );
-}

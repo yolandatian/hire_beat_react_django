@@ -42,8 +42,12 @@
   height: 400px;
 }
 
-.height-600 {
-  height: 600px;
+.height-550 {
+  height: 550px;
+}
+
+.height-700 {
+  height: 700px;
 }
 
 .height-200 {
@@ -60,11 +64,6 @@
 
 .borderless {
   border: none;
-}
-
-.border-grey {
-  border: lightgray;
-  border-width: 1;
 }
 
 .comments {

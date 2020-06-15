@@ -18,10 +18,16 @@ class Video(models.Model):
     is_expert_reviewed = models.BooleanField(default=False)
     needed_ai_review = models.BooleanField(default=False)
     is_ai_reviewed = models.BooleanField(default=False)
-    #tags = models.TextField(default="Good job")
+    # expert
     comments = models.TextField(default="No comments yet")
-    score = models.FloatField(default=5.0)
+    expert_score = models.FloatField(default=10.0)
+    expert_review_categories = models.CharField(default="Positive Attitude,Communication,Detail Oriented,Team Spirit,Stress Tolerance", max_length=500)
+    expert_category_score = models.CharField(default="10,10,10,10,10", max_length=500)
     reviewer = models.ForeignKey(User, related_name="reviewed_videos", on_delete= models.SET_NULL, null=True, blank=True)
+    # ai
+    ai_score = models.FloatField(default=10.0)
+    ai_review_categories = models.CharField(default="Positive Attitude,Communication,Detail Oriented,Team Spirit,Stress Tolerance", max_length=500)
+    ai_category_score = models.CharField(default="10,10,10,10,10", max_length=500)
     # More fields to add
     def __str__(self):
         return self.owner.username + '|' + self.created_at.strftime("%m/%d/%Y")
