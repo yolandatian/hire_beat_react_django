@@ -1,22 +1,13 @@
 export const numberOfQuestionOptions = [
-  { value: 3, label: "3 Questions" },
-  { value: 4, label: "4 Questions" },
-  { value: 5, label: "5 Questions" },
+  { value: 3, label: "3" },
+  { value: 4, label: "4" },
+  { value: 5, label: "5" },
 ];
 
 export const lengthOfResponseOptions = [
-  { value: 1, label: "1 minute" },
-  { value: 2, label: "2 minutes" },
-  { value: 3, label: "3 minutes" },
-];
-
-export const reviewTagOptions = [
-  { value: "Tag1", label: "Tag1" },
-  { value: "Tag2", label: "Tag2" },
-  { value: "Tag3", label: "Tag3" },
-  { value: "Tag4", label: "Tag4" },
-  { value: "Tag5", label: "Tag5" },
-  { value: "Tag6", label: "Tag6" },
+  { value: 1, label: "60s" },
+  { value: 2, label: "120s" },
+  { value: 3, label: "180s" },
 ];
 
 // The length changes

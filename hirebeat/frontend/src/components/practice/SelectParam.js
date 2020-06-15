@@ -12,8 +12,8 @@ export class SelectParam extends Component {
     type: "behavior",
     paramsAreSet: false,
     deviceTested: false,
-    numberOfQuestions: { value: 3, label: "3 Questions" },
-    lengthOfResponse: { value: 1, label: "1 minute" },
+    numberOfQuestions: { value: 3, label: "3" },
+    lengthOfResponse: { value: 1, label: "60s" },
   };
 
   componentDidMount() {
@@ -59,16 +59,16 @@ export class SelectParam extends Component {
           <h1>Set Your Practice Time</h1>
         </CardRow>
         {selectParam(
-          "How long should the responses be?",
-          this.state.lengthOfResponse,
-          this.handleChangeLength,
-          lengthOfResponseOptions
-        )}
-        {selectParam(
           "How many questions do you want to practice?",
           this.state.numberOfQuestions,
           this.handleChangeNumber,
           numberOfQuestionOptions
+        )}
+        {selectParam(
+          "How long should each response be?",
+          this.state.lengthOfResponse,
+          this.handleChangeLength,
+          lengthOfResponseOptions
         )}
         <CardRow>
           <h4>This will cost you {this.getEstimateTime()} on average</h4>

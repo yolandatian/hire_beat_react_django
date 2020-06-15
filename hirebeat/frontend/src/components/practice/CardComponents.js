@@ -131,15 +131,50 @@ export const ButtonContainer = (src, onTap, textDisplayed, btnClassName) => {
   );
 };
 
+const s = {
+  control: (styles) => ({
+    ...styles,
+    WebkitBorderRadius: "15px",
+    boxShadow: "0px 2px 8px #B8CEFF",
+    border: "none",
+    width: "80%",
+  }),
+  dropdownIndicator: () => ({
+    color: "#98b8f6",
+    alignItems: "center",
+  }),
+  indicatorSeparator: () => ({
+    display: "none",
+  }),
+  valueContainer: () => ({
+    width: "60%",
+    display: "flex",
+    justifyContent: "center",
+  }),
+  indicatorsContainer: () => ({
+    width: "40%",
+    display: "flex",
+    justifyContent: "center",
+  }),
+  singleValue: (provided) => ({
+    ...provided,
+    color: "#538af2",
+    fontWeight: "bold",
+    fontSize: "15px",
+  }),
+};
+
 export const selectParam = (question, value, onTap, options) => {
   return (
     <CardRow className="vertically-center">
+      <div className="col-sm-1" />
       <QuestionCol>
-        <p>{question}</p>
+        <h5>{question}</h5>
       </QuestionCol>
       <SelectCol>
-        <Select value={value} onChange={onTap} options={options} />
+        <Select value={value} onChange={onTap} options={options} styles={s} />
       </SelectCol>
+      <div className="col-sm-1" />
     </CardRow>
   );
 };
@@ -150,7 +185,7 @@ export const QuestionCol = (props) => {
 
 export const SelectCol = (props) => {
   return (
-    <div className="col-4">
+    <div className="col-2">
       <div className="react-select-container">{props.children}</div>
     </div>
   );

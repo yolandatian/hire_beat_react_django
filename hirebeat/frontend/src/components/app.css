@@ -3,6 +3,16 @@
   padding: 0;
 }
 
+.react-select {
+  border-radius: 20px;
+  background-color: red;
+}
+
+.css-yk16xz-control {
+  border-radius: 30px;
+  background-color: red;
+}
+
 .gradient-progress-blue {
   background: linear-gradient(45deg, #5e9af3, #8db1f5);
 }

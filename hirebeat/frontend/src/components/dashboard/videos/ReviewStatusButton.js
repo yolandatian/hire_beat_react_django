@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Modal from "react-bootstrap/Modal";
 import aiIcon from "../../../assets/ai_icon.png";
 import expertIcon from "../../../assets/expert_icon.png";
 import { ButtonContainer } from "../../practice/CardComponents";
