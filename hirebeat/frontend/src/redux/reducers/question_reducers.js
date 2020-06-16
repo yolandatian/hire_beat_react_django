@@ -1,5 +1,4 @@
 import { GET_QUESTIONS, NEXT_QUESTION } from "../actions/action_types";
-import { stat } from "fs";
 
 const initialState = {
   questions: [],
@@ -15,6 +14,8 @@ export default function (state = initialState, action) {
       return {
         ...state,
         loaded: true,
+        last_q: false,
+        q_index: 0,
         questions: action.payload,
         q_count: action.payload.length,
       };

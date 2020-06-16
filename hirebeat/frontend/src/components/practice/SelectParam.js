@@ -27,7 +27,7 @@ export class SelectParam extends Component {
     this.setState({ ...this.state, paramsAreSet: true });
   };
 
-  testDevice = () => {
+  testDeviceDone = () => {
     this.setState({ ...this.state, deviceTested: true });
   };
 
@@ -95,7 +95,7 @@ export class SelectParam extends Component {
               responseLength={this.state.lengthOfResponse.value}
             />
           ) : (
-            <TestDevice testDevice={this.testDevice} />
+            <TestDevice testDeviceDone={this.testDeviceDone} />
           )
         ) : (
           this.getQuestionsParams()

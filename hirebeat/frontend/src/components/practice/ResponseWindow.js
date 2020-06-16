@@ -21,7 +21,7 @@ export class ResponseWindow extends Component {
   };
 
   state = {
-    status: "waiting", // or start or recording, or done. Used to control CountdownBar and 30's preparation
+    status: "Preparation", // or Recording or Your Answer Used to control CountdownBar and 30's preparation
   };
 
   componentDidMount() {
@@ -30,29 +30,31 @@ export class ResponseWindow extends Component {
 
   finishCountdown = () => {
     this.setState({
-      status: "start",
+      status: "Loading",
     });
   };
 
   startRecording = () => {
     this.setState({
-      status: "recording",
+      status: "Recording",
     });
   };
 
   recordingDone = () => {
     this.setState({
-      status: "done",
+      status: "Your Answer",
     });
   };
 
   resetCountdownBar = () => {
     this.setState({
-      status: "waiting",
+      status: "Preparation",
     });
   };
 
   render() {
+    var countTime =
+      this.state.status == "Preparation" ? 30 : this.props.responseLength * 60;
     videoRecorderOptions.plugins.record.maxLength =
       this.props.responseLength * 60;
     videoRecorderOptions.width = window.innerWidth / 2.4;
@@ -65,14 +67,11 @@ export class ResponseWindow extends Component {
               <h6>
                 Question {this.props.q_index + 1} / {this.props.q_count}
               </h6>
-              <CountdownBar
-                timeTotal={this.props.responseLength * 60}
-                timeRemain={this.props.responseLength * 60}
-                status={this.state.status}
-              />
             </div>
             <h4>{this.props.questions[this.props.q_index].description}</h4>
-            {this.state.status == "waiting" ? (
+            <h5>{this.state.status}</h5>
+            <CountdownBar timeTotal={countTime} status={this.state.status} />
+            {this.state.status == "Preparation" ? (
               <PrepCountdown finishCountdown={this.finishCountdown} />
             ) : (
               <VideoRecorder

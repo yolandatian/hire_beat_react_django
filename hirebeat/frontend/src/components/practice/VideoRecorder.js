@@ -44,7 +44,6 @@ export class VideoRecorder extends Component {
     this.player.on("finishRecord", () => {
       console.log("finished recording: ", this.player.recordedData);
       if (!this.props.isTesting) {
-        this.props.recordingDone();
         this.recordFinished();
       }
     });
@@ -74,6 +73,7 @@ export class VideoRecorder extends Component {
   };
 
   recordFinished = () => {
+    this.props.recordingDone();
     this.setState({
       ...this.state,
       video: this.player.recordedData,
@@ -95,7 +95,7 @@ export class VideoRecorder extends Component {
       videoHandled: true,
     });
     this.player.record().reset();
-    this.player.record().getDevice();
+    //this.player.record().getDevice();
   };
 
   render() {

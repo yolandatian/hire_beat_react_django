@@ -2,29 +2,41 @@ import React, { Component } from "react";
 
 export class CountdownBar extends Component {
   state = {
-    timeTotal: this.props.timeTotal,
-    timeRemain: this.props.timeRemain,
+    timeTotal: 30,
+    timeRemain: 30,
     intervalID: 0,
   };
 
-  componentDidUpdate(prevProps) {
-    if (
-      prevProps.status != this.props.status &&
-      this.props.status == "waiting"
-    ) {
-      this.setState({
-        timeRemain: this.state.timeTotal,
-      });
-    } else if (
-      prevProps.status != this.props.status &&
-      this.props.status == "recording"
-    ) {
+  componentDidMount() {
+    this.setState({
+      ...this.state,
+      timeTotal: this.props.timeTotal,
+      timeRemain: this.props.timeTotal,
+    });
+    if (this.props.status == "Preparation") {
       this.startCountDown();
-    } else if (
-      prevProps.status != this.props.status &&
-      this.props.status == "done"
-    ) {
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.status != this.props.status) {
       clearInterval(this.state.intervalID);
+      this.setState(
+        {
+          ...this.state,
+          timeRemain: this.props.timeTotal,
+          timeTotal: this.props.timeTotal,
+        },
+        () => {
+          // Callback to fire the timer
+          if (
+            this.props.status != "Your Answer" &&
+            this.props.status != "Loading"
+          ) {
+            this.startCountDown();
+          }
+        }
+      );
     }
   }
 
