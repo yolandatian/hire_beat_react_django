@@ -1,6 +1,6 @@
 import React from "react";
 import VideoRecorder from "./VideoRecorder";
-import { CardButton, SetupCard, CardRow } from "./CardComponents";
+import { CardButton, PracticeCard, CardRow } from "./CardComponents";
 import { videoRecorderOptions } from "../../constants/constants";
 
 function TestDevice(props) {
@@ -8,7 +8,7 @@ function TestDevice(props) {
   videoRecorderOptions.width = 330;
   videoRecorderOptions.height = 220;
   return (
-    <SetupCard>
+    <PracticeCard>
       <CardRow>
         <div className="col-4">
           <CardRow>
@@ -49,7 +49,7 @@ function TestDevice(props) {
           </div>
         </div>
       </CardRow>
-    </SetupCard>
+    </PracticeCard>
   );
 }
 

@@ -16,6 +16,7 @@ export var videoRecorderOptions = {
   width: 640,
   height: 480,
   fluid: false,
+  responsive: true,
   plugins: {
     record: {
       audio: true,

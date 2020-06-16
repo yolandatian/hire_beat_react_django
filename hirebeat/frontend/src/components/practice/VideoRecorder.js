@@ -69,7 +69,7 @@ export class VideoRecorder extends Component {
 
   disposePlayer = () => {
     if (this.player) {
-      this.player.record().destroy();
+      this.player.dispose();
     }
   };
 
