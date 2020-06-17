@@ -25,6 +25,12 @@ export class ResponseWindow extends Component {
   };
 
   componentDidMount() {
+    setTimeout(function () {
+      window.scrollTo({
+        top: 70,
+        behavior: "smooth",
+      });
+    }, 20);
     this.props.getQuestions(this.props.questionNumber);
   }
 
@@ -46,6 +52,34 @@ export class ResponseWindow extends Component {
     });
   };
 
+  questionIndicator = () => {
+    var rows = [];
+    for (var i = 0; i < this.props.q_count; i++) {
+      var bg = i == this.props.q_index ? "lightblue" : "#F0F3FA";
+      rows.push(
+        <div
+          style={{
+            borderRadius: "5px",
+            border: "none",
+            backgroundColor: bg,
+            width: "10px",
+            height: "10px",
+          }}
+        />
+      );
+    }
+    return (
+      <div className="row d-flex justify-content-center">
+        <div
+          className="d-flex justify-content-around"
+          style={{ width: 100, marginBottom: 10, marginTop: 2 }}
+        >
+          {rows}
+        </div>
+      </div>
+    );
+  };
+
   resetCountdownBar = () => {
     this.setState({
       status: "Preparation",
@@ -64,25 +98,57 @@ export class ResponseWindow extends Component {
         {this.props.loaded ? (
           <PracticeCard>
             <div className="practice-card-top-row">
-              <h6>
-                Question {this.props.q_index + 1} / {this.props.q_count}
-              </h6>
+              <h2>Q{this.props.q_index + 1}</h2>
             </div>
+            {this.questionIndicator()}
             <h4>{this.props.questions[this.props.q_index].description}</h4>
-            <h5>{this.state.status}</h5>
-            <CountdownBar timeTotal={countTime} status={this.state.status} />
-            {this.state.status == "Preparation" ? (
-              <PrepCountdown finishCountdown={this.finishCountdown} />
-            ) : (
-              <VideoRecorder
-                {...videoRecorderOptions}
-                startRecording={this.startRecording}
-                recordingDone={this.recordingDone}
-                resetCountdownBar={this.resetCountdownBar}
-                isTesting={false}
-                last_q={this.props.last_q}
-              />
-            )}
+            <div style={{ marginTop: 20 }}>
+              <div
+                className="video-recorder-row"
+                style={{ marginBottom: "-7px" }}
+              >
+                <div className="col-8">
+                  <div
+                    style={{
+                      backgroundColor: "black",
+                      width: window.innerWidth / 2.4,
+                      borderRadius: "8px 8px 0 0",
+                      display: "flex",
+                    }}
+                  >
+                    <p
+                      style={{
+                        fontSize: 15,
+                        color: "white",
+                        width: "60%",
+                        marginLeft: "10px",
+                        marginTop: "5px",
+                        marginBottom: "5px",
+                      }}
+                    >
+                      {this.state.status}
+                    </p>
+                    <CountdownBar
+                      timeTotal={countTime}
+                      status={this.state.status}
+                    />
+                  </div>
+                </div>
+                <div className="col-3" />
+              </div>
+              {this.state.status == "Preparation" ? (
+                <PrepCountdown finishCountdown={this.finishCountdown} />
+              ) : (
+                <VideoRecorder
+                  {...videoRecorderOptions}
+                  startRecording={this.startRecording}
+                  recordingDone={this.recordingDone}
+                  resetCountdownBar={this.resetCountdownBar}
+                  isTesting={false}
+                  last_q={this.props.last_q}
+                />
+              )}
+            </div>
             <NotePad />
           </PracticeCard>
         ) : null}

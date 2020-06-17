@@ -8,7 +8,7 @@ export class PrepCountdown extends Component {
   };
 
   componentDidMount() {
-    this.startCountDown();
+    //this.startCountDown();
   }
 
   startCountDown = () => {
@@ -38,7 +38,10 @@ export class PrepCountdown extends Component {
         <div className="col-8">
           <div
             className="prep-countdown-container"
-            style={{ width: window.innerWidth / 2.4 }}
+            style={{
+              width: window.innerWidth / 2.4,
+              backgroundColor: "black",
+            }}
           >
             <CardRow>Prepare your response</CardRow>
             <CardRow>

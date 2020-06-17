@@ -8,7 +8,7 @@ export class NotePad extends Component {
           <textarea
             style={{
               width: window.innerWidth / 2.4,
-              height: "80px",
+              height: "90px",
               borderColor: "lightgrey",
               borderWidth: "3px",
               borderRadius: "8px",

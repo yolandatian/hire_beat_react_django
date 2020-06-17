@@ -132,7 +132,7 @@
 }
 
 .practice-card-body {
-  height: 600px;
+  height: 680px;
 }
 
 .card-row {
@@ -148,14 +148,14 @@
 }
 
 .prep-countdown-container {
-  border: 1px solid lightgray;
   height: 400px;
   padding-top: 100px;
 }
 
 .practice-card-top-row {
+  padding-top: 2px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .card-row-high {

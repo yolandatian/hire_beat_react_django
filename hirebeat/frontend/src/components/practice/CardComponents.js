@@ -25,7 +25,9 @@ export const PracticeCard = (props) => {
     <div className="container practice-card-container">
       <div className="card mb-3 practice-card">
         {CardHeader()}
-        <div className="card-body practice-card-body">{props.children}</div>
+        <div className="card-body practice-card-body" style={{ paddingTop: 0 }}>
+          {props.children}
+        </div>
       </div>
     </div>
   );
