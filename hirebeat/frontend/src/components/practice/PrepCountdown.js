@@ -8,7 +8,7 @@ export class PrepCountdown extends Component {
   };
 
   componentDidMount() {
-    //this.startCountDown();
+    this.startCountDown();
   }
 
   startCountDown = () => {
@@ -41,12 +41,9 @@ export class PrepCountdown extends Component {
             style={{
               width: window.innerWidth / 2.4,
               backgroundColor: "black",
+              borderRadius: "0 0 8px 8px",
             }}
           >
-            <CardRow>Prepare your response</CardRow>
-            <CardRow>
-              <StyledLink>{this.state.timeRemain}s </StyledLink>left
-            </CardRow>
             <br />
             <br />
             <CardRow>

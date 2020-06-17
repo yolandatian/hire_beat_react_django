@@ -33,6 +33,19 @@ export const PracticeCard = (props) => {
   );
 };
 
+export const TestDeviceCard = (props) => {
+  return (
+    <div className="container practice-card-container">
+      <div className="card mb-3 practice-card">
+        {CardHeader()}
+        <div className="card-body test-card-body" style={{ paddingTop: 0 }}>
+          {props.children}
+        </div>
+      </div>
+    </div>
+  );
+};
+
 export const CardRow = (props) => {
   return <div className="row card-row">{props.children}</div>;
 };

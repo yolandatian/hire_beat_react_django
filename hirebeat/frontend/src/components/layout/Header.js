@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { logout } from "../../redux/actions/auth_actions";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { NonceProvider } from "react-select";
 
 export class Header extends Component {
   static propTypes = {
@@ -104,9 +103,18 @@ export class Header extends Component {
     return (
       <nav
         className="navbar navbar-expand-sm navbar-dark my-header-container"
-        style={{ WebkitBoxShadow: "none", boxShadow: "none" }}
+        style={{
+          WebkitBoxShadow: "none",
+          boxShadow: "none",
+          background: "linear-gradient(-135deg, #4BADE4, #4663e0)",
+        }}
       >
-        <div className="container align-items-center justify-content-between my-header">
+        <div
+          className="container align-items-center justify-content-between my-header"
+          style={{
+            backgroundColor: "transparent",
+          }}
+        >
           <ul className="navbar-nav mr-auto align-items-center">
             <li className="nav-item active">
               <Link to="/" className="nav-link">
@@ -128,6 +136,9 @@ export class Header extends Component {
           <div
             className="collapse navbar-collapse my-header-container"
             id="navbarTogglerDemo01"
+            style={{
+              backgroundColor: "transparent",
+            }}
           >
             {isAuthenticated
               ? user.groups[0] == "reviewers"

@@ -1,36 +1,41 @@
 import React from "react";
 import VideoRecorder from "./VideoRecorder";
-import { CardButton, PracticeCard } from "./CardComponents";
+import { CardButton, TestDeviceCard } from "./CardComponents";
 import { videoRecorderOptions } from "../../constants/constants";
 
 function TestDevice(props) {
   videoRecorderOptions.plugins.record.maxLength = 15;
-  videoRecorderOptions.width = 330;
-  videoRecorderOptions.height = 220;
+  videoRecorderOptions.width = window.innerWidth / 2.4;
+  videoRecorderOptions.height = window.innerWidth / 3.6;
   return (
-    <PracticeCard>
-      <div className="practice-card-top-row">
-        <h4>To Test Your Device</h4>
+    <TestDeviceCard>
+      <div
+        className="d-flex flex-column justify-content-center align-items-center"
+        style={{ paddingTop: 20 }}
+      >
+        <h3>To Test Your Device</h3>
+        <h4>
+          A 15-second video clip will be recorded. Please replay the clip to
+          ensure your microphone and camera are working.
+        </h4>
       </div>
-      <h6>
-        A 15-second video clip will be recorded.Please replay the clip to ensure
-        microphone and camera are working
-      </h6>
-      <h5>Testing</h5>
-      <div className="row">
-        <div className="col-8">
+      <div style={{ marginTop: 20 }}>
+        <div
+          className="video-recorder-row"
+          style={{ marginLeft: 0, paddingLeft: 0 }}
+        >
           <VideoRecorder {...videoRecorderOptions} isTesting={true} />
-        </div>
-        <div className="col-4">
           <div
             style={{
               display: "flex",
+              flexDirection: "column",
               justifyContent: "center",
               alignItems: "center",
-              height: "60%",
+              marginLeft: 15,
+              width: "40%",
             }}
           >
-            <h4>Everything goes well?</h4>
+            <p className="text-muted">Everything goes well?</p>
             <CardButton
               onTap={props.testDeviceDone}
               textDisplayed={"Start Practice"}
@@ -39,7 +44,7 @@ function TestDevice(props) {
           </div>
         </div>
       </div>
-    </PracticeCard>
+    </TestDeviceCard>
   );
 }
 

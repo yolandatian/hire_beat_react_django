@@ -56,10 +56,7 @@ export class VideoRecorder extends Component {
       console.error("device error:", this.player.deviceErrorCode);
     });
 
-    if (this.props.isTesting == false) {
-      console.log("starting the device automatically!!");
-      this.player.record().getDevice();
-    }
+    this.player.record().getDevice();
   }
 
   componentWillUnmount() {
@@ -95,7 +92,7 @@ export class VideoRecorder extends Component {
       videoHandled: true,
     });
     this.player.record().reset();
-    //this.player.record().getDevice();
+    this.player.record().getDevice();
   };
 
   render() {

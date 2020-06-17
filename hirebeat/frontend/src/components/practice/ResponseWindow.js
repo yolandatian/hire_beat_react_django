@@ -21,16 +21,16 @@ export class ResponseWindow extends Component {
   };
 
   state = {
-    status: "Preparation", // or Recording or Your Answer Used to control CountdownBar and 30's preparation
+    status: "Preparation", // or Recording or Loading or Your Answer. Used to control CountdownBar and 30's preparation
   };
 
   componentDidMount() {
     setTimeout(function () {
       window.scrollTo({
-        top: 70,
+        top: 65,
         behavior: "smooth",
       });
-    }, 20);
+    }, 200);
     this.props.getQuestions(this.props.questionNumber);
   }
 
@@ -80,6 +80,14 @@ export class ResponseWindow extends Component {
     );
   };
 
+  questionIndex = () => {
+    return (
+      <div className="practice-card-top-row">
+        <h2>Q{this.props.q_index + 1}</h2>
+      </div>
+    );
+  };
+
   resetCountdownBar = () => {
     this.setState({
       status: "Preparation",
@@ -97,9 +105,7 @@ export class ResponseWindow extends Component {
       <div>
         {this.props.loaded ? (
           <PracticeCard>
-            <div className="practice-card-top-row">
-              <h2>Q{this.props.q_index + 1}</h2>
-            </div>
+            {this.questionIndex()}
             {this.questionIndicator()}
             <h4>{this.props.questions[this.props.q_index].description}</h4>
             <div style={{ marginTop: 20 }}>

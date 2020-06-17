@@ -135,6 +135,10 @@
   height: 680px;
 }
 
+.test-card-body {
+  height: 580px;
+}
+
 .card-row {
   display: flex;
   justify-content: center;
