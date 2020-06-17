@@ -1,8 +1,41 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, withRouter } from "react-router-dom";
+
+const HomeButton = (props) => {
+  return (
+    <button
+      className="btn btn-warning"
+      style={{
+        WebkitBorderRadius: "20px",
+        marginRight: props.first ? 50 : 0,
+        background: props.first ? "#FF6B00" : "transparent",
+        border: props.first ? "none" : "2px solid white",
+        width: "30%",
+        height: 40,
+        padding: 0, // key to center text in button
+      }}
+      onClick={props.onTap}
+    >
+      <p
+        style={{
+          fontSize: "1vw",
+          fontWeight: "bold",
+          marginBottom: 0,
+        }}
+      >
+        {props.textDisplayed}
+      </p>
+    </button>
+  );
+};
 
 export class Home extends Component {
+  redirectTo = (path) => {
+    const { history } = this.props;
+    if (history) history.push(path);
+  };
+
   render() {
     if (this.props.isAuthenticated) {
       if (this.props.user.groups[0] == "reviewers") {
@@ -22,10 +55,26 @@ export class Home extends Component {
           alignItems: "center",
         }}
       >
-        <img
-          src="https://hirebeat-assets.s3.amazonaws.com/home-gradient.png"
-          width="100%"
-        />
+        <div className="home-1">
+          <div className="row">
+            <div
+              className="col-7 d-flex justify-content-center align-items-center"
+              style={{ marginTop: "26%" }}
+            >
+              <HomeButton
+                first={true}
+                onTap={() => this.redirectTo("/login/")}
+                textDisplayed={"Get Started Now"}
+              />
+              <HomeButton
+                first={false}
+                onTap={() => this.redirectTo("/company/")}
+                textDisplayed={"Learn More"}
+              />
+            </div>
+            <div className="col-5" />
+          </div>
+        </div>
         <img
           src="https://hirebeat-assets.s3.amazonaws.com/home2.png"
           width="80%"
@@ -39,6 +88,18 @@ export class Home extends Component {
           src="https://hirebeat-assets.s3.amazonaws.com/home5.png"
           width="80%"
         />
+        <h2>You seat is vacant</h2>
+        <br />
+        <HomeButton
+          first={true}
+          onTap={() => this.redirectTo("/register/")}
+          textDisplayed={"Sign Up Now"}
+        />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
       </div>
     );
   }
@@ -49,4 +110,4 @@ const mapStateToProps = (state) => ({
   user: state.auth_reducer.user,
 });
 
-export default connect(mapStateToProps, null)(Home);
+export default connect(mapStateToProps, null)(withRouter(Home));
