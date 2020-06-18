@@ -4,6 +4,7 @@ from videos.models import Video
 from accounts.models import ReviewerInfo
 from rest_framework.response import Response
 from rest_framework import status
+from accounts.models import Profile
 
 class VideoViewSet(viewsets.ModelViewSet):
     # permission_classes = [permissions.AllowAny] allow all access
@@ -16,6 +17,9 @@ class VideoViewSet(viewsets.ModelViewSet):
         return self.request.user.videos.all().order_by('-created_at')
 
     def perform_create(self, serializer):
+        profile = Profile.objects.filter(user=self.request.user)[0]
+        profile.saved_video_count += 1
+        profile.save()
         serializer.save(owner=self.request.user)
     
     def partial_update(self, request, pk=None):

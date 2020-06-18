@@ -6,6 +6,7 @@ import {
   ADD_REVIEWS,
   GET_UNREVIEWED_VIDEO,
   VIDEO_UNDER_REVIEW,
+  INCREASE_VIDEO_COUNT,
 } from "./action_types";
 import { createMessage, returnErrors } from "./message_actions";
 import { tokenConfig } from "./auth_actions";
@@ -47,6 +48,9 @@ export const addVideo = (video) => (dispatch, getState) => {
       dispatch({
         type: ADD_VIDEO,
         payload: res.data,
+      });
+      dispatch({
+        type: INCREASE_VIDEO_COUNT,
       });
     })
     .catch((err) =>

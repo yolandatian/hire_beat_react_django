@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.dispatch import receiver
 from django.db.models.signals import post_save
 from django.utils.translation import gettext_lazy as _
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 # Create your models here.
 class ReviewerInfo(models.Model):
@@ -29,6 +30,13 @@ class Profile(models.Model):
     intro_video_link = models.URLField(null=True, blank=True)
     education = models.CharField(max_length=50,default="Not provided")
     location = models.CharField(max_length=50,default="Not provided")
+    save_limit = models.IntegerField(default=5,validators=[
+            MaxValueValidator(1000),
+            MinValueValidator(5)
+        ])
+    saved_video_count = models.IntegerField(default=0,validators=[
+            MaxValueValidator(1000)
+        ])
 
     def __str__(self):
         return self.user.username

@@ -1,6 +1,7 @@
 var ReactS3Uploader = require("react-s3-uploader");
 import React, { Component } from "react";
 import { addVideo } from "../../redux/actions/video_actions";
+import { createMessage } from "../../redux/actions/message_actions";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import {
@@ -42,13 +43,35 @@ export class MyVideoUploader extends Component {
   };
 
   handleUpload() {
-    this.uploader.uploadFile(this.props.video);
-    this.props.resetDeviceAndNextQuestion();
+    console.log("======result========");
+    console.log(this.props.saved_video_count);
+    console.log(this.props.save_limit);
+    if (this.props.saved_video_count < this.props.save_limit) {
+      this.uploader.uploadFile(this.props.video);
+      this.props.resetDeviceAndNextQuestion();
+    } else {
+      this.props.createMessage({
+        errorMessage: "Video save limit already reached",
+      });
+    }
   }
 
   handleUploadAndFinish = () => {
-    this.uploader.uploadFile(this.props.video);
-    this.redirectToDashboard();
+    if (this.uploadCheckPassed) {
+      this.uploader.uploadFile(this.props.video);
+      this.redirectToDashboard();
+    } else {
+      this.props.createMessage({
+        errorMessage: "Video save limit already reached",
+      });
+    }
+  };
+
+  uploadCheckPassed = () => {
+    console.log("======result========");
+    console.log(this.props.saved_video_count);
+    console.log(this.props.save_limit);
+    return this.props.saved_video_count < this.props.save_limit;
   };
 
   redirectToDashboard = () => {
@@ -58,6 +81,9 @@ export class MyVideoUploader extends Component {
   };
 
   render() {
+    console.log("======result========");
+    console.log(this.props.saved_video_count);
+    console.log(this.props.save_limit);
     var saveOnTap = this.handleUpload;
     var skipOnTap = this.props.resetDeviceAndNextQuestion;
     var saveText = "Save and Next";
@@ -114,8 +140,10 @@ export class MyVideoUploader extends Component {
 const mapStateToProps = (state) => ({
   questions: state.question_reducer.questions,
   q_index: state.question_reducer.q_index,
+  save_limit: state.auth_reducer.profile.save_limit,
+  saved_video_count: state.auth_reducer.profile.saved_video_count,
 });
 
-export default connect(mapStateToProps, { addVideo })(
+export default connect(mapStateToProps, { addVideo, createMessage })(
   withRouter(MyVideoUploader)
 );
