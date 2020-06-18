@@ -1,5 +1,15 @@
 import React from "react";
 
+const commonDetail1 = "Unlimited mock-interview practice";
+const commonDetail2 = "Request AI analysis on your video interviews";
+const commonDetail3 = "Request professional feedback from HR";
+const commonDetail4 = "Review & replay interview performance";
+
+const basicDetail1 = "Save up to 5 video interviews";
+
+const premiumDetail1 = "Unlimited save your video interviews";
+const premiumDetail2 = "Full Access to interview question bank";
+
 const BasicPrice = () => {
   return <p style={{ color: "#FF6B00", fontSize: 50 }}>$Free</p>;
 };
@@ -14,9 +24,34 @@ const PremiumPrice = () => {
           fontSize: 50,
         }}
       >
-        $10
+        $19.99
       </p>
       <p style={{ color: "black", fontSize: 30, paddingTop: 20 }}>/mo</p>
+    </div>
+  );
+};
+
+const BasicDetails = () => {
+  return (
+    <div style={{ marginBottom: "34px" }}>
+      <p className="text-muted">{commonDetail1}</p>
+      <p className="text-muted">{commonDetail2}</p>
+      <p className="text-muted">{commonDetail3}</p>
+      <p className="text-muted">{commonDetail4}</p>
+      <p className="text-muted">{basicDetail1}</p>
+    </div>
+  );
+};
+
+const PremiumDetails = () => {
+  return (
+    <div>
+      <p className="text-muted">{commonDetail1}</p>
+      <p className="text-muted">{commonDetail2}</p>
+      <p className="text-muted">{commonDetail3}</p>
+      <p className="text-muted">{commonDetail4}</p>
+      <p className="text-muted">{premiumDetail1}</p>
+      <p className="text-muted">{premiumDetail2}</p>
     </div>
   );
 };
@@ -51,27 +86,33 @@ const PriceButton = (props) => {
 };
 
 const PriceCard = (props) => {
+  var basicSrc = "https://hirebeat-assets.s3.amazonaws.com/free.png";
+  var premiumSrc = "https://hirebeat-assets.s3.amazonaws.com/premium.png";
   return (
     <div
-      className="col-3"
+      className="col-4"
       style={{
         borderRadius: "8px",
-        marginLeft: props.first ? "20%" : 0,
-        marginRight: props.first ? 0 : "20%",
+        marginLeft: props.first ? "10%" : 0,
+        marginRight: props.first ? 0 : "10%",
         backgroundColor: "white",
-        height: 400,
+        height: 650,
       }}
     >
       <div className="container d-flex flex-column justify-content-center align-items-center">
-        <h1 style={{ marginBottom: 20 }}>img</h1>
+        <div style={{ marginBottom: 20, marginTop: 20 }}>
+          <img
+            src={props.first ? basicSrc : premiumSrc}
+            width="80"
+            height="80"
+          />
+        </div>
         <h2>{props.first ? "Basic" : "Premium"}</h2>
         <p className="text-muted">
           {props.first ? "Practice interview" : "Prepare for job seaking"}
         </p>
         {props.first ? <BasicPrice /> : <PremiumPrice />}
-        <p className="text-muted">
-          {props.first ? "5 saved videos" : "10 saved videos"}
-        </p>
+        {props.first ? <BasicDetails /> : <PremiumDetails />}
         {props.first ? (
           <PriceButton onTap={() => {}} textDisplayed={"Try this plan"} />
         ) : (
@@ -88,7 +129,8 @@ export default function Pricing() {
       className="container-fluid"
       style={{
         padding: 0,
-        backgroundColor: "white",
+        backgroundColor: "#FAFAFB",
+        height: 900,
       }}
     >
       <div className="pricing-bg">
