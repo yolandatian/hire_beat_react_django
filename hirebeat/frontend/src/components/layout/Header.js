@@ -4,6 +4,21 @@ import { logout } from "../../redux/actions/auth_actions";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
+const AccountBtnText = (props) => {
+  return (
+    <h3
+      style={{
+        border: "2px solid white",
+        padding: 2,
+        borderRadius: "5px",
+        marginTop: 2,
+      }}
+    >
+      {props.textDisplayed}
+    </h3>
+  );
+};
+
 export class Header extends Component {
   static propTypes = {
     auth: PropTypes.object.isRequired,
@@ -17,12 +32,12 @@ export class Header extends Component {
         className="navbar-nav align-items-center d-flex justify-content-around"
         style={{ width: "100%" }}
       >
-        <li className="nav-item active align-items-center">
+        <li className="nav-item align-items-center">
           <Link to="/practice" className="nav-link">
             <h3>Practice</h3>
           </Link>
         </li>
-        <li className="nav-item active">
+        <li className="nav-item">
           <Link to="/dashboard" className="nav-link">
             <h3>Dashboard</h3>
           </Link>
@@ -71,15 +86,15 @@ export class Header extends Component {
 
   renderGuestLinks = () => {
     return (
-      <ul className="navbar-nav mr-auto align-items-center">
-        <li className="nav-item active">
+      <ul className="navbar-nav" style={{ marginLeft: "50%" }}>
+        <li className="nav-item">
           <Link to="/register" className="nav-link">
-            <h3>Register</h3>
+            <AccountBtnText textDisplayed={"Register"} />
           </Link>
         </li>
-        <li className="nav-item active">
+        <li className="nav-item">
           <Link to="/login" className="nav-link">
-            <h3>Login</h3>
+            <AccountBtnText textDisplayed={"Login"} />
           </Link>
         </li>
       </ul>
