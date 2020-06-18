@@ -43,12 +43,12 @@ export class Header extends Component {
           </Link>
         </li>
         <li className="nav-item">
-          <Link to="#" className="nav-link">
+          <Link to="/pricing" className="nav-link">
             <h3>Pricing</h3>
           </Link>
         </li>
         <li className="nav-item">
-          <Link to="#" className="nav-link">
+          <Link to="/company" className="nav-link">
             <h3>Company</h3>
           </Link>
         </li>

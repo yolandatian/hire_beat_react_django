@@ -6,17 +6,14 @@ import AlertTemplate from "react-alert-template-basic";
 import { Provider as AlertProvider } from "react-alert";
 import Alerts from "./layout/Alerts";
 import store from "../store";
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Redirect,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import Login from "./accounts/Login";
 import Register from "./accounts/Register";
 import PrivateRoute from "./basic/PrivateRoute";
 import Home from "./home/Home";
+import Pricing from "./pricing/Pricing";
+import Company from "./company/Company";
 import SelectParam from "./practice/SelectParam";
 
 import { loadUser, loadProfile } from "../redux/actions/auth_actions";
@@ -68,6 +65,8 @@ class App extends Component {
                   component={QuestionTypeChoices}
                 />
                 <PrivateRoute path="/video/:id" component={VideoReplayPage} />
+                <Route exact path="/pricing" component={Pricing} />
+                <Route exact path="/company" component={Company} />
                 <Route exact path="/register" component={Register} />
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/upload" component={MyVideoUploader} />

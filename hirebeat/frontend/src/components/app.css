@@ -7,6 +7,33 @@
   --theme-color: #425fdf;
 }
 
+.strikethrough {
+  position: relative;
+}
+.strikethrough:before {
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 50%;
+  right: 0;
+  border-top: 1px solid;
+  border-color: inherit;
+
+  -webkit-transform: rotate(-5deg);
+  -moz-transform: rotate(-5deg);
+  -ms-transform: rotate(-5deg);
+  -o-transform: rotate(-5deg);
+  transform: rotate(-5deg);
+}
+
+.pricing-bg {
+  background-image: url("https://hirebeat-assets.s3.amazonaws.com/bg.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 700px;
+}
+
 .home-1 {
   background-image: url("https://hirebeat-assets.s3.amazonaws.com/home-gradient.png");
   background-size: 100%;
