@@ -13,7 +13,10 @@ export class Header extends Component {
   renderUserLinks = () => {
     const { user } = this.props.auth;
     return (
-      <ul className="navbar-nav ml-auto align-items-center">
+      <ul
+        className="navbar-nav align-items-center d-flex justify-content-around"
+        style={{ width: "100%" }}
+      >
         <li className="nav-item active align-items-center">
           <Link to="/practice" className="nav-link">
             <h3>Practice</h3>
@@ -43,22 +46,22 @@ export class Header extends Component {
               data-toggle="dropdown"
               aria-haspopup="true"
               aria-expanded="false"
+              style={{ borderRadius: "5px" }}
             >
               <strong>{user ? `  ${user.username}  ` : ""}</strong>
             </button>
-            <div className="dropdown-menu" aria-labelledby="btnGroupDrop1">
+            <div
+              className="dropdown-menu"
+              role="menu"
+              aria-labelledby="btnGroupDrop1"
+            >
               <button
                 onClick={this.props.logout}
-                className="nav-link btn btn-danger btn-sm text-light"
+                className="btn btn-danger btn-sm text-light"
+                style={{ width: "80%", marginLeft: 15 }}
               >
                 Logout
               </button>
-              <a className="dropdown-item" href="#">
-                Dropdown link
-              </a>
-              <a className="dropdown-item" href="#">
-                Dropdown link
-              </a>
             </div>
           </div>
         </li>
@@ -138,6 +141,7 @@ export class Header extends Component {
             id="navbarTogglerDemo01"
             style={{
               backgroundColor: "transparent",
+              marginLeft: "30%",
             }}
           >
             {isAuthenticated

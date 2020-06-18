@@ -63,7 +63,7 @@ export class Home extends Component {
             >
               <HomeButton
                 first={true}
-                onTap={() => this.redirectTo("/login/")}
+                onTap={() => this.redirectTo("/practice/")}
                 textDisplayed={"Get Started Now"}
               />
               <HomeButton
