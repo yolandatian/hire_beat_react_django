@@ -1,4 +1,7 @@
-import React from "react";
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { updateProfile } from "../../redux/actions/auth_actions";
+import { createMessage } from "../../redux/actions/message_actions";
 
 const commonDetail1 = "Unlimited mock-interview practice";
 const commonDetail2 = "Request AI analysis on your video interviews";
@@ -86,6 +89,15 @@ const PriceButton = (props) => {
 };
 
 const PriceCard = (props) => {
+  var message = props.first ? "Default Plan" : "Upgrade successfully";
+  const basic = () => {
+    props.createMessage({ successMessage: message });
+  };
+  const upgrade = () => {
+    console.log("to upgrade");
+    props.handleUpgrade();
+    props.createMessage({ successMessage: message });
+  };
   var basicSrc = "https://hirebeat-assets.s3.amazonaws.com/free.png";
   var premiumSrc = "https://hirebeat-assets.s3.amazonaws.com/premium.png";
   return (
@@ -114,45 +126,76 @@ const PriceCard = (props) => {
         {props.first ? <BasicPrice /> : <PremiumPrice />}
         {props.first ? <BasicDetails /> : <PremiumDetails />}
         {props.first ? (
-          <PriceButton onTap={() => {}} textDisplayed={"Try this plan"} />
+          <PriceButton onTap={basic} textDisplayed={"Try this plan"} />
         ) : (
-          <PriceButton onTap={() => {}} textDisplayed={"Upgrade for free"} />
+          <PriceButton onTap={upgrade} textDisplayed={"Upgrade for free"} />
         )}
       </div>
     </div>
   );
 };
 
-export default function Pricing() {
-  return (
-    <div
-      className="container-fluid"
-      style={{
-        padding: 0,
-        backgroundColor: "#FAFAFB",
-        height: 900,
-      }}
-    >
-      <div className="pricing-bg">
-        <div
-          className="container d-flex flex-column justify-content-center align-items-center"
-          style={{ paddingTop: 50 }}
-        >
-          <h1 style={{ color: "white", marginBottom: 50 }}>
-            Transparent & Simple Pricing
-          </h1>
-          <h4 style={{ color: "white", marginBottom: 50 }}>
-            Get interview analytics with HireBeat plan. Try Premium for free.
-          </h4>
+class Pricing extends Component {
+  makeProfile = () => {
+    return {
+      user: this.props.user.id,
+      id: this.props.profile.id,
+      save_limit: 1000,
+    };
+  };
+
+  handleUpgrade = () => {
+    var profile = this.makeProfile();
+    this.props.updateProfile(profile);
+  };
+
+  render() {
+    return (
+      <div
+        className="container-fluid"
+        style={{
+          padding: 0,
+          backgroundColor: "#FAFAFB",
+          height: 900,
+        }}
+      >
+        <div className="pricing-bg">
           <div
-            className="row d-flex justify-content-around"
-            style={{ width: "100%" }}
+            className="container d-flex flex-column justify-content-center align-items-center"
+            style={{ paddingTop: 50 }}
           >
-            <PriceCard first={true} />
-            <PriceCard first={false} />
+            <h1 style={{ color: "white", marginBottom: 50 }}>
+              Transparent & Simple Pricing
+            </h1>
+            <h4 style={{ color: "white", marginBottom: 50 }}>
+              Get interview analytics with HireBeat plan. Try Premium for free.
+            </h4>
+            <div
+              className="row d-flex justify-content-around"
+              style={{ width: "100%" }}
+            >
+              <PriceCard
+                first={true}
+                createMessage={this.props.createMessage}
+              />
+              <PriceCard
+                first={false}
+                createMessage={this.props.createMessage}
+                handleUpgrade={this.handleUpgrade}
+              />
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
+
+const mapStateToProps = (state) => ({
+  user: state.auth_reducer.user,
+  profile: state.auth_reducer.profile,
+});
+
+export default connect(mapStateToProps, { updateProfile, createMessage })(
+  Pricing
+);
