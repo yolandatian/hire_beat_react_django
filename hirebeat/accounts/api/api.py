@@ -20,8 +20,8 @@ class ResgisterAPI(generics.GenericAPIView):
         user = serializer.save()
         ### token
         _, token = AuthToken.objects.create(user)
-        ### profile
-        profile = Profile.objects.filter(user=request.user)[0]
+        ### profile is autocreated
+        profile = Profile.objects.filter(user=user.id)[0]
         return Response({
             "user":UserSerializer(user, context=self.get_serializer_context()).data,
             "token": token,
