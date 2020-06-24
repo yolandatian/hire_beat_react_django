@@ -43,11 +43,10 @@ def get_unreviewed_video(request):
     if not group_check(allowed_groups=['reviewers'],user=request.user):
         return HttpResponseBadRequest({"You are not authorized to view this page. Please don't use incognito browsers."})
     
+    video = None
     videos = Video.objects.filter(needed_expert_review=True,is_expert_reviewed=False).order_by('created_at')
-    video= None
-    for v in videos:
-        video = v
-        break
+    if videos.exists() :
+        video = videos[0]
     serializer = VideoSerializer(video)
     review_count = ReviewerInfo.objects.filter(user=request.user)[0].review_count
     return Response({
