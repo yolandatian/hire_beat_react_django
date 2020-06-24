@@ -30,6 +30,7 @@ class Profile(models.Model):
     intro_video_link = models.URLField(null=True, blank=True)
     education = models.CharField(max_length=50,default="Not provided")
     location = models.CharField(max_length=50,default="Not provided")
+    profession = models.CharField(max_length=50,default="Not provided")
     save_limit = models.IntegerField(default=5,validators=[
             MaxValueValidator(1000),
             MinValueValidator(5)

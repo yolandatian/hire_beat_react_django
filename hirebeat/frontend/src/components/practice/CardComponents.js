@@ -59,6 +59,7 @@ export const CardRowMidHigh = (props) => {
 };
 
 export const CardButton = (props) => {
+  // buttonWidth, onTap, textDisplayed, btnClassName
   return (
     <button
       className={props.btnClassName ?? "btn btn-warning"}

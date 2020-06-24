@@ -12,7 +12,7 @@ export class QuestionTypeChoices extends Component {
 
   redirectToTechQuestions = () => {
     const { history } = this.props;
-    if (history) history.push(`/practice/tech`);
+    if (history) history.push(`/techfields/`);
   };
 
   render() {

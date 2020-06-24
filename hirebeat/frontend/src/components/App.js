@@ -15,6 +15,7 @@ import Home from "./home/Home";
 import Pricing from "./pricing/Pricing";
 import Company from "./company/Company";
 import SelectParam from "./practice/SelectParam";
+import TechFields from "./practice/TechFields";
 
 import { loadUser, loadProfile } from "../redux/actions/auth_actions";
 
@@ -58,6 +59,11 @@ class App extends Component {
                   exact
                   path="/practice/:type"
                   component={SelectParam}
+                />
+                <PrivateRoute
+                  exact
+                  path="/techfields/"
+                  component={TechFields}
                 />
                 <PrivateRoute
                   exact

@@ -173,7 +173,7 @@ export const updateProfile = (profile) => (dispatch) => {
   };
   const body = JSON.stringify(profile);
   axios
-    .put(`profile/${profile.id}/`, body, config)
+    .put(`/profile/${profile.id}/`, body, config)
     .then((res) => {
       dispatch({
         type: PROFILE_UPDATED,
