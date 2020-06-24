@@ -1,10 +1,7 @@
 import React, { Component } from "react";
 import {
   Player,
-  BigPlayButton,
   ControlBar,
-  ReplayControl,
-  ForwardControl,
   CurrentTimeDisplay,
   TimeDivider,
   PlaybackRateMenuButton,
