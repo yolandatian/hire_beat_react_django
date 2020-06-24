@@ -27,7 +27,7 @@ SECRET_KEY = '_a%+ao1u#bz@3!v=b%bwuy5-iyw#s!nzxfu3nfvvw)!*3bts)w'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['34.230.181.0','www.hirebeat.co','hirebeat.co']
 
 # Application definition
 
@@ -90,9 +90,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'postgres',
         'USER': 'django',
-        'PASSWORD': '',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
+	'PASSWORD':'django',
     }
 }
 
@@ -133,6 +131,7 @@ USE_TZ = True
 ### social login start ###
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, '/static/')
 
 AUTHENTICATION_BACKENDS = (
     'social_core.backends.linkedin.LinkedinOAuth2',
