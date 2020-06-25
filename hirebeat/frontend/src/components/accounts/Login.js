@@ -3,6 +3,7 @@ import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { login, exchangeToken } from "../../redux/actions/auth_actions";
+import { CardButton } from "../practice/CardComponents";
 import SocialButtons from "./SocialButtons";
 
 export class Login extends Component {
@@ -57,48 +58,78 @@ export class Login extends Component {
     }
     const { username, password } = this.state;
     return (
-      <div className="col-md-6 m-auto">
-        <SocialButtons handleSocialLogin={this.handleSocialLogin} />
-        <div className="card card-body mt-5">
-          <h2 className="text-center">Login</h2>
-          <form onSubmit={this.onSubmit}>
-            <div className="form-group">
-              <label>Username</label>
-              <input
-                type="text"
-                className="form-control"
-                name="username"
-                onChange={this.onChange}
-                value={username}
-              />
-            </div>
-            <div className="form-group">
-              <label>Password</label>
-              <input
-                type="password"
-                className="form-control"
-                name="password"
-                onChange={this.onChange}
-                value={password}
-              />
-            </div>
+      <div
+        className="col-md-6 m-auto"
+        style={{ paddingTop: "70px", width: "25%", minWidth: "200px" }}
+      >
+        <h2 className="text-center">Welcome back!</h2>
+        <form onSubmit={this.onSubmit}>
+          <div className="form-group">
+            <input
+              type="text"
+              className="form-control"
+              name="username"
+              placeholder="Username"
+              onChange={this.onChange}
+              value={username}
+            />
+          </div>
+          <div className="form-group">
+            <input
+              type="password"
+              placeholder="Password"
+              className="form-control"
+              name="password"
+              onChange={this.onChange}
+              value={password}
+            />
+          </div>
+          <div className="d-flex justify-content-between align-items-center">
+            <Link
+              to="/register"
+              style={{ textDecoration: "underline", color: "#FF6B00" }}
+            >
+              Create account
+            </Link>
+            <Link
+              to="/password_reset"
+              target="_blank"
+              style={{ color: "#7D7D7D" }}
+            >
+              Forget password?
+            </Link>
+          </div>
 
-            <div className="form-group">
-              <button type="submit" className="btn btn-primary">
-                Login
-              </button>
-            </div>
-            <p>
-              Don't have an account? <Link to="/register">Register</Link>
+          <div
+            className="form-group"
+            style={{ paddingTop: 30, paddingBottom: 20 }}
+          >
+            <CardButton
+              onTap={this.onSubmit}
+              textDisplayed={"Log in"}
+              buttonWidth={"100%"}
+            />
+          </div>
+          <div className="d-flex justify-content-center align-items-center">
+            <div className="line" />
+            <p
+              style={{
+                color: "#7d7d7d",
+                paddingLeft: 10,
+                paddingRight: 10,
+                paddingTop: 0,
+                marginTop: 0,
+                paddingBottom: 0,
+                marginBottom: 0,
+              }}
+            >
+              Or use
             </p>
-            <p>
-              Forget password?{" "}
-              <Link to="/password_reset" target="_blank">
-                Reset password
-              </Link>
-            </p>
-          </form>
-        </div>
+            <div className="line" />
+          </div>
+
+          <SocialButtons handleSocialLogin={this.handleSocialLogin} />
+        </form>
       </div>
     );
   }

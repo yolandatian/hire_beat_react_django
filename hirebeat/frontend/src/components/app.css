@@ -257,6 +257,12 @@
   min-height: 600px;
 }
 
+.line {
+  width: 40%;
+  height: 2px;
+  border-bottom: 1px solid #7d7d7d;
+}
+
 /* override textarea*/
 
 textarea:focus::placeholder {

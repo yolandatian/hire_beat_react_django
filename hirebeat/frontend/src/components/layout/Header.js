@@ -89,12 +89,12 @@ export class Header extends Component {
       <ul className="navbar-nav" style={{ marginLeft: "50%" }}>
         <li className="nav-item">
           <Link to="/register" className="nav-link">
-            <AccountBtnText textDisplayed={"Register"} />
+            <AccountBtnText textDisplayed={"Sign up"} />
           </Link>
         </li>
         <li className="nav-item">
           <Link to="/login" className="nav-link">
-            <AccountBtnText textDisplayed={"Login"} />
+            <AccountBtnText textDisplayed={"Log in"} />
           </Link>
         </li>
       </ul>

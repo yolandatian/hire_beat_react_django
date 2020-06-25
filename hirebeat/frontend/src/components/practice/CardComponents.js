@@ -66,6 +66,7 @@ export const CardButton = (props) => {
       style={{
         WebkitBorderRadius: "20px",
         width: props.buttonWidth,
+        background: "#FF6B00",
         boxShadow:
           "0px 0px 8px" +
           (props.btnClassName == "btn btn-success" ? " #7cb873" : " #dc6b2a"),
@@ -148,6 +149,7 @@ export const ButtonContainer = (src, onTap, textDisplayed, btnClassName) => {
 };
 
 const s = {
+  //Dropdown style
   control: (styles) => ({
     ...styles,
     WebkitBorderRadius: "15px",

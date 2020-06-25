@@ -50,7 +50,7 @@ export class SocialButtons extends Component {
 
   render() {
     return (
-      <div>
+      <div style={{ marginTop: 15 }}>
         {this.renderFacebookButton()}
         {this.renderGoogleButton()}
         {this.renderLinkedinButton()}
