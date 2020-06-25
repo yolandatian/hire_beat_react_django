@@ -53,7 +53,7 @@ export class SocialButtons extends Component {
       <div style={{ marginTop: 15 }}>
         {this.renderFacebookButton()}
         {this.renderGoogleButton()}
-        {this.renderLinkedinButton()}
+        {/*this.renderLinkedinButton()*/}
       </div>
     );
   }

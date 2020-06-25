@@ -50,58 +50,90 @@ export class Register extends Component {
       return <Redirect to="/" />;
     }
     return (
-      <div className="col-md-6 m-auto">
-        <div className="card card-body mt-5">
-          <h2 className="text-center">Register</h2>
+      <div
+        className="container"
+        style={{
+          paddingTop: "6%",
+          display: "flex",
+          flexDirection: "column",
+          alignContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <h2 className="text-center">Start Your Career With HireBeat</h2>
+        <p style={{ color: "#7d7d7d" }}>
+          Join our AI-analysis interview platform to improve your performance.
+        </p>
+        <div className="col-md-6 m-auto" style={{ width: "30%" }}>
           <form onSubmit={this.onSubmit}>
-            <div className="form-group">
-              <label>Username</label>
-              <input
-                type="text"
-                className="form-control"
-                name="username"
-                onChange={this.onChange}
-                value={username}
-              />
-            </div>
-            <div className="form-group">
-              <label>Email</label>
-              <input
-                type="email"
-                className="form-control"
-                name="email"
-                onChange={this.onChange}
-                value={email}
-              />
-            </div>
-            <div className="form-group">
-              <label>Password</label>
-              <input
-                type="password"
-                className="form-control"
-                name="password"
-                onChange={this.onChange}
-                value={password}
-              />
-            </div>
-            <div className="form-group">
-              <label>Confirm Password</label>
-              <input
-                type="password"
-                className="form-control"
-                name="password2"
-                onChange={this.onChange}
-                value={password2}
-              />
-            </div>
-            <div className="form-group">
-              <button type="submit" className="btn btn-primary">
-                Register
-              </button>
-            </div>
-            <p>
-              Already have an account? <Link to="/login">Login</Link>
-            </p>
+            <fieldset>
+              <div className="form-group">
+                <input
+                  type="text"
+                  className="form-control"
+                  name="username"
+                  placeholder="Username"
+                  onChange={this.onChange}
+                  value={username}
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <input
+                  type="email"
+                  className="form-control"
+                  name="email"
+                  placeholder="Email. Will be used to retrive password"
+                  required
+                  onChange={this.onChange}
+                  value={email}
+                />
+              </div>
+              <div className="form-group">
+                <input
+                  type="password"
+                  className="form-control"
+                  name="password"
+                  onChange={this.onChange}
+                  value={password}
+                  placeholder="Password"
+                  minLength="8"
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <input
+                  type="password"
+                  className="form-control"
+                  name="password2"
+                  onChange={this.onChange}
+                  value={password2}
+                  placeholder="Confirm password"
+                  minLength="8"
+                  required
+                />
+              </div>
+              <p>
+                Already have an account? <Link to="/login">Login</Link>
+              </p>
+              <br />
+              <div className="form-group">
+                <button
+                  type="submit"
+                  style={{
+                    WebkitBorderRadius: "20px",
+                    width: "100%",
+                    height: "40px",
+                    color: "white",
+                    background: "#FF6B00",
+                    border: "none",
+                    boxShadow: "0px 0px 8px #FF6B00",
+                  }}
+                >
+                  Sign up
+                </button>
+              </div>
+            </fieldset>
           </form>
         </div>
       </div>
