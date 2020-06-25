@@ -130,7 +130,7 @@ const EditModal = (props) => {
   return (
     <MyModal show={props.show} onHide={props.hide}>
       <div className="container">
-        <form>
+        <form style={{ marginBottom: "3%" }}>
           <fieldset>
             <div className="form-group">
               <label style={{ fontSize: "20px" }}>Phone Number</label>
