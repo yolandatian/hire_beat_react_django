@@ -119,8 +119,12 @@ export class MyVideoUploader extends Component {
           buttonWidth={"100%"}
         />
         <VideoNumberLinkRow
-          number_of_videos_to_save={10}
-          upgrade={() => console.log("upgrade")}
+          number_of_videos_to_save={
+            this.props.save_limit == 1000
+              ? "Unlimited"
+              : this.props.save_limit - this.props.saved_video_count
+          }
+          //upgrade={() => console.log("upgrade")}
         />
         <RecordDoneButton
           onTap={this.props.resetDevice}

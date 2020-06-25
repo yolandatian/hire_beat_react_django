@@ -116,7 +116,7 @@ export const VideoNumberLinkRow = (props) => {
     <CardRowMidHigh>
       <div className="d-flex justify-content-around" style={{ width: "100%" }}>
         <h6>Free video save left: {props.number_of_videos_to_save} </h6>
-        <a
+        {/* <a
           onClick={props.upgrade}
           style={{
             color: "#f3a340",
@@ -124,7 +124,7 @@ export const VideoNumberLinkRow = (props) => {
           }}
         >
           Upgrade >
-        </a>
+        </a> */}
       </div>
     </CardRowMidHigh>
   );
