@@ -127,7 +127,6 @@ export class Login extends Component {
             </p>
             <div className="line" />
           </div>
-
           <SocialButtons handleSocialLogin={this.handleSocialLogin} />
         </form>
       </div>

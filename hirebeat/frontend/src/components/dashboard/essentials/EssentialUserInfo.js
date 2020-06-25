@@ -1,5 +1,4 @@
-import React, { useState, Component } from "react";
-import billGates from "../../../assets/billgates.jpg";
+import React, { Component } from "react";
 import ImageButton from "../../basic/ImageButton";
 import {
   IconButton,
@@ -53,7 +52,11 @@ export class EssentialUserInfo extends Component {
         <div className="card-body">
           <DbCenterRow>
             <div className="col-2">
-              <ImageButton src={billGates} func={() => {}} type={"avatar"} />
+              <ImageButton
+                src={"https://hirebeat-assets.s3.amazonaws.com/user.png"}
+                func={() => {}}
+                type={"avatar"}
+              />
             </div>
             <div className="col-10">
               <div className="row">
