@@ -18,6 +18,7 @@ export class Alerts extends Component {
         // depends on the error message coming from redux state
         alert.error(error.msg.non_field_errors.join());
       if (error.msg.email) alert.error(error.msg.email.join());
+      if (error.msg.username) alert.error(error.msg.username.join());
     }
 
     if (message !== prevProps.message) {

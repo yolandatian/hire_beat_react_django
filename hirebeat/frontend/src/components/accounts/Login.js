@@ -50,7 +50,6 @@ export class Login extends Component {
   render() {
     if (this.props.isAuthenticated) {
       if (this.props.user.groups[0] == "reviewers") {
-        console.log("reviewer confirmed");
         return <Redirect to="/review" />;
       } else {
         return <Redirect to="/" />;
@@ -72,6 +71,7 @@ export class Login extends Component {
               placeholder="Username"
               onChange={this.onChange}
               value={username}
+              required
             />
           </div>
           <div className="form-group">
@@ -82,6 +82,7 @@ export class Login extends Component {
               name="password"
               onChange={this.onChange}
               value={password}
+              required
             />
           </div>
           <div className="d-flex justify-content-between align-items-center">
@@ -104,11 +105,20 @@ export class Login extends Component {
             className="form-group"
             style={{ paddingTop: 30, paddingBottom: 20 }}
           >
-            <CardButton
-              onTap={this.onSubmit}
-              textDisplayed={"Log in"}
-              buttonWidth={"100%"}
-            />
+            <button
+              type="submit"
+              style={{
+                WebkitBorderRadius: "20px",
+                width: "100%",
+                height: "40px",
+                color: "white",
+                background: "#FF6B00",
+                border: "none",
+                boxShadow: "0px 0px 8px #FF6B00",
+              }}
+            >
+              Log in
+            </button>
           </div>
           <div className="d-flex justify-content-center align-items-center">
             <div className="line" />
