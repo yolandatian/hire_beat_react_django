@@ -68,9 +68,7 @@ export class Reviews extends Component {
 
   render() {
     return (
-      <div className="container">
-        Give reviews
-        <button onClick={this.submitReview}>Submit</button>
+      <div className="container" style={{ paddingBottom: "10%" }}>
         <form>
           <fieldset>
             <div className="form-group">
