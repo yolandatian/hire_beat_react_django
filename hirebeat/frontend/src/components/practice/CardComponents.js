@@ -22,10 +22,10 @@ export const SetupCard = (props) => {
 
 export const PracticeCard = (props) => {
   return (
-    <div className="container practice-card-container">
+    <div className="container">
       <div className="card mb-3 practice-card">
         {CardHeader()}
-        <div className="card-body practice-card-body" style={{ paddingTop: 0 }}>
+        <div className="card-body" style={{ paddingTop: 0 }}>
           {props.children}
         </div>
       </div>

@@ -2,15 +2,18 @@ import React, { useState, useEffect } from "react";
 
 export function NotePad(props) {
   const [value, setValue] = useState("");
+  const [status, setStatus] = useState("");
 
   const handleChange = (event) => {
-    console.log(value);
     setValue(event.target.value);
   };
 
   useEffect(() => {
-    if (props.status == "Preparation") {
-      setValue("");
+    if (status != props.status) {
+      setStatus(props.status);
+      if (props.status == "Preparation") {
+        setValue("");
+      }
     }
   });
 
