@@ -155,7 +155,7 @@ export class ResponseWindow extends Component {
                 />
               )}
             </div>
-            <NotePad />
+            <NotePad status={this.state.status} />
           </PracticeCard>
         ) : null}
       </div>
