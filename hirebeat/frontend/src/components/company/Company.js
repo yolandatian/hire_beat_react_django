@@ -28,10 +28,10 @@ export default function Pricing() {
       className="container-fluid"
       style={{
         padding: 0,
-        backgroundColor: "white",
+        //backgroundColor: "white",
       }}
     >
-      <div className="pricing-bg">
+      <div className="company-bg">
         <div className="container" style={{ paddingTop: 70 }}>
           <Intro title={whoTitle} content={whoContent} />
           <Intro title={whatTitle} content={whatContent} />
