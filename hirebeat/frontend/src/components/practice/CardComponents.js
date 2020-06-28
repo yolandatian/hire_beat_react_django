@@ -66,10 +66,13 @@ export const CardButton = (props) => {
       style={{
         WebkitBorderRadius: "20px",
         width: props.buttonWidth,
-        background: "#FF6B00",
+        background:
+          props.btnClassName && props.btnClassName != "btn btn-warning"
+            ? "#7cb873"
+            : "#FF6B00",
         boxShadow:
           "0px 0px 8px" +
-          (props.btnClassName == "btn btn-success" ? " #7cb873" : " #dc6b2a"),
+          (props.btnClassName == "btn btn-success" ? " #7cb873" : "#FF6B00"),
       }}
       onClick={props.onTap}
     >

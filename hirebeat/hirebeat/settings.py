@@ -27,7 +27,7 @@ SECRET_KEY = '_a%+ao1u#bz@3!v=b%bwuy5-iyw#s!nzxfu3nfvvw)!*3bts)w'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['34.230.181.0','www.hirebeat.co','hirebeat.co','localhost']
+ALLOWED_HOSTS = ['34.230.181.0','www.hirebeat.co','hirebeat.co','localhost',"169.254.169.254","[::ffff:a9fe:a9fe]"]
 
 # Application definition
 
