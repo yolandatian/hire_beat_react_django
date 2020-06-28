@@ -43,9 +43,6 @@ export class MyVideoUploader extends Component {
   };
 
   handleUpload() {
-    console.log("======result========");
-    console.log(this.props.saved_video_count);
-    console.log(this.props.save_limit);
     if (this.props.saved_video_count < this.props.save_limit) {
       this.uploader.uploadFile(this.props.video);
       this.props.resetDeviceAndNextQuestion();
@@ -81,9 +78,6 @@ export class MyVideoUploader extends Component {
   };
 
   render() {
-    console.log("======result========");
-    console.log(this.props.saved_video_count);
-    console.log(this.props.save_limit);
     var saveOnTap = this.handleUpload;
     var skipOnTap = this.props.resetDeviceAndNextQuestion;
     var saveText = "Save and Next";

@@ -92,7 +92,7 @@ export class VideoRecorder extends Component {
       videoHandled: true,
     });
     this.player.record().reset();
-    this.player.record().getDevice();
+    //this.player.record().getDevice();
   };
 
   render() {
