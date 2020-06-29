@@ -16,6 +16,7 @@ import Pricing from "./pricing/Pricing";
 import Company from "./company/Company";
 import SelectParam from "./practice/SelectParam";
 import TechFields from "./practice/TechFields";
+import NotFoundPage from "./layout/NotFoundPage";
 
 import { loadUser, loadProfile } from "../redux/actions/auth_actions";
 
@@ -77,6 +78,7 @@ class App extends Component {
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/upload" component={MyVideoUploader} />
                 <Route exact path="/" component={Home} />
+                <Route component={NotFoundPage} />
               </Switch>
             </Fragment>
           </Router>
