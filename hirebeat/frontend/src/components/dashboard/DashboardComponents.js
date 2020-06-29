@@ -51,6 +51,7 @@ export const IconText = (props) => {
           fontSize: props.textSize,
           marginBottom: "1px",
           color: props.textColor ?? "#7d7d7d",
+          wordWrap: "revert",
         }}
       >
         {props.textDisplayed}

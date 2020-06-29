@@ -121,7 +121,10 @@ export class MyVideoUploader extends Component {
           //upgrade={() => console.log("upgrade")}
         />
         <RecordDoneButton
-          onTap={this.props.resetDevice}
+          onTap={() => {
+            this.props.startCamera();
+            this.props.resetDevice();
+          }}
           textDisplayed={"Try Again"}
           buttonWidth={"100%"}
         />

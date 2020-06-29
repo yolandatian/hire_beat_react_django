@@ -68,7 +68,7 @@ export const CardButton = (props) => {
         width: props.buttonWidth,
         background:
           props.btnClassName && props.btnClassName != "btn btn-warning"
-            ? "#7cb873"
+            ? ""
             : "#FF6B00",
         boxShadow:
           "0px 0px 8px" +

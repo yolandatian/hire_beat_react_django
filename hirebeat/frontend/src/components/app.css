@@ -243,6 +243,9 @@
 .dashboard-container {
   margin-top: 50px;
   border: "none";
+  padding-right: 8%;
+  padding-left: 8%;
+  padding-top: 1%;
 }
 
 .dashboard-row {

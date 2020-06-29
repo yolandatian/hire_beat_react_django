@@ -46,6 +46,7 @@ export class VideoRecorder extends Component {
       if (!this.props.isTesting) {
         this.recordFinished();
       }
+      this.player.bigPlayButton.show();
     });
 
     this.player.on("error", (element, error) => {
@@ -92,7 +93,10 @@ export class VideoRecorder extends Component {
       videoHandled: true,
     });
     this.player.record().reset();
-    //this.player.record().getDevice();
+  };
+
+  startCamera = () => {
+    this.player.record().getDevice();
   };
 
   render() {
@@ -115,6 +119,7 @@ export class VideoRecorder extends Component {
             <MyVideoUploader
               resetDeviceAndNextQuestion={this.resetDeviceAndNextQuestion}
               resetDevice={this.resetDevice}
+              startCamera={this.startCamera}
               disposePlayer={this.disposePlayer}
               video={this.state.video}
               last_q={this.props.last_q}

@@ -60,7 +60,7 @@ export class Register extends Component {
           alignItems: "center",
         }}
       >
-        <h2 className="text-center">Start Your Career With HireBeat</h2>
+        <h2 className="text-center">Start Your Career with HireBeat</h2>
         <p style={{ color: "#7d7d7d" }}>
           Join our AI-analysis interview platform to improve your performance.
         </p>

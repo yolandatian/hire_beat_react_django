@@ -41,7 +41,7 @@ export class Dashboard extends Component {
 
   render() {
     return (
-      <div className="container dashboard-container">
+      <div className="dashboard-container">
         <DbRow>
           <div className="col-11">
             <EssentialUserInfo
