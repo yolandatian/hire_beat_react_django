@@ -2,7 +2,7 @@
 
 This README is intended for programmers who already have experience with React or Django.
 
-To run the website locally:
+### To run the website locally:
 
 1. Set up your environment. install python3, pip3, virtualenv. Then in your virtualenv, install django, node, postgresql.
 2. Git clone the repo in your virtualenv.
@@ -15,17 +15,21 @@ To run the website locally:
 
 
 
-To enable console messages:
+### To enable console messages:
 
 Comment out 
 
+```
 console.log = function () {};
 console.error = function () {};
 console.exception = function () {};
 console.warn = function () {};
+```
 
 in hirebeat/frontend/src/index.js
 
+
+Author:
 dankleying
 06/29/2020
 
