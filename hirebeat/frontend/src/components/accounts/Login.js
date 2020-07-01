@@ -120,25 +120,25 @@ export class Login extends Component {
               Log in
             </button>
           </div>
-          <div className="d-flex justify-content-center align-items-center">
-            <div className="line" />
-            <p
-              style={{
-                color: "#7d7d7d",
-                paddingLeft: 10,
-                paddingRight: 10,
-                paddingTop: 0,
-                marginTop: 0,
-                paddingBottom: 0,
-                marginBottom: 0,
-              }}
-            >
-              Or use
-            </p>
-            <div className="line" />
-          </div>
-          <SocialButtons handleSocialLogin={this.handleSocialLogin} />
         </form>
+        <div className="d-flex justify-content-center align-items-center">
+          <div className="line" />
+          <p
+            style={{
+              color: "#7d7d7d",
+              paddingLeft: 10,
+              paddingRight: 10,
+              paddingTop: 0,
+              marginTop: 0,
+              paddingBottom: 0,
+              marginBottom: 0,
+            }}
+          >
+            Or use
+          </p>
+          <div className="line" />
+        </div>
+        <SocialButtons handleSocialLogin={this.handleSocialLogin} />
       </div>
     );
   }

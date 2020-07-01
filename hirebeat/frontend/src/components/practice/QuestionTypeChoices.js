@@ -33,7 +33,7 @@ export class QuestionTypeChoices extends Component {
           {ButtonContainer(
             techIcon,
             this.redirectToTechQuestions,
-            "Tech Question"
+            "Technique Question"
           )}
         </div>
       </SetupCard>

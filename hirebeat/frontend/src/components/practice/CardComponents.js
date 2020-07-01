@@ -76,9 +76,16 @@ export const CardButton = (props) => {
       }}
       onClick={props.onTap}
     >
-      <a style={{ fontSize: "1vw", fontWeight: "bold" }}>
+      <p
+        style={{
+          fontSize: "1vw",
+          fontWeight: "bold",
+          marginBottom: 0,
+          textTransform: "capitalize",
+        }}
+      >
         {props.textDisplayed}
-      </a>
+      </p>
     </button>
   );
 };

@@ -94,7 +94,6 @@ const PriceCard = (props) => {
     props.createMessage({ successMessage: message });
   };
   const upgrade = () => {
-    console.log("to upgrade");
     props.handleUpgrade();
     props.createMessage({ successMessage: message });
   };
