@@ -11,7 +11,7 @@ This README is intended for programmers who already have experience with React o
 5. Replace the modified package. Cd into node_modules and remove the folder "react-s3-uploader", this is the official version. Cd into hirebeat/hirebeat and find a folder called "react-s3-uploader", this is the modified version which is used by our app. Run "cp react-s3-uploader ../node_modules/" to copy the folder.
 6. Make sure postgresql is running and create a user. Put the username and password in database session of the django settings file.
 7. Migrate database changes using "python3 manage.py migrate".
-8. Run the app using "python3 manage.py runserver".
+8. Run the app using "python3 manage.py runserver --insecure". (This --insecure flag is required as django debug mode is turned off)
 
 
 
