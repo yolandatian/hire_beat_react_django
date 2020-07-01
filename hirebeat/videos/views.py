@@ -5,6 +5,8 @@ from rest_framework.decorators import api_view
 from .api.serializers import VideoSerializer
 from .models import Video
 from accounts.models import ReviewerInfo
+# For fake ai
+from django.db.models import Q
 
 from django.contrib.auth.decorators import user_passes_test
 
@@ -44,7 +46,7 @@ def get_unreviewed_video(request):
         return HttpResponseBadRequest({"You are not authorized to view this page. Please don't use incognito browsers."})
     
     video = None
-    videos = Video.objects.filter(needed_expert_review=True,is_expert_reviewed=False).order_by('created_at')
+    videos = Video.objects.filter(Q(needed_expert_review=True,is_expert_reviewed=False)|Q(needed_ai_review=True,is_ai_reviewed=False)).order_by('created_at')
     if videos.exists() :
         video = videos[0]
     serializer = VideoSerializer(video)

@@ -74,12 +74,16 @@ export const getUnreviewedVideo = () => (dispatch, getState) => {
 };
 
 export const addVideoReviews = (
+  ai_score,
+  ai_category_score,
   expert_score,
   expert_category_score,
   comments,
   video_id
 ) => (dispatch, getState) => {
   const body = JSON.stringify({
+    ai_score,
+    ai_category_score,
     expert_score,
     expert_category_score,
     comments,

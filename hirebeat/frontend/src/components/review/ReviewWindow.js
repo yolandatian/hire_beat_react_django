@@ -22,7 +22,6 @@ export class ReviewWindow extends Component {
   };
 
   render() {
-    console.log(this.props.video);
     return (
       <div className="container">
         This is review page. Number of videos reviewed by this reviewer:
@@ -36,6 +35,8 @@ export class ReviewWindow extends Component {
               <Reviews
                 videoID={this.props.video.id}
                 nextVideo={this.nextVideo}
+                needed_ai_review={this.props.video.needed_ai_review}
+                needed_expert_review={this.props.video.needed_expert_review}
               />
             </div>
           )
