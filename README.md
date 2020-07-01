@@ -15,6 +15,17 @@ To run the website locally:
 
 
 
+To enable console messages:
+
+Comment out 
+
+console.log = function () {};
+console.error = function () {};
+console.exception = function () {};
+console.warn = function () {};
+
+in hirebeat/frontend/src/index.js
+
 dankleying
 06/29/2020
 
