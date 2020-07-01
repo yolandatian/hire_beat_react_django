@@ -14,6 +14,7 @@ const HomeButton = (props) => {
         width: "30%",
         height: 40,
         padding: 0, // key to center text in button
+        marginBottom: "5%",
       }}
       onClick={props.onTap}
     >
@@ -95,11 +96,6 @@ export class Home extends Component {
           onTap={() => this.redirectTo("/register/")}
           textDisplayed={"Sign Up Now"}
         />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
       </div>
     );
   }

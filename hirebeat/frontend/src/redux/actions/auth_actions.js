@@ -34,6 +34,8 @@ export const loadUser = () => (dispatch, getState) => {
       dispatch({
         type: AUTH_ERROR,
       });
+      // Used to suppress error message printed by Chrome
+      console.clear();
     });
 };
 
@@ -49,8 +51,9 @@ export const loadProfile = () => (dispatch, getState) => {
       });
     })
     .catch((err) => {
-      console.log("profile error");
       dispatch(returnErrors(err.response.data, err.response.status));
+      // Used to suppress error message printed by Chrome
+      console.clear();
     });
 };
 
