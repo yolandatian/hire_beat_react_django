@@ -11,7 +11,15 @@ import {
 export class VideoPlayer extends Component {
   render() {
     return (
-      <div>
+      <div
+        style={{
+          borderRadius: 5,
+          border: "2px solid #8db1f5",
+          boxShadow: "0px 0px 4px #8db1f5",
+          boxSizing: "content-box",
+          overflow: "hidden",
+        }}
+      >
         <Player
           ref={(player) => {
             this.player = player;

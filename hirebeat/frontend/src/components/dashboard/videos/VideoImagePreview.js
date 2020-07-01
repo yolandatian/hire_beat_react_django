@@ -1,6 +1,4 @@
 import React from "react";
-import videoImg from "../../../assets/video.png";
-import ImageButton from "../../basic/ImageButton";
 import ReviewStatusButton from "./ReviewStatusButton";
 import { renderQDes } from "../DashboardComponents";
 import VideoPlayer from "../../videos/VideoPlayer";
@@ -8,7 +6,7 @@ import VideoPlayer from "../../videos/VideoPlayer";
 export function VideoImagePreview(props) {
   // control status, render modal
   return (
-    <div className="height-200">
+    <div className="height-20">
       <div className="row">
         <div className="col-5">
           <VideoPlayer url={props.v.url} />
