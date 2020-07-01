@@ -131,11 +131,15 @@ export class Reviews extends Component {
       <div className="container" style={{ paddingBottom: "10%" }}>
         <form>
           <fieldset>
-            {this.props.needed_expert_review ? this.expertReivews() : null}
+            {this.props.needed_expert_review && !this.props.is_expert_reviewed
+              ? this.expertReivews()
+              : null}
             <br />
             <div className="line" />
             <br />
-            {this.props.needed_ai_review ? this.aiReivews() : null}
+            {this.props.needed_ai_review && !this.props.is_ai_reviewed
+              ? this.aiReivews()
+              : null}
             <button
               type="submit"
               className="btn btn-primary"
