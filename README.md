@@ -14,7 +14,8 @@ This README is intended for programmers who already have experience with React o
 6. Make sure postgresql is running and create a user. Put the username and password in database session of the django settings file.
 7. Migrate database changes using "python3 manage.py migrate".
 8. Touch a file in the project dir called ".env" and copy paste environmental credientials.
-9. Run the app using "python3 manage.py runserver --insecure". (This --insecure flag is required as django debug mode is turned off)
+9. Run "npm run dev" to build the webpack bundle html file.
+10. Run the app using "python3 manage.py runserver --insecure". (This --insecure flag is required as django debug mode is turned off)
 
 
 
