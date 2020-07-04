@@ -1,4 +1,4 @@
 {
-    "python.pythonPath": "/Users/student/.local/share/virtualenvs/hire_beat_react_django-5evXRuk8/bin/python",
+    "python.pythonPath": "/usr/bin/python3",
     "python.formatting.provider": "black"
 }
