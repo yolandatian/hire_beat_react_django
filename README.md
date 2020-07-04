@@ -4,6 +4,8 @@ This README is intended for programmers who already have experience with React o
 
 ### To run the website locally:
 
+0. Make sure you have access to all the environmental credientials.
+
 1. Set up your environment. install python3, pip3, virtualenv. Then in your virtualenv, install django, node, postgresql.
 2. Git clone the repo in your virtualenv.
 3. Cd into the project(where there is a requirement.txt file) and run "pip3 install -r requirements.txt" to install all django related packages.
@@ -11,7 +13,9 @@ This README is intended for programmers who already have experience with React o
 5. Replace the modified package. Cd into node_modules and remove the folder "react-s3-uploader", this is the official version. Cd into hirebeat/hirebeat and find a folder called "react-s3-uploader", this is the modified version which is used by our app. Run "cp react-s3-uploader ../node_modules/" to copy the folder.
 6. Make sure postgresql is running and create a user. Put the username and password in database session of the django settings file.
 7. Migrate database changes using "python3 manage.py migrate".
-8. Run the app using "python3 manage.py runserver --insecure". (This --insecure flag is required as django debug mode is turned off)
+8. Touch a file in the project dir called ".env" and copy paste environmental credientials.
+9. Run "npm run dev" to build the webpack bundle html file.
+10. Run the app using "python3 manage.py runserver --insecure". (This --insecure flag is required as django debug mode is turned off)
 
 
 
