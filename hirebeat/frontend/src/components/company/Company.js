@@ -37,15 +37,16 @@ export default function Pricing() {
           <Intro title={whatTitle} content={whatContent} />
           <div style={{ width: "50%" }}>
             <Intro title={contactTitle} content={contactContent} />
-            <p
+            <a
               style={{
                 color: "#FF6B00",
                 fontSize: 15,
                 textDecoration: "underline",
               }}
+              href="mailto:Support@HireBeat.co"
             >
-              support@hirebeat.com
-            </p>
+              Support@HireBeat.co
+            </a>
           </div>
         </div>
       </div>
