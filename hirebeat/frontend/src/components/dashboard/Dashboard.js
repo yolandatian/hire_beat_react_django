@@ -6,7 +6,7 @@ import { Analytics } from "./videos/Analytics";
 import { updateProfile, loadProfile } from "../../redux/actions/auth_actions";
 import { connect } from "react-redux";
 import { DbRow } from "./DashboardComponents";
-import SafariAlert from "../basic/SafariAlert";
+import safariAlert from "../basic/SafariAlert";
 
 export class Dashboard extends Component {
   componentDidMount() {
@@ -41,7 +41,7 @@ export class Dashboard extends Component {
   };
 
   render() {
-    SafariAlert();
+    safariAlert();
     return (
       <div className="dashboard-container">
         <DbRow>
