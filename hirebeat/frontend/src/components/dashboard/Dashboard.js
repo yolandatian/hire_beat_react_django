@@ -10,6 +10,7 @@ import safariAlert from "../basic/SafariAlert";
 
 export class Dashboard extends Component {
   componentDidMount() {
+    safariAlert();
     this.props.loadProfile();
   }
 
@@ -41,7 +42,6 @@ export class Dashboard extends Component {
   };
 
   render() {
-    safariAlert();
     return (
       <div className="dashboard-container">
         <DbRow>
