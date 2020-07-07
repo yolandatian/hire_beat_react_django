@@ -25,13 +25,18 @@ export class MyVideoUploader extends Component {
   };
 
   onUploadFinish = () => {
+    //For safari support
+    //var name = this.props.video.name.split(".")[0] + ".mp4";
+    //var url = "https://hb-transcoded-videos.s3.amazonaws.com/" + name
+
+    //For other browsers
+    var name = this.props.video.name;
+    var url = "https://test-hb-videos.s3.amazonaws.com/" + name;
     const videoMetaData = {
-      url: `https://test-hb-videos.s3.amazonaws.com/${this.props.video.name}`,
+      url: url,
       q_description: `${this.props.questions[this.props.q_index].description}`,
     };
-    console.log(videoMetaData);
     this.props.addVideo(videoMetaData);
-    console.log(this.props.video.name + "is saved");
   };
 
   onUploadError = (err) => {

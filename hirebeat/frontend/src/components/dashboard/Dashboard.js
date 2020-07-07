@@ -6,9 +6,11 @@ import { Analytics } from "./videos/Analytics";
 import { updateProfile, loadProfile } from "../../redux/actions/auth_actions";
 import { connect } from "react-redux";
 import { DbRow } from "./DashboardComponents";
+import safariAlert from "../basic/SafariAlert";
 
 export class Dashboard extends Component {
   componentDidMount() {
+    safariAlert();
     this.props.loadProfile();
   }
 
