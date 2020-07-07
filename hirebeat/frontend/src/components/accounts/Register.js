@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { register } from "../../redux/actions/auth_actions";
 import { createMessage } from "../../redux/actions/message_actions";
+import SocialButtons from "./SocialButtons";
 
 export class Register extends Component {
   state = {
@@ -135,6 +136,24 @@ export class Register extends Component {
               </div>
             </fieldset>
           </form>
+          <div className="d-flex justify-content-center align-items-center">
+          <div className="line" />
+          <p
+            style={{
+              color: "#7d7d7d",
+              paddingLeft: 10,
+              paddingRight: 10,
+              paddingTop: 0,
+              marginTop: 0,
+              paddingBottom: 0,
+              marginBottom: 0,
+            }}
+          >
+            Or use
+          </p>
+          <div className="line" />
+        </div>
+        <SocialButtons handleSocialLogin={this.handleSocialLogin} />
         </div>
       </div>
     );

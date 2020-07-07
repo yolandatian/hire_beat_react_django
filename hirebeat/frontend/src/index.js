@@ -4,11 +4,10 @@ import React from "react";
 import "bootswatch/dist/materia/bootstrap.min.css";
 
 // Disable all console messages in production
-console.log = function () {};
+/*console.log = function () {};
 console.error = function () {};
 console.exception = function () {};
-console.warn = function () {};
-//console.clear = function () {};
+console.warn = function () {};*/
 
 ReactDOM.render(<App />, document.getElementById("app"));
 
