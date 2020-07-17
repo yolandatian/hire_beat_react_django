@@ -110,7 +110,7 @@ export class Login extends Component {
               style={{
                 WebkitBorderRadius: "20px",
                 width: "100%",
-                height: "40px",
+                height: "50px",
                 color: "white",
                 background: "#FF6B00",
                 border: "none",
