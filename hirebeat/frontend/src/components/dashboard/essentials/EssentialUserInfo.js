@@ -12,6 +12,7 @@ export class EssentialUserInfo extends Component {
     show: false,
     phone_number: "",
     location: "",
+    filePhoto: "https://hirebeat-assets.s3.amazonaws.com/user.png",
   };
 
   componentDidMount() {
@@ -53,11 +54,7 @@ export class EssentialUserInfo extends Component {
         <div className="card-body">
           <DbCenterRow>
             <div className="col-2">
-              <ImageButton
-                src={"https://hirebeat-assets.s3.amazonaws.com/user.png"}
-                func={() => {}}
-                type={"avatar"}
-              />
+            <img src={this.state.filePhoto} />
             </div>
             <div className="col-10">
               <div className="row">
@@ -103,7 +100,7 @@ export class EssentialUserInfo extends Component {
                 <div className="col-3">
                   <IconText
                     iconName={"membership"}
-                    textDisplayed={"Membership:" + this.props.profile.membership}
+                    textDisplayed={"Membership: " + this.props.profile.membership}
                     textSize={"15px"}
                   />
                 </div>
