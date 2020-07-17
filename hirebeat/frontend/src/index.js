@@ -8,7 +8,6 @@ console.log = function () {};
 console.error = function () {};
 console.exception = function () {};
 console.warn = function () {};
-//console.clear = function () {};
 
 ReactDOM.render(<App />, document.getElementById("app"));
 
