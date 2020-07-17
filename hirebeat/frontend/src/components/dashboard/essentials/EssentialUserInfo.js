@@ -43,6 +43,7 @@ export class EssentialUserInfo extends Component {
       id: this.props.profile.id,
       phone_number: this.state.phone_number,
       location: this.state.location,
+      membership: this.state.membership
     };
   };
 
@@ -96,6 +97,13 @@ export class EssentialUserInfo extends Component {
                   <IconText
                     iconName={"location_on"}
                     textDisplayed={this.props.profile.location}
+                    textSize={"15px"}
+                  />
+                </div>
+                <div className="col-3">
+                  <IconText
+                    iconName={"membership"}
+                    textDisplayed={"Membership:" + this.props.profile.membership}
                     textSize={"15px"}
                   />
                 </div>
