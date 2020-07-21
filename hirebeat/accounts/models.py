@@ -31,13 +31,14 @@ class Profile(models.Model):
     education = models.CharField(max_length=50,default="Not provided")
     location = models.CharField(max_length=50,default="Not provided")
     profession = models.CharField(max_length=50,default="Not provided")
-    save_limit = models.IntegerField(default=5,validators=[
+    save_limit = models.IntegerField(default=0,validators=[
             MaxValueValidator(1000),
-            MinValueValidator(5)
+            MinValueValidator(0)
         ])
     saved_video_count = models.IntegerField(default=0,validators=[
             MaxValueValidator(1000)
         ])
+    email_confirmed = models.BooleanField(default=False)
 
     def __str__(self):
         return self.user.username

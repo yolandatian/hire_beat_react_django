@@ -3,6 +3,7 @@ from django.contrib.auth.models import User, Group
 from django.contrib.auth import authenticate
 from rest_framework.serializers import SerializerMethodField
 from accounts.models import Profile
+from rest_framework.validators import UniqueValidator
 
 # User serializer
 class UserSerializer(serializers.ModelSerializer):
@@ -24,6 +25,14 @@ class ProfileSerializer(serializers.ModelSerializer):
 
 # Register serializer
 class RegisterSerializer(serializers.ModelSerializer):
+    email = serializers.EmailField(
+            required=True,
+            validators=[UniqueValidator(queryset=User.objects.all(),message="Email Already Exist.")]
+            )
+    username = serializers.CharField(
+            validators=[UniqueValidator(queryset=User.objects.all(), message="Username Already Exist.")]
+            )
+    password = serializers.CharField(min_length=8)
     class Meta:
         model = User
         fields = ('id','username','email', 'password')
