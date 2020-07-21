@@ -1,11 +1,13 @@
 import React, { Component } from "react";
-import ImageButton from "../../basic/ImageButton";
 import {
   IconButton,
   DbCenterRow,
   IconText,
   MyModal,
 } from "../DashboardComponents";
+import { Link } from "react-router-dom";
+import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css';
 
 export class EssentialUserInfo extends Component {
   state = {
@@ -13,12 +15,18 @@ export class EssentialUserInfo extends Component {
     phone_number: "",
     location: "",
     filePhoto: "https://hirebeat-assets.s3.amazonaws.com/user.png",
+    isActive: true,
+    membership: "",
+    email_confirmed: this.props.profile.email_confirmed,
+    active_code: "",
   };
 
   componentDidMount() {
     this.setState({
       phone_number: this.props.profile.phone_number,
       location: this.props.profile.location,
+      membership: this.props.profile.membership,
+      email_confirmed: this.props.profile.email_confirmed,
     });
   }
 
@@ -37,6 +45,67 @@ export class EssentialUserInfo extends Component {
     this.props.updateProfile(profile);
     this.finishEditing();
   };
+
+  /*sendEmail = () => {
+    //alert
+    confirmAlert({
+      title: 'Activation Code Sent!',
+      message: 'Please check your email for the activation code.(Make sure to check spam also)',
+      buttons: [
+        {
+          label: 'OK'
+        }
+      ]
+    });
+    //email
+    Email.send({
+      Host : "smtp.elasticemail.com",
+      Username : "tech@hirebeat.co",
+      Password : "599A223E6635EB53171C06E9D1747653A5E7",
+      To : this.props.user.email,
+      From : "Hirebeat<tech@hirebeat.co>",
+      Subject : "Welcome Email From Hirebeat",
+      Body : "<html><h1>Hi Welcome!</h1><br></br>Please copy the activation code below and apply into the Dashboard page to verify your email address: <br></br> <strong>DAHF@-13123-#@B@V-ADADA</strong></html>",
+  });
+  }*/
+
+  /*verifyEmail = (props) => {
+    if(this.state.active_code == "DAHF@-13123-#@B@V-ADADA"){
+      confirmAlert({
+        title: 'Email Verified',
+        message: 'You can save up to 5 videos now.',
+        buttons: [
+          {
+            label: 'OK'
+          }
+        ]
+      });
+      var profile = this.makeEmailConfirm();
+      this.props.updateProfile(profile);
+      this.finishEditing();
+    }else{
+      //alert
+    confirmAlert({
+      title: 'Code Invalid',
+      message: 'Click [Get Code] to get the activation code.',
+      buttons: [
+        {
+          label: 'OK'
+        }
+      ]
+    });
+    }
+  };*/
+
+  /*makeEmailConfirm = () => {
+    return {
+      user: this.props.user.id,
+      id: this.props.profile.id,
+      email_confirmed: true,
+      save_limit: 5,
+    };
+  };*/
+
 
   makeProfile = () => {
     return {
@@ -99,12 +168,11 @@ export class EssentialUserInfo extends Component {
                 </div>
                 <div className="col-3">
                   <IconText
-                    iconName={"membership"}
+                    iconName={"card_membership"}
                     textDisplayed={"Membership: " + this.props.profile.membership}
                     textSize={"15px"}
                   />
-                </div>
-                <div className="col-6" />
+                  </div>
               </div>
               <div className="row">
                 <div className="col">
@@ -114,6 +182,10 @@ export class EssentialUserInfo extends Component {
                     textSize={"15px"}
                   />
                 </div>
+                <div className="col"></div>
+                <div className="col">
+                {this.props.profile.membership == "Regular" && <Link className="btn" to="/pricing">Upgrade Now</Link>}
+              </div>
               </div>
             </div>
           </DbCenterRow>

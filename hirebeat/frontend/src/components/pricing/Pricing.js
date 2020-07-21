@@ -14,7 +14,7 @@ const premiumDetail1 = "Unlimited save your video interviews";
 const premiumDetail2 = "Full Access to interview question bank";
 
 const BasicPrice = () => {
-  return <p style={{ color: "#FF6B00", fontSize: 50 }}>$Free</p>;
+  return <p style={{ color: "#FF6B00", fontSize: 50 }}>Free</p>;
 };
 
 const PremiumPrice = () => {
@@ -140,6 +140,7 @@ class Pricing extends Component {
       user: this.props.user.id,
       id: this.props.profile.id,
       save_limit: 1000,
+      membership: 'Premium',
     };
   };
 
