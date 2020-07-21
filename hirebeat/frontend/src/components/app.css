@@ -10,8 +10,8 @@ video {
 }
 
 :root {
-  --theme-color: #425fdf;
-}
+  --theme-color: #4356F0;
+} 
 
 .strikethrough {
   position: relative;
@@ -54,11 +54,11 @@ video {
 }
 
 .gradient-progress-blue {
-  background: linear-gradient(45deg, #5e9af3, #8db1f5);
+  background: linear-gradient(45deg, #4689FA, #91B8FB);
 }
 
 .gradient-progress-orange {
-  background: linear-gradient(45deg, #ee742f, #f2c05d);
+  background: linear-gradient(45deg, #FF6B00, #FAC046);
 }
 
 .text-30 {
@@ -72,7 +72,7 @@ video {
 }
 
 .score-radial {
-  background: linear-gradient(#5e9af3, #8db1f5);
+  background: linear-gradient(#4689FA, #91B8FB);
   border-radius: 60px;
   width: 120px;
   height: 120px;
@@ -131,17 +131,17 @@ video {
 }
 
 .light-grey {
-  color: #7d7d7d;
+  color: #7D7D7D;
 }
 
 .my-header-container {
   height: 55px;
-  background-color: #425be7;
+  background-color: #4356F0;
 }
 
 .my-header {
   height: 30px;
-  background-color: #425be7;
+  background-color: #4356F0;
 }
 
 .panel-button {
@@ -275,7 +275,7 @@ video {
 .line {
   width: 40%;
   height: 2px;
-  border-bottom: 1px solid #7d7d7d;
+  border-bottom: 1px solid #E5E5E5;
 }
 
 /* override textarea*/

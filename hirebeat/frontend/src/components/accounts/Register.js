@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { register } from "../../redux/actions/auth_actions";
 import { createMessage } from "../../redux/actions/message_actions";
+import SocialButtons from "./SocialButtons";
 
 export class Register extends Component {
   state = {
@@ -96,7 +97,7 @@ export class Register extends Component {
                   name="password"
                   onChange={this.onChange}
                   value={password}
-                  placeholder="Password"
+                  placeholder="Password. Should be more than 8 characters."
                   minLength="8"
                   required
                 />
@@ -123,7 +124,7 @@ export class Register extends Component {
                   style={{
                     WebkitBorderRadius: "20px",
                     width: "100%",
-                    height: "40px",
+                    height: "50px",
                     color: "white",
                     background: "#FF6B00",
                     border: "none",
@@ -135,6 +136,24 @@ export class Register extends Component {
               </div>
             </fieldset>
           </form>
+          <div className="d-flex justify-content-center align-items-center">
+          <div className="line" />
+          <p
+            style={{
+              color: "#7d7d7d",
+              paddingLeft: 10,
+              paddingRight: 10,
+              paddingTop: 0,
+              marginTop: 0,
+              paddingBottom: 0,
+              marginBottom: 0,
+            }}
+          >
+            Or use
+          </p>
+          <div className="line" />
+        </div>
+        <SocialButtons handleSocialLogin={this.handleSocialLogin} />
         </div>
       </div>
     );

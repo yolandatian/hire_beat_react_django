@@ -9,8 +9,8 @@ const AccountBtnText = (props) => {
     <h3
       style={{
         border: "2px solid white",
-        padding: 2,
-        borderRadius: "5px",
+        padding: 5,
+        borderRadius: "10px",
         marginTop: 2,
       }}
     >
@@ -61,9 +61,9 @@ export class Header extends Component {
               data-toggle="dropdown"
               aria-haspopup="true"
               aria-expanded="false"
-              style={{ borderRadius: "5px" }}
+              style={{ borderRadius: "10px" }}
             >
-              <strong>{user ? `  ${user.username}  ` : ""}</strong>
+              <b>{user ? `  ${user.username}  ` : ""}</b>
             </button>
             <div
               className="dropdown-menu"
@@ -130,7 +130,7 @@ export class Header extends Component {
         <div
           className="container align-items-center justify-content-between my-header"
           style={{
-            backgroundColor: "transparent",
+            backgroundColor: "transparent", paddingTop: "30px",
           }}
         >
           <ul className="navbar-nav mr-auto align-items-center">
