@@ -45,7 +45,6 @@ INSTALLED_APPS = [
     'knox',
     'accounts',
     'questions',
-    'django_email_verification',
 ]
 
 REST_FRAMEWORK = {
@@ -174,13 +173,3 @@ EMAIL_PORT=587
 EMAIL_USE_TLS=True
 EMAIL_HOST_USER=os.getenv("HIREBEAT_GMAIL")
 EMAIL_HOST_PASSWORD=os.getenv("HIREBEAT_GMAIL_PASSWORD")
-
-EMAIL_ACTIVE_FIELD = 'is_active'
-EMAIL_SERVER = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_ADDRESS = os.getenv("HIREBEAT_GMAIL")
-EMAIL_FROM_ADDRESS = os.getenv("HIREBEAT_GMAIL")
-EMAIL_PASSWORD = os.getenv("HIREBEAT_GMAIL_PASSWORD")
-EMAIL_MAIL_SUBJECT = 'Confirm your email'
-EMAIL_MAIL_PLAIN = 'You are almost there! Please click the following link to confirm your account {{ link }}'
-EMAIL_PAGE_TEMPLATE = 'confirm_template.html'
