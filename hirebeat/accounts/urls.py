@@ -5,6 +5,7 @@ from .views import sign_s3_upload
 from .api.social_login import exchange_token
 
 from django.contrib.auth import views as auth_views
+from django_email_verification import urls as mail_urls
 
 urlpatterns = [
     path('api/auth', include('knox.urls')),
