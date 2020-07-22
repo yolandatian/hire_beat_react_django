@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate
 from rest_framework.serializers import SerializerMethodField
 from accounts.models import Profile
 from rest_framework.validators import UniqueValidator
+from django_email_verification import sendConfirm
 
 # User serializer
 class UserSerializer(serializers.ModelSerializer):
@@ -40,6 +41,7 @@ class RegisterSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         user = User.objects.create_user(validated_data['username'],validated_data['email'],validated_data['password'])
+        sendConfirm(user)
         return user
         
         
