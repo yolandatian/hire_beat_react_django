@@ -5,6 +5,7 @@ from knox.models import AuthToken
 from .serializers import UserSerializer, RegisterSerializer, LoginSerializer, ProfileSerializer
 from accounts.models import Profile
 from rest_framework import status
+from django.core.mail import send_mail
 
 
 #Register API
@@ -18,6 +19,13 @@ class ResgisterAPI(generics.GenericAPIView):
         print(request.data)
         serializer.is_valid(raise_exception=True)
         user = serializer.save()
+        ## email
+        subject = 'Welcome letter from Hirebeat'
+        message = 'Welcome!'
+        from_email = 'hirebeat.tech@gmail.com'
+        to_list = [request.data['email'], 'xuhang.liu@hirebeat.co']
+        send_mail(subject,message,from_email,to_list,fail_silently=True)
+        
         ### token
         _, token = AuthToken.objects.create(user)
         ### profile is autocreated
