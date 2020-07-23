@@ -72,7 +72,7 @@ export const CardButton = (props) => {
             : "#FF6B00",
         boxShadow:
           "0px 0px 8px" +
-          (props.btnClassName == "btn btn-success" ? " #7cb873" : "#FF6B00"),
+          (props.btnClassName == "btn btn-success" ? "#14CC75": "#FF6B00"),
       }}
       onClick={props.onTap}
     >

@@ -109,7 +109,7 @@ function decideClassNameAndOnTap(type, v, sendVideoForReview, setSubPage) {
   // returns a tuple [btnClassName, onTap]
   if (type == "expert") {
     if (v.is_expert_reviewed) {
-      return ["btn btn-success", () => setSubPage("expert")];
+      return ["btn btn-success ", () => setSubPage("expert")];
     } else if (v.needed_expert_review) {
       return ["btn btn-warning disabled", null];
     } else {
