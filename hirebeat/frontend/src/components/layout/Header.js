@@ -57,7 +57,7 @@ export class Header extends Component {
             <button
               id="btnGroupDrop1"
               type="button"
-              className="btn btn-primary"
+              className="btn btn btn-outline-primary"
               data-toggle="dropdown"
               aria-haspopup="true"
               aria-expanded="false"
@@ -124,7 +124,7 @@ export class Header extends Component {
         style={{
           WebkitBoxShadow: "none",
           boxShadow: "none",
-          background: "linear-gradient(-135deg, #4BADE4, #4663e0)",
+          background: "linear-gradient(209.24deg, #4BADE4 0%, #4356F0 97.24%)",
         }}
       >
         <div
