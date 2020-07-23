@@ -79,7 +79,7 @@ export class MyVideoUploader extends Component {
   redirectToDashboard = () => {
     // redirect to profile
     const { history } = this.props;
-    if (history) history.push("/dashboard/");
+    if (history) history.push("/dashboard");
   };
 
   render() {

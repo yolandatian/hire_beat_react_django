@@ -38,6 +38,7 @@ class Profile(models.Model):
     saved_video_count = models.IntegerField(default=0,validators=[
             MaxValueValidator(1000)
         ])
+    email_confirmed = models.BooleanField(default=False)
 
     def __str__(self):
         return self.user.username
