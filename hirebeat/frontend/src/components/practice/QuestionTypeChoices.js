@@ -19,7 +19,7 @@ export class QuestionTypeChoices extends Component {
     return (
       <SetupCard>
         <CardRow>
-          <h5>Create A New Mock Interview</h5>
+          <h5 style="color: #7D7D7D">Create A New Mock Interview</h5>
         </CardRow>
         <CardRow>
           <h1>Choose Interview Category</h1>

@@ -3,6 +3,10 @@
   padding: 0;
 }
 
+h5 {
+  color: #7d7d7d;
+}
+
 video {
   transform: rotateY(180deg);
   -webkit-transform: rotateY(180deg); /* Safari and Chrome */
