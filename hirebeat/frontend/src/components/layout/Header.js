@@ -12,6 +12,7 @@ const AccountBtnText = (props) => {
         padding: 5,
         borderRadius: "10px",
         marginTop: 2,
+        fontsize: "20px",
       }}
     >
       {props.textDisplayed}
@@ -57,11 +58,11 @@ export class Header extends Component {
             <button
               id="btnGroupDrop1"
               type="button"
-              className="btn btn btn-outline-primary"
+              className="btn btn btn-primary"
               data-toggle="dropdown"
               aria-haspopup="true"
               aria-expanded="false"
-              style={{ borderRadius: "10px" }}
+              style={{ borderRadius: "10px", boxShadow: "none" }}
             >
               <b>{user ? `  ${user.username}  ` : ""}</b>
             </button>
